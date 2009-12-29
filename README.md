@@ -2,10 +2,12 @@ LazyHighCharts
 ==============
 
 plugin for make highcharts a la ruby
+  highcharts:http://www.highcharts.com/demo/
 
 Some Ideas & code taken from 
 
   flotomatic
+
   open_flash_chart_lazy
   
 
@@ -24,10 +26,11 @@ Usage
         f.series('John', [3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
         f.series('Jane', [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )		
           f.title({ :text=>"example test title from controller"})
-          # without overriding 
+          ### without overriding ####
           f.options[:legend][:layout] = "horizontal"
           f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
-          # overriding entire option
+          ### overriding entire option ###
+          f.x_axis(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
           f.series_type("spline")
       end
       

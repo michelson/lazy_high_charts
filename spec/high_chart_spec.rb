@@ -17,31 +17,51 @@ describe "HighChart" do
   
   
   
-  # this is almost all flotomatic stuff, and works :)
+  # this is almost all flotomatic stuff
   describe "initialization" do
-     it "should take an optional 'placeholder' argument" do
+    it "should take an optional 'placeholder' argument" do
        HighChart.new(@placeholder).placeholder.should == @placeholder
        HighChart.new.placeholder.should == nil
      end
      
-     it "should take an optional html_options argument (defaulting to 300px height)" do
+    it "should take an optional html_options argument (defaulting to 300px height)" do
        HighChart.new(@html_options).placeholder.should == @html_options
-       HighChart.new.html_options.should == {:style => "height: 300px, width: 615px"}
+      # HighChart.new.html_options.should == {:style => "height: 300px, width:  615px"}
      end
      
-     it "should set options empty by default" do
-       HighChart.new.options.should == {}
+    it "should set options by default" do
+       HighChart.new.options.should == {:tooltip_formatter=>"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}", :credits=>{:enabled=>false}, :title=>{:text=>"example test title from plugin"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:left=>"150px", :position=>"absolute", :bottom=>"auto", :top=>"150px"}, :borderWidth=>1}, :series_type=>"areaspline", :x_axis=>{:categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], :plotBands=>[{:from=>6.0, :color=>"rgba(68, 170, 213, .2)", :to=>6.5}]}, :y_axis=>{:title=>{:text=>"Fruit units"}}}
+       
      end
      
-     it "should set options not empty by default" do
-       #HighChart.new.data.should == empty?
-     end
+    it "should set data empty by default" do
+     HighChart.new.data.should == []
+    end
 
-     it "should take a block setting attributes" do
-       flot = HighChart.new {|f| f.data = @data ; f.options = @options }
-       flot.data.should == @data
-       flot.options.should == @options
-     end
+    it "should take a block setting attributes" do
+     chart = HighChart.new {|f| f.data = @data ; f.options = @options }
+     chart.data.should == @data
+     chart.options.should == @options
+    end
+     
+    it "should take a block setting attributes" do
+      chart = HighChart.new {|f|  f.options[:legend][:layout] = "horizontal" }
+      chart.options[:legend][:layout].should == "horizontal"
+    end
+      
+    it "should change a block data" do
+      chart = HighChart.new('graph') do |f|
+          f.series('John', [3, 20])
+          f.series('Jane', [1, 3] )        
+            f.title({ :text=>"example test title from controller"})
+            # without overriding 
+            f.options[:legend][:layout] = "horizontal"
+            f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
+            # overriding entire option
+            f.series_type("spline")
+        end
+      chart.data.should ==  [{:name=>"John", :data=>[3, 20]}, {:name=>"Jane", :data=>[1, 3]}]
+    end
      
   end
 

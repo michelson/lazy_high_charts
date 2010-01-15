@@ -15,7 +15,7 @@ Some Ideas & code taken from
 Usage
 =======
 
-  controller:
+ Usage in Controller:
   
      @h = HighChart.new('graph') do |f|
         f.series('John', [3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
@@ -23,7 +23,7 @@ Usage
       end
  
 
-  without overriding:  
+  Without overriding option:  
  
      @h = HighChart.new('graph') do |f|
       .....
@@ -32,7 +32,7 @@ Usage
           f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
      ......
 
-  overriding entire option: 
+  Overriding entire option: 
 
      @h = HighChart.new('graph') do |f|
        .....
@@ -41,8 +41,11 @@ Usage
        .....
 
 
+  Option reference:
+
+     http://www.highcharts.com/ref/
       
-  view:
+  Usage in view:
   
     <%= high_chart("my_id", @h) %>
     

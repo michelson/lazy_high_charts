@@ -2,6 +2,7 @@ LazyHighCharts
 ==============
 
 plugin for make highcharts a la ruby
+
   highcharts:http://www.highcharts.com/demo/
 
 Some Ideas & code taken from 

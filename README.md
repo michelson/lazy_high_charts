@@ -41,13 +41,22 @@ Usage
        .....
 
 
-  Option reference:
+  Usage in layout:
 
-     http://www.highcharts.com/ref/
+     <%= javascript_include_tag :defaults %>
+     <%= javascript_include_tag :high_charts %>
+     <!--[if IE]>
+      <%= javascript_include_tag :ie_high_charts %>
+     <![endif]-->
       
   Usage in view:
   
     <%= high_chart("my_id", @h) %>
+
+
+  Option reference:
+
+     http://www.highcharts.com/ref/
     
 
 

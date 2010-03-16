@@ -13,7 +13,7 @@ Some Ideas & code taken from
 
 ##requires:
   
-  jquery
+  jquery (it not conflics with prototype)
   
   tested in rails 2.3.x and 3.0.0
   

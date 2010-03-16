@@ -40,7 +40,7 @@ class HighChart
 				:fillOpacity => 0.5
 			}
 		})
-		self.series_type("areaspline")
+		self.chart({:defaultSeriesType=>"areaspline" , :renderTo => nil})
   end
 
 

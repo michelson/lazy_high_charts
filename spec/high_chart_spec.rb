@@ -30,7 +30,7 @@ describe "HighChart" do
      end
      
     it "should set options by default" do
-       HighChart.new.options.should == {:tooltip_formatter=>"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}", :credits=>{:enabled=>false}, :title=>{:text=>"example test title from plugin"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:left=>"150px", :position=>"absolute", :bottom=>"auto", :top=>"150px"}, :borderWidth=>1}, :series_type=>"areaspline", :x_axis=>{:categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], :plotBands=>[{:from=>6.0, :color=>"rgba(68, 170, 213, .2)", :to=>6.5}]}, :y_axis=>{:title=>{:text=>"Fruit units"}}}
+       HighChart.new.options.should == {:tooltip_formatter=>"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}", :credits=>{:enabled=>false}, :title=>{:text=>"example test title from plugin"}, :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:left=>"150px", :position=>"absolute", :bottom=>"auto", :top=>"150px"}, :borderWidth=>1}, :x_axis=>{:categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], :plotBands=>[{:from=>6.0, :color=>"rgba(68, 170, 213, .2)", :to=>6.5}]}, :y_axis=>{:title=>{:text=>"Fruit units"}}}
        
      end
      
@@ -49,18 +49,38 @@ describe "HighChart" do
       chart.options[:legend][:layout].should == "horizontal"
     end
       
-    it "should change a block data" do
+    it "should change a block data without overriding options" do
       chart = HighChart.new('graph') do |f|
           f.series('John', [3, 20])
           f.series('Jane', [1, 3] )        
-            f.title({ :text=>"example test title from controller"})
-            # without overriding 
-            f.options[:legend][:layout] = "horizontal"
-            f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
-            # overriding entire option
-            f.series_type("spline")
-        end
+          # without overriding 
+          f.options[:chart][:defaultSeriesType] = "area"
+          f.options[:chart][:inverted] = true
+          f.options[:legend][:layout] = "horizontal"
+          f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
+      end
       chart.data.should ==  [{:name=>"John", :data=>[3, 20]}, {:name=>"Jane", :data=>[1, 3]}]
+      chart.options[:legend][:layout].should == "horizontal"
+      chart.options[:x_axis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]
+      chart.options[:chart][:defaultSeriesType].should == "area"
+      chart.options[:chart][:inverted].should == true
+    end
+    
+    it "should change a block data with overriding entire options" do
+      chart = HighChart.new('graph') do |f|
+          f.series('John', [3, 20])
+          f.series('Jane', [1, 3] )        
+          f.title({ :text=>"example test title from controller"})
+          # without overriding 
+          f.x_axis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
+          f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
+      end
+      chart.options[:x_axis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]      
+      chart.options[:x_axis][:labels][:rotation].should == -45     
+      chart.options[:x_axis][:labels][:align].should == "right"    
+      chart.options[:chart][:defaultSeriesType].should == "spline"    
+      chart.options[:chart][:renderTo].should == "myRenderArea"    
+      chart.options[:chart][:inverted].should == true    
     end
      
   end

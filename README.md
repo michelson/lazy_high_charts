@@ -1,7 +1,7 @@
 LazyHighCharts
 ==============
 
-plugin for make highcharts a la ruby
+##plugin for make highcharts a la ruby
 
   highcharts:http://www.highcharts.com/demo/
 
@@ -11,9 +11,11 @@ Some Ideas & code taken from
 
   open_flash_chart_lazy
 
-requires:
+##requires:
   
-  jquery, tested in rails 2.3.x and 3.0.0
+  jquery
+  
+  tested in rails 2.3.x and 3.0.0
   
 
 Usage
@@ -27,7 +29,7 @@ Usage
       end
  
 
-  Without overriding option:  
+  Without overriding entire option , (only change a specific option index):  
  
      @h = HighChart.new('graph') do |f|
       .....
@@ -42,7 +44,7 @@ Usage
      @h = HighChart.new('graph') do |f|
        .....
           f.x_axis(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
-          f.series_type("spline")
+          f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
        .....
 
 

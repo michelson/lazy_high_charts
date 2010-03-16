@@ -70,7 +70,9 @@ describe HighChartsHelper do
         end       
 
         it "should set chart renderTo" do
-         high_chart(@placeholder, @chart).should =~ /chart:\s+\{\s*renderTo:\s+'#{@placeholder}'/                  
+         #high_chart(@placeholder, @chart).should =~ /chart:\s+\{\s*renderTo:\s+'#{@placeholder}'/  
+         high_chart(@placeholder, @chart).should match(/chart:\s+{\"renderTo\":\"placeholder\"/)
+                       
         end
         
      end

@@ -10,6 +10,10 @@ Some Ideas & code taken from
   flotomatic
 
   open_flash_chart_lazy
+
+requires:
+  
+  jquery, tested in rails 2.3.x and 3.0.0
   
 
 Usage
@@ -27,7 +31,8 @@ Usage
  
      @h = HighChart.new('graph') do |f|
       .....
-
+          f.options[:chart][:defaultSeriesType] = "area"
+          f.options[:chart][:inverted] = true
           f.options[:legend][:layout] = "horizontal"
           f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
      ......
@@ -42,7 +47,7 @@ Usage
 
 
   Usage in layout:
-
+      
      <%= javascript_include_tag :defaults %>
      <%= javascript_include_tag :high_charts %>
      <!--[if IE]>

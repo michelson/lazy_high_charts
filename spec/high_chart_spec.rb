@@ -26,12 +26,10 @@ describe "HighChart" do
      
     it "should take an optional html_options argument (defaulting to 300px height)" do
        HighChart.new(@html_options).placeholder.should == @html_options
-      # HighChart.new.html_options.should == {:style => "height: 300px, width:  615px"}
      end
      
     it "should set options by default" do
-       HighChart.new.options.should == {:tooltip_formatter=>"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}", :credits=>{:enabled=>false}, :title=>{:text=>"example test title from plugin"}, :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:left=>"150px", :position=>"absolute", :bottom=>"auto", :top=>"150px"}, :borderWidth=>1}, :x_axis=>{:categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], :plotBands=>[{:from=>6.0, :color=>"rgba(68, 170, 213, .2)", :to=>6.5}]}, :y_axis=>{:title=>{:text=>"Fruit units"}}}
-       
+       HighChart.new.options.should == {:chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, :credits=>{:enabled=>false}, :tooltip=>{:enabled=>true}, :y_axis=>{:title=>{:text=>"Fruit units"}, :labels=>{:align=>"right"}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:top=>"150px", :left=>"150px", :position=>"absolute", :bottom=>"auto"}, :borderWidth=>1}, :x_axis=>{:plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], :labels=>{:rotation=>45, :align=>"right"}, :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}, :title=>{:text=>"example test title from plugin"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}} 
      end
      
     it "should set data empty by default" do

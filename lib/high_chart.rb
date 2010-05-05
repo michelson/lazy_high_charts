@@ -30,10 +30,11 @@ class HighChart
 		{:categories=> ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 			:plotBands=> [{ 
         :from=> 6.0,:to=> 6.5,:color=> 'rgba(68, 170, 213, .2)'
-			}]
+			}],
+		 :labels=>{ :align=>'right',:rotation=>45 }
 		})
-		self.y_axis({:title=> {:text=> 'Fruit units'}})
-		self.tooltip_formatter "function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}"
+		self.y_axis({:title=> {:text=> 'Fruit units'}, :labels=>{:align=>'right'} })
+		self.tooltip({ :enabled=>true })
 		self.credits({:enabled => false})
 		self.plot_options({
 			:areaspline => {

@@ -59,6 +59,15 @@ Usage
   Usage in view:
   
     <%= high_chart("my_id", @h) %>
+    
+  Passing formatting options in the view to the helper block , because all the helper options declared in the controller are converted in strict/valid json (quoted key);  so we need to extend the json object with some js.
+  
+      <% high_chart("my_id", @h) do |c| %>
+         	<%= "options.tooltip.formatter = function() { return '<b>HEY!!!'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}" %>
+         	<%= "options.xAxis.labels.formatter = function() { return 'ho';}" %>
+         	<%= "options.yAxis.labels.formatter = function() { return 'hey';}" %>
+       <%end %> 
+      
 
 
   Option reference:

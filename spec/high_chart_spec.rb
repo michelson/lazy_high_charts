@@ -29,7 +29,28 @@ describe "HighChart" do
      end
      
     it "should set options by default" do
-       HighChart.new.options.should == {:chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, :credits=>{:enabled=>false}, :tooltip=>{:enabled=>true}, :y_axis=>{:title=>{:text=>"Fruit units"}, :labels=>{:align=>"right"}}, :legend=>{:backgroundColor=>"#FFFFFF", :layout=>"vertical", :style=>{:top=>"150px", :left=>"150px", :position=>"absolute", :bottom=>"auto"}, :borderWidth=>1}, :x_axis=>{:plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], :labels=>{:rotation=>45, :align=>"right"}, :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}, :title=>{:text=>"example test title from plugin"}, :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}} 
+       HighChart.new.options.should == {
+         :subtitle=>{}, 
+         :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
+         :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, 
+         :legend=>{
+           :borderWidth=>1, 
+           :backgroundColor=>"#FFFFFF", 
+           :layout=>"vertical", 
+           :style=>{:top=>"150px", 
+             :left=>"150px", :position=>"absolute", :bottom=>"auto"}
+             }, 
+             :tooltip=>{:enabled=>true}, 
+             :x_axis=>{
+               :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], 
+               :plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], 
+               :labels=>{:align=>"right", :rotation=>45}}, 
+               :y_axis=>{:title=>{:text=>"Fruit units"}, 
+               :labels=>{:align=>"right"}}, 
+               :title=>{:text=>"example test title from plugin"}, 
+               :credits=>{:enabled=>false}
+               }          
+           
      end
      
     it "should set data empty by default" do
@@ -79,6 +100,19 @@ describe "HighChart" do
       chart.options[:chart][:defaultSeriesType].should == "spline"    
       chart.options[:chart][:renderTo].should == "myRenderArea"    
       chart.options[:chart][:inverted].should == true    
+    end
+    
+    it "should have subtitles" do
+       chart = HighChart.new('graph') do |f|
+            f.series('John', [3, 20])
+            f.series('Jane', [1, 3] )        
+            f.title({ :text=>"example test title from controller"})
+            # without overriding 
+            f.x_axis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
+            f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
+            f.subtitle({:text=>"Bar"})
+        end
+       chart.options[:subtitle][:text].should == "Bar"
     end
      
   end

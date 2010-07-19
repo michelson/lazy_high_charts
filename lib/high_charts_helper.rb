@@ -23,7 +23,8 @@ module HighChartsHelper
                         tooltip:  #{object.options[:tooltip].to_json},
                      		credits: #{object.options[:credits].to_json},
                      		plotOptions: #{object.options[:plot_options].to_json},
-                     		series: #{object.data.to_json}
+                     		series: #{object.data.to_json},
+                     		subtitle: #{object.options[:subtitle].to_json}
                         };
 
           // 2. Add callbacks (non-JSON compliant)

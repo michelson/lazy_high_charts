@@ -42,6 +42,7 @@ class HighChart
 			}
 		})
 		self.chart({:defaultSeriesType=>"areaspline" , :renderTo => nil})
+		self.subtitle({})
   end
 
 

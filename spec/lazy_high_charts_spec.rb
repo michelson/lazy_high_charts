@@ -2,12 +2,12 @@ require File.dirname(__FILE__) + '/spec_helper'
 
 describe HighChartsHelper do  
   attr_accessor :_erbout
-  
+
   include HighChartsHelper
-  include ActionView::Helpers
-  require 'action_controller'
-  require 'action_controller/assertions/selector_assertions'
-  include ActionController::Assertions::SelectorAssertions
+  #require 'action_controller'
+  #require 'action_controller/assertions/selector_assertions'
+  #include ActionView::Helpers
+  #include ActionController::Assertions::SelectorAssertions
   
   
   
@@ -24,8 +24,6 @@ describe HighChartsHelper do
     @chart.options.stub!(:to_json).and_return @options
   end
   
-  
-  
   describe "high_chart_includes" do
     it "should have a script tag" do
       javascript_include_tag(:high_charts).should have_tag('script')
@@ -35,9 +33,6 @@ describe HighChartsHelper do
       javascript_include_tag(:ie_high_charts).should have_tag('script')
     end
 
-  # it "should include excanvas" do
-  #  high_chart_includes.should match(/excanvas/)
-  #  end
   end
   
   describe "high_chart_helper" do

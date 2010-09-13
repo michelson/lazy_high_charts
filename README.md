@@ -1,7 +1,6 @@
 LazyHighCharts
 ==============
 ## CHANGELOG  
-
   deshi(xiaods@gmail.com)
 
   Sep 13,2010 
@@ -10,22 +9,10 @@ LazyHighCharts
 
 
 
-##plugin for make highcharts a la ruby
-
-  highcharts:http://www.highcharts.com/demo/
-
-Some Ideas & code taken from 
-
-  flotomatic
-
-  open_flash_chart_lazy
-
-##requires:
-  
-  jquery (it not conflics with prototype)
-  
-  tested in rails 2.3.x and 3.0.0
-  
+- Test Environment
+  ruby 1.8.7 (2009-12-24 patchlevel 248) [i686-linux], MBARI 0x8770, Ruby Enterprise Edition 2010.01
+  rspec 2.0.0.beta.22
+  rails 3.0.0
 
 Usage
 =======

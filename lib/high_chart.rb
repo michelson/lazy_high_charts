@@ -10,7 +10,7 @@ class HighChart
   def initialize(canvas = nil, html_opts = {})
 
     @collection_filter = nil
-    returning(self) do |high_chart|
+    self.tap do |high_chart|
       high_chart.data       ||= []
       high_chart.options    ||= {}
       high_chart.defaults_options
@@ -61,20 +61,26 @@ class HighChart
   #   @high_chart.series :name=>'Updated', :data=>[5, 1, 6, 1, 5, 4, 9]
   #
   def series(opts = {})
+    @data ||= []
     if opts.blank?
-     # @data << series_options.merge(opts:name => label, :data => d)
-   else
-      @data << opts.merge(:name => opts[:name], :data => opts[:data])
+      @data << series_options.merge(:name => label, :data => d)
+    else
+      @data << opts.merge(:name => label, :data => d)
     end
   end
   
-  
 private
-  def series_options
+   def series_options
     @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
   end
 
+  def map_collection(collection, x, y)
+    col = @collection_filter ? @collection_filter.call(collection) : collection
+    col.map {|model| [get_coordinate(model, x), get_coordinate(model, y)]}
+  end
+
   def merge_options(name, opts)
+    @options ||= {}
     @options.merge!  name => opts
   end
   
@@ -86,6 +92,10 @@ private
     else
       args
     end
+  end
+  
+  def get_coordinate(model, method)
+    method.is_a?(Proc) ? method.call(model) : model.send(method)
   end
   
 end

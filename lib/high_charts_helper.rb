@@ -34,8 +34,7 @@ module HighChartsHelper
       });
     EOJS
     
-    return graph unless block_given?
-    concat graph 
+    return graph 
   end
   
 end

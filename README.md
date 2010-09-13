@@ -1,5 +1,14 @@
 LazyHighCharts
 ==============
+## CHANGELOG  
+
+  deshi(xiaods@gmail.com)
+
+  Sep 13,2010 
+*  truely support rails 3.0(returning is deprecate function,use tap) 
+
+
+
 
 ##plugin for make highcharts a la ruby
 

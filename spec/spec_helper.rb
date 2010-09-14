@@ -10,12 +10,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), '../lib/high_chart'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/high_charts_helper'))
 
 require 'webrat'
-require 'webrat/core/matchers'
-
-
 require 'rspec'
-Rspec.configure do |c|
-  c.mock_with :rspec
+Rspec.configure do |config|
+  config.include ActionView::Helpers  
+  config.include Webrat::Matchers
 end
 
 module HighChartsHelper

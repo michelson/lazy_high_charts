@@ -16,7 +16,7 @@ describe HighChartsHelper do
   describe "high_chart_helper" do
     it "should return a div with an id of high_chart object" do
       hc = HighChart.new("placeholder", :class => 'stylin')
-      high_chart(hc.placeholder, hc).should have_selector('div[id=?][class=?]', hc.placeholder, 'stylin')
+      high_chart(hc.placeholder, hc).should have_selector('div', :id => hc.placeholder, :class => 'stylin')
     end
 
     it "should return a script" do
@@ -28,7 +28,7 @@ describe HighChartsHelper do
   describe "high_chart_graph" do
     describe "ready function" do
       it "should be a javascript script" do
-        high_chart(@placeholder, @chart).should have_selector('script[type=?]', 'text/javascript')
+        high_chart(@placeholder, @chart).should have_selector('script', :type => 'text/javascript')
         high_chart(@placeholder, @chart).should match(/\}\s*\)\s*;/)
       end
 
@@ -42,7 +42,7 @@ describe HighChartsHelper do
       end       
 
       it "should set chart renderTo" do  
-        high_chart(@placeholder, @chart).should match(/chart:\s+\{\"renderTo\":\"placeholder\"/)             
+        high_chart(@placeholder, @chart).should match(/\"renderTo\":\"placeholder\"/)
       end
 
     end

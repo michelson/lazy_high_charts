@@ -2,22 +2,8 @@ require File.dirname(__FILE__) + '/spec_helper'
 
 describe HighChartsHelper do  
   attr_accessor :_erbout
-
   include HighChartsHelper
-<<<<<<< HEAD
-  require 'action_controller'
-  require 'action_controller/assertions/selector_assertions'
-  include ActionView::Helpers
-  include ActionController::Assertions::SelectorAssertions
-  
-  
-=======
-  #require 'action_controller'
-  #require 'action_controller/assertions/selector_assertions'
-  #include ActionView::Helpers
-  #include ActionController::Assertions::SelectorAssertions
 
->>>>>>> e623dfb437fc948fc2ead2bb3196d2cf6b28689c
   before(:each) do
     @class       = "stylin"
     @placeholder = "placeholder"

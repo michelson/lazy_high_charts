@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe HighChartsHelper do  
   attr_accessor :_erbout
   include HighChartsHelper
-
+  
   before(:each) do
     @class       = "stylin"
     @placeholder = "placeholder"

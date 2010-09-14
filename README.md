@@ -1,20 +1,10 @@
 LazyHighCharts
-==============
-## CHANGELOG  
-  deshi(xiaods@gmail.com)
-
-  Sep 13,2010 
-*  truely support rails 3.0(returning is deprecate function,use tap) 
-
-
-
+=======
 
 - Test Environment
   ruby 1.8.7 (2009-12-24 patchlevel 248) [i686-linux], MBARI 0x8770, Ruby Enterprise Edition 2010.01
   rspec 2.0.0.beta.22
-  rails 3.0.0
-
-Usage
+  rails 3.0.0Usage
 =======
 
  Usage in Controller:

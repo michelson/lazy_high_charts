@@ -2,8 +2,6 @@
 require 'spec_helper'
 
 describe HighChartsHelper do  
-  attr_accessor :_erbout
-  
   include HighChartsHelper
 
   before(:each) do
@@ -12,20 +10,12 @@ describe HighChartsHelper do
     @chart        = HighChart.new(@placeholder)
     @data        = "data"
     @options     = "options"
-    
-    self._erbout = ''
-
   end
   
   describe "high_chart_includes" do
     it "should have a script tag" do
       javascript_include_tag(:high_charts).should have_tag('script')
     end
-    
-    it "should have a script tag for ie" do
-      javascript_include_tag(:ie_high_charts).should have_tag('script')
-    end
-
   end
   
   describe "high_chart_helper" do

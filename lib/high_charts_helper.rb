@@ -1,5 +1,5 @@
+# coding: utf-8
 module HighChartsHelper
-  
  # ActiveSupport::JSON.unquote_hash_key_identifiers = false
   def high_chart(placeholder, object  , &block)
     object.html_options.merge!({:id=>placeholder})
@@ -10,8 +10,6 @@ module HighChartsHelper
 
   def high_graph(placeholder, object, &block)
     graph = javascript_tag <<-EOJS
-    
-    
     jQuery(function() {
           // 1. Define JSON options
           var options = {

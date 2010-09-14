@@ -4,11 +4,10 @@ describe HighChartsHelper do
   attr_accessor :_erbout
 
   include HighChartsHelper
-  #require 'action_controller'
-  #require 'action_controller/assertions/selector_assertions'
-  #include ActionView::Helpers
-  #include ActionController::Assertions::SelectorAssertions
-  
+  require 'action_controller'
+  require 'action_controller/assertions/selector_assertions'
+  include ActionView::Helpers
+  include ActionController::Assertions::SelectorAssertions
   
   
   before(:each) do

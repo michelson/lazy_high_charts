@@ -5,4 +5,11 @@ desc 'Default: run specs.'
 task :default => :spec
 
 desc 'Run the specs'
-RSpec::Core::RakeTask.new(:spec)
+
+if defined?(RSpec)
+  desc 'Test the formtastic plugin.'
+  RSpec::Core::RakeTask.new('spec') do |t|
+    t.pattern = FileList['spec/**/*_spec.rb']
+  end
+
+end

@@ -1,9 +1,11 @@
-require File.dirname(__FILE__) + '/spec_helper'
+# coding: utf-8
+require 'spec_helper'
 
 describe HighChartsHelper do  
   attr_accessor :_erbout
-  include HighChartsHelper
   
+  include HighChartsHelper
+
   before(:each) do
     @class       = "stylin"
     @placeholder = "placeholder"
@@ -13,8 +15,6 @@ describe HighChartsHelper do
     
     self._erbout = ''
 
-    #@chart.data.stub!(:to_json).and_return @data
-    #@chart.options.stub!(:to_json).and_return @options
   end
   
   describe "high_chart_includes" do

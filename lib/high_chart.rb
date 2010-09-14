@@ -5,7 +5,7 @@ class HighChart
   attr_accessor :data, :options, :placeholder, :html_options
   alias  :canvas :placeholder
   alias  :canvas= :placeholder=
-
+  
 
   def initialize(canvas = nil, html_opts = {})
 
@@ -65,7 +65,7 @@ class HighChart
     if opts.blank?
       @data << series_options.merge(:name => label, :data => d)
     else
-      @data << opts.merge(:name => label, :data => d)
+      @data << opts.merge(:name => opts[:name], :data => opts[:data])
     end
   end
   

@@ -4,12 +4,20 @@ describe HighChartsHelper do
   attr_accessor :_erbout
 
   include HighChartsHelper
+<<<<<<< HEAD
   require 'action_controller'
   require 'action_controller/assertions/selector_assertions'
   include ActionView::Helpers
   include ActionController::Assertions::SelectorAssertions
   
   
+=======
+  #require 'action_controller'
+  #require 'action_controller/assertions/selector_assertions'
+  #include ActionView::Helpers
+  #include ActionController::Assertions::SelectorAssertions
+
+>>>>>>> e623dfb437fc948fc2ead2bb3196d2cf6b28689c
   before(:each) do
     @class       = "stylin"
     @placeholder = "placeholder"
@@ -19,8 +27,8 @@ describe HighChartsHelper do
     
     self._erbout = ''
 
-    @chart.data.stub!(:to_json).and_return @data
-    @chart.options.stub!(:to_json).and_return @options
+    #@chart.data.stub!(:to_json).and_return @data
+    #@chart.options.stub!(:to_json).and_return @options
   end
   
   describe "high_chart_includes" do
@@ -60,13 +68,11 @@ describe HighChartsHelper do
      end
      describe "initialize HighChart" do
         it "should set Chart data" do
-         high_chart(@placeholder, @chart).should =~ /var\s+chart\s+=\s+new\s+Highcharts.Chart/
+          high_chart(@placeholder, @chart).should =~ /var\s+chart\s+=\s+new\s+Highcharts.Chart/
         end       
 
-        it "should set chart renderTo" do
-         #high_chart(@placeholder, @chart).should =~ /chart:\s+\{\s*renderTo:\s+'#{@placeholder}'/  
-         high_chart(@placeholder, @chart).should match(/chart:\s+{\"renderTo\":\"placeholder\"/)
-                       
+        it "should set chart renderTo" do  
+          high_chart(@placeholder, @chart).should match(/chart:\s+{\"renderTo\":\"placeholder\"/)             
         end
         
      end

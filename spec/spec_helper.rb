@@ -6,6 +6,12 @@ require 'action_view'
 require 'action_controller'
 require 'action_mailer'
 
+require 'rspec'
+
+Rspec.configure do |c|
+  c.mock_with :rspec
+end
+
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/high_chart'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/high_charts_helper'))
 
@@ -21,10 +27,6 @@ module HighChartsHelper
   include ActionView::Helpers::CaptureHelper
   include ActionView::Helpers::AssetTagHelper
   include ActiveSupport
-
 end
-
-
-
 
 

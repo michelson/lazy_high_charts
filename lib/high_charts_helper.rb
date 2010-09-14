@@ -9,7 +9,7 @@ module HighChartsHelper
   
 
   def high_graph(placeholder, object, &block)
-    graph = javascript_tag <<-EOJS
+    graph =<<-EOJS
     jQuery(function() {
           // 1. Define JSON options
           var options = {

@@ -70,20 +70,14 @@ class HighChart
   end
   
 private
-   def series_options
+  def series_options
     @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
   end
 
-  def map_collection(collection, x, y)
-    col = @collection_filter ? @collection_filter.call(collection) : collection
-    col.map {|model| [get_coordinate(model, x), get_coordinate(model, y)]}
-  end
-
   def merge_options(name, opts)
-    @options ||= {}
     @options.merge!  name => opts
   end
-  
+
   def arguments_to_options(args)
     if args.blank? 
       {:show => true}
@@ -92,10 +86,6 @@ private
     else
       args
     end
-  end
-  
-  def get_coordinate(model, method)
-    method.is_a?(Proc) ? method.call(model) : model.send(method)
   end
   
 end

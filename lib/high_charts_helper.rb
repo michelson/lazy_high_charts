@@ -33,8 +33,11 @@ module HighChartsHelper
       });
       </script>
     EOJS
-    
-    return graph 
+    if defined?(raw)
+      return raw(graph) 
+    else
+      return graph
+    end
   end
   
 end

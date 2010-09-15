@@ -61,7 +61,13 @@ Usage
   Option reference:
 
      http://www.highcharts.com/ref/
+
+
+
     
+### Contributors
+
+   deshi(xiaods@gmail.com) 
 
 
-Copyright (c) 2009 [Miguel Michelson Martinez], released under the MIT license
+Copyright (c) 2009 Miguel Michelson Martinez, released under the MIT license

@@ -41,11 +41,10 @@ Usage
 
   Usage in layout:
       
-     <%= javascript_include_tag :defaults %>
-     <%= javascript_include_tag :high_charts %>
-     <!--[if IE]>
-      <%= javascript_include_tag :ie_high_charts %>
-     <![endif]-->
+  <%= javascript_include_tag 'highcharts' %>
+  <!--[if IE]>
+  <%= javascript_include_tag 'excanvas.compiled' %>
+  <![endif]-->
       
   Usage in view:
   

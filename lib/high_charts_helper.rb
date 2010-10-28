@@ -34,7 +34,7 @@ module HighChartsHelper
       });
     EOJS
     
-    return graph unless block_given?
+    return graph if Rails::VERSION::STRING =~ /^3/ or not block_given?
     concat graph 
   end
   

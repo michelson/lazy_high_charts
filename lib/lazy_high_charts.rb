@@ -1,0 +1,3 @@
+module LazyHighCharts
+  # Your code goes here...
+end

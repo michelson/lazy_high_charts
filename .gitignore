@@ -9,3 +9,4 @@ tags
 rerun.txt
 Gemfile.lock
 .bundle
+*.gem

@@ -14,25 +14,23 @@ Gem::Specification.new do |s|
   s.summary     = "lazy higcharts plugin for rails"
   s.description = "use highcharts js libary to visualization your data plugin for rails"
 
-  s.files       = %w( README.md Rakefile CHANGELOG )
-  s.files       += Dir.glob("lib/**/*")
-  s.files       += Dir.glob("spec/**/*")
-  s.files       += Dir.glob("javascripts/**/*")
-  s.files       += Dir.glob("autotest/*")
-
-  s.require_path  = 'lib'
-  s.extra_rdoc_files  = [ "README.md", "CHANGELOG" ]
+  s.extra_rdoc_files  = [ "README.md", "CHANGELOG.md" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency "bundler", ">= 1.0.0"
+  s.add_dependency "rails", "~> 3.0"
+  s.add_dependency "bundler", "~> 1.0"
 
-  s.add_development_dependency "rspec", ">= 2.0.1"
+  s.add_development_dependency "rspec", "~> 2.0"
   s.add_development_dependency "autotest"
 
   s.description = <<-DESC
     Lazy_high_charts provides a Rails interface for utilize highcharts to displaying graphs.
   DESC
+
+  s.files = `git ls-files`.split("\n")
+  s.executables = `git ls-files`.split("\n").select{|f| f =~ /^bin/}
+  s.require_path = 'lib'  
 
 end

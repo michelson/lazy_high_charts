@@ -31,5 +31,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", ">= 2.0.1"
   s.add_development_dependency "autotest"
 
+  s.description = <<-DESC
+    Lazy_high_charts provides a Rails interface for utilize highcharts to displaying graphs.
+  DESC
 
 end

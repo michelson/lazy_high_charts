@@ -1,7 +1,7 @@
 # coding: utf-8
 
 module LazyHighCharts
-  module HighChartsHelper
+  module LayoutHelper
     # ActiveSupport::JSON.unquote_hash_key_identifiers = false
     def high_chart(placeholder, object  , &block)
       object.html_options.merge!({:id=>placeholder})

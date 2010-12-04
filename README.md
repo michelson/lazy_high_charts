@@ -1,7 +1,7 @@
 LazyHighCharts
 =======
 = update(Dec 4,2010)
-dumped to gem 0.0.3
+bumping version to gem 0.0.3
 
 - Test Environment
   ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]

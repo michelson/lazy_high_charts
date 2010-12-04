@@ -16,6 +16,8 @@ this gem Only support Rails 3.x
 
 Usage
 =======
+ In your Gemfile, add this line:
+	gem 'lazy_high_charts'
 
  Usage in Controller:
   

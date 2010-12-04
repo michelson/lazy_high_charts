@@ -12,7 +12,7 @@ describe "HighChart" do
     @html_options = {:class => "stylin"}
     @options      = {:bars => {:show => true}}
 
-    @flot         = HighChart.new(@placeholder, @html_options) {|chart| chart.options = @options }
+    @flot         = LazyHighCharts::HighChart.new(@placeholder, @html_options) {|chart| chart.options = @options }
   end
   
   
@@ -20,16 +20,16 @@ describe "HighChart" do
   # this is almost all flotomatic stuff
   describe "initialization" do
     it "should take an optional 'placeholder' argument" do
-       HighChart.new(@placeholder).placeholder.should == @placeholder
-       HighChart.new.placeholder.should == nil
+       LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
+       LazyHighCharts::HighChart.new.placeholder.should == nil
      end
      
     it "should take an optional html_options argument (defaulting to 300px height)" do
-       HighChart.new(@html_options).placeholder.should == @html_options
+       LazyHighCharts::HighChart.new(@html_options).placeholder.should == @html_options
      end
      
     it "should set options by default" do
-       HighChart.new.options.should == {
+       LazyHighCharts::HighChart.new.options.should == {
          :subtitle=>{}, 
          :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
          :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, 
@@ -47,29 +47,29 @@ describe "HighChart" do
                :labels=>{:align=>"right", :rotation=>45}}, 
                :y_axis=>{:title=>{:text=>"Fruit units"}, 
                :labels=>{:align=>"right"}}, 
-               :title=>{:text=>"example test title from plugin"}, 
+               :title=>{:text=>"example test title from highcharts gem"}, 
                :credits=>{:enabled=>false}
                }          
            
      end
      
     it "should set data empty by default" do
-     HighChart.new.data.should == []
+      LazyHighCharts::HighChart.new.data.should == []
     end
 
     it "should take a block setting attributes" do
-     chart = HighChart.new {|f| f.data = @data ; f.options = @options }
+     chart = LazyHighCharts::HighChart.new {|f| f.data = @data ; f.options = @options }
      chart.data.should == @data
      chart.options.should == @options
     end
      
     it "should take a block setting attributes" do
-      chart = HighChart.new {|f|  f.options[:legend][:layout] = "horizontal" }
+      chart = LazyHighCharts::HighChart.new {|f|  f.options[:legend][:layout] = "horizontal" }
       chart.options[:legend][:layout].should == "horizontal"
     end
       
     it "should change a block data without overriding options" do
-      chart = HighChart.new('graph') do |f|
+      chart = LazyHighCharts::HighChart.new('graph') do |f|
           f.series(:name=>'John', :data=>[3, 20])
           f.series(:name=>'Jane',:data=> [1, 3] )        
           # without overriding 
@@ -86,7 +86,7 @@ describe "HighChart" do
     end
     
     it "should change a block data with overriding entire options" do
-      chart = HighChart.new('graph') do |f|
+      chart = LazyHighCharts::HighChart.new('graph') do |f|
           f.series(:name=>'John', :data=>[3, 20])
           f.series(:name=>'Jane', :data=>[1, 3] )        
           f.title({ :text=>"example test title from controller"})
@@ -103,7 +103,7 @@ describe "HighChart" do
     end
     
     it "should have subtitles" do
-       chart = HighChart.new('graph') do |f|
+       chart = LazyHighCharts::HighChart.new('graph') do |f|
             f.series(:name=>'John',:data=> [3, 20])
             f.series(:name=>'Jane', :data=>[1, 3] )        
             f.title({ :text=>"example test title from controller"})

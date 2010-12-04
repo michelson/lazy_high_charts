@@ -1,20 +1,25 @@
 LazyHighCharts
 =======
+= update(Dec 4,2010)
+dumped to gem 0.0.3
 
 - Test Environment
-  ruby 1.8.7 (2009-12-24 patchlevel 248) [i686-linux], MBARI 0x8770, Ruby Enterprise Edition 2010.01
-  rspec 2.0.0.beta.22
-  rails 3.0.0
+  ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
+  rspec 2.0
+  rails 3.0.1
+- Result(autotest)
+Finished in 0.01502 seconds
+9 examples, 0 failures
   
-### rails 2.x 
-  use the rails-2-3 branch
+Attention:
+this gem Only support Rails 3.x
 
 Usage
 =======
 
  Usage in Controller:
   
-     @h = HighChart.new('graph') do |f|
+     @h = LazyHighCharts::HighChart.new('graph') do |f|
         f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
         f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
       end
@@ -22,7 +27,7 @@ Usage
 
   Without overriding entire option , (only change a specific option index):  
  
-     @h = HighChart.new('graph') do |f|
+     @h = LazyHighCharts::HighChart.new('graph') do |f|
       .....
           f.options[:chart][:defaultSeriesType] = "area"
           f.options[:chart][:inverted] = true
@@ -32,7 +37,7 @@ Usage
 
   Overriding entire option: 
 
-     @h = HighChart.new('graph') do |f|
+     @h = LazyHighCharts::HighChart.new('graph') do |f|
        .....
           f.x_axis(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
           f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})

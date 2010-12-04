@@ -74,9 +74,10 @@ Usage
 
 
     
-### Contributors
+h2.Contributors
+LayHighCharts gem is maintained by "Deshi Xiao":http://github.com/xds2000
 
-   deshi(xiaods@gmail.com) 
+@git shortlog -n -s --no-merges@
 
 
 Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

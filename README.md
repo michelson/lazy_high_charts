@@ -75,7 +75,7 @@ Usage
 
     
 h2.Contributors
-LayHighCharts gem is maintained by "Deshi Xiao":http://github.com/xds2000
+LayHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
 
 @git shortlog -n -s --no-merges@
 

@@ -9,10 +9,6 @@ module LazyHighCharts
       rescue OpenURI::HTTPError
         say_status("warning", "could not find Highcharts javascript file", :yellow)
       end
-
-      def remove_highcharts
-        say_status("removing", "Highcharts javascript (github HEAD)", :green)
-        
-      end 
+      
     end
 end

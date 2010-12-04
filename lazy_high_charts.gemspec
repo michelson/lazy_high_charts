@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "lazy_high_charts"
   s.version     = LazyHighCharts::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Miguel Michelson Martinez']
-  s.email       = ['miguelmichelson@gmail.com']
+  s.authors     = ['Miguel Michelson Martinez','Deshi Xiao']
+  s.email       = ['miguelmichelson@gmail.com','xiaods@gmail.com']
   s.homepage    = "https://github.com/xiaods/lazy_high_charts"
   s.summary     = "lazy higcharts plugin for rails"
   s.description = "use highcharts js libary to visualization your data plugin for rails"

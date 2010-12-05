@@ -1,7 +1,6 @@
 LazyHighCharts
 =======
-= update(Dec 4,2010)
-bumping version to gem 0.0.3
+ update(Dec 4,2010)
 
 - Test Environment
   ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
@@ -74,10 +73,10 @@ Usage
 
 
     
-h2.Contributors
-LayHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
-
-@git shortlog -n -s --no-merges@
+Contributors
+=======
+	LayHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
+  git shortlog -n -s --no-merges
 
 
 Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

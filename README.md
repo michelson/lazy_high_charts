@@ -75,7 +75,7 @@ Usage
     
 Contributors
 =======
-	LayHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
+	LazyHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
   git shortlog -n -s --no-merges
 
 

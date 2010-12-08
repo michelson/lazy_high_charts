@@ -22,11 +22,11 @@ describe "HighChart" do
     it "should take an optional 'placeholder' argument" do
        LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
        LazyHighCharts::HighChart.new.placeholder.should == nil
-     end
+    end
      
     it "should take an optional html_options argument (defaulting to 300px height)" do
        LazyHighCharts::HighChart.new(@html_options).placeholder.should == @html_options
-     end
+    end
      
     it "should set options by default" do
        LazyHighCharts::HighChart.new.options.should == {
@@ -51,7 +51,7 @@ describe "HighChart" do
                :credits=>{:enabled=>false}
                }          
            
-     end
+    end
      
     it "should set data empty by default" do
       LazyHighCharts::HighChart.new.data.should == []

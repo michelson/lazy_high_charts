@@ -33,10 +33,11 @@ module HighChartsHelper
       });
       </script>
     EOJS
-    if defined?(raw)
+    if defined?(raw) &&  Rails.version.to_i >= 3
       return raw(graph) 
     else
-      return graph
+      return graph unless block_given?
+      concat graph
     end
   end
   

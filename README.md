@@ -6,8 +6,9 @@ LazyHighCharts
   rspec 2.0.0.beta.22
   rails 3.0.0
   
-### rails 2.x 
-  use the rails-2-3 branch
+### plugin support for rails 2.3.5 and rails 3
+
+### gem support in branch gem_support , only for rails 3
 
 Usage
 =======

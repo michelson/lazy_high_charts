@@ -19,7 +19,7 @@ module HighChartsHelper
                                 legend: #{object.options[:legend].to_json},
                                 xAxis: #{object.options[:x_axis].to_json},
                                 yAxis: #{object.options[:y_axis].to_json},
-                        tooltip:  #{object.options[:tooltip].to_json},
+                                tooltip:  #{object.options[:tooltip].to_json},
                                 credits: #{object.options[:credits].to_json},
                                 plotOptions: #{object.options[:plot_options].to_json},
                                 series: #{object.data.to_json},
@@ -28,15 +28,23 @@ module HighChartsHelper
 
           // 2. Add callbacks (non-JSON compliant)
           #{capture(&block) if block_given?}
+          
           // 3. Build the chart
           var chart = new Highcharts.Chart(options);
       });
       </script>
     EOJS
-    if defined?(raw)
+    
+
+  
+   
+    
+    if defined?(raw) &&  Rails.version.to_i >= 3
       return raw(graph) 
     else
-      return graph
+      return graph unless block_given?
+      concat graph
+      #return graph
     end
   end
   

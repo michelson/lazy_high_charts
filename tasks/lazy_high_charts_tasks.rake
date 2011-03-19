@@ -9,7 +9,7 @@ namespace :lazy_high_charts do
     dir = "javascripts"
     ["excanvas.compiled.js", "highcharts.js"].each do |js_file|
     	dest_file = File.join(::Rails.root.to_s, "public", dir, js_file)
-    	src_file = File.join(::Rails.root.to_s + "/vendor/plugins/lazy_high_charts" , dir, js_file)
+    	src_file = File.join(__FILE__ , dir, js_file)
     	FileUtils.cp_r(src_file, dest_file)
     end
     puts "Files copied - Installation complete!"

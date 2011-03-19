@@ -1,13 +1,26 @@
 LazyHighCharts
 =======
-LazyHighCharts is Rails 3.x Gem for displaying Highcharts graphs. 
+LazyHighCharts is Rails 2.x/3.x Gem for displaying Highcharts graphs. 
   
 Compatibility:
-lazy_high_charts 1.x is only compatible with Rails 3.x
+lazy_high_charts 1.x is compatible with Rails 2.x/3.x
 
 Current Version: 1.1.0
+
 Usage
 =======
+ About javascript Assets notes:
+ for Rails 2.x
+ 1.you need manually put jquery/highcharts js to public/javascript
+ 2.modify your layout html
+ Sample Code:
+ <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  %>
+ <%= javascript_include_tag :high_charts  %>
+ 3. add gem name in your config/environment.rb
+	config.gem "lazy_high_charts"
+ 4.done!
+
+ For Rails 3.x
  In your Gemfile, add this line:
 	gem 'lazy_high_charts'
 

@@ -17,16 +17,16 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files  = [ "README.md", "CHANGELOG.md" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]
 
-  s.required_rubygems_version = ">= 1.3.6"
+  s.required_rubygems_version = "~> 1.3"
 
   s.add_dependency "bundler", "~> 1.0"
 
-  s.add_development_dependency "webrat", "~> 0.7"
+  s.add_development_dependency "webrat","~> 0.7"
   s.add_development_dependency "rspec", "~> 2.0"
   s.add_development_dependency "rails", "~> 3.0"
 
   s.description = <<-DESC
-    Lazy_high_charts provides a Rails interface for utilize highcharts to displaying graphs.
+    lazy_high_charts is a Rails 3.x gem for displaying Highcharts graphs.
   DESC
 
   s.files = `git ls-files`.split("\n")

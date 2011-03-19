@@ -1,5 +1,4 @@
 # coding: utf-8
-
 require 'rails' unless defined? ::Rails
 
 module LazyHighCharts

@@ -1,5 +1,6 @@
   Mar 20,2011
-* dump to 1.1.0
+* be compatible to rails 2.3 
+* dump to 1.1.1
 * Rename options[:x_axis] and options[:y_axis] to options[:xAxis] and options[:yAxis], and options[:plot_options] to options[:plotOptions] to make it consistent with highcharts.
  
   Mar 19,2011

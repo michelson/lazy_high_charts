@@ -1,5 +1,5 @@
   Mar 19,2011
-* refactor my gem code
+* refactor my gem code,dumped to 1.0.9
 
   Nov 30,2010
 * dumped to gem 0.0.1

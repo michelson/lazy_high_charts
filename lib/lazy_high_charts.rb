@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), *%w[lazy_high_charts layout_helper]) if defined?(::Rails::Railtie)
+require File.join(File.dirname(__FILE__), *%w[lazy_high_charts layout_helper]) 
 
 module LazyHighCharts
 

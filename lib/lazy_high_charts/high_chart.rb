@@ -1,6 +1,5 @@
 module LazyHighCharts
   class HighChart
-    CANVAS_DEFAULT_HTML_OPTIONS = {:style => "height: 300px, width:615px" }
     SERIES_OPTIONS = %w(lines points bars shadowSize colors)
 
     attr_accessor :data, :options, :placeholder, :html_options
@@ -15,7 +14,7 @@ module LazyHighCharts
           high_chart.data       ||= []
           high_chart.options    ||= {}
           high_chart.defaults_options
-          high_chart.html_options = html_opts.reverse_merge(CANVAS_DEFAULT_HTML_OPTIONS)
+          high_chart.html_options = html_opts
           high_chart.canvas       = canvas if canvas
           yield high_chart if block_given?
         end

@@ -2,45 +2,50 @@
 
 module LazyHighCharts
   module LayoutHelper
-    def high_chart(placeholder, object  , &block)
-      object.html_options.merge!({:id=>placeholder})
-      object.options[:chart][:renderTo] = placeholder
-      high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
+
+    def high_chart(placeholder, object, &block)
+      if object
+        object.html_options.merge!({:id=>placeholder})
+        object.options[:chart][:renderTo] = placeholder
+        high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
+      end
     end
 
-    private
     def high_graph(placeholder, object, &block)
-      graph =<<-EOJS
-    <script type="text/javascript">
-    jQuery(function() {
-          // 1. Define JSON options
-          var options = {
-                        chart: #{object.options[:chart].to_json},
-                                title: #{object.options[:title].to_json},
-                                legend: #{object.options[:legend].to_json},
-                                xAxis: #{object.options[:x_axis].to_json},
-                                yAxis: #{object.options[:y_axis].to_json},
-                        tooltip:  #{object.options[:tooltip].to_json},
-                                credits: #{object.options[:credits].to_json},
-                                plotOptions: #{object.options[:plot_options].to_json},
-                                series: #{object.data.to_json},
-                                subtitle: #{object.options[:subtitle].to_json}
-                        };
+      @options = {
+        "chart"       => object.options[:chart],
+        "title"       => object.options[:title],
+        "legend"      => object.options[:legend],
+        "xAxis"       => object.options[:xAxis],
+        "yAxis"       => object.options[:yAxis],
+        "credits"     => object.options[:credits],
+        "plotOptions" => object.options[:plotOptions],
+        "series"      => object.options[:series],
+        "subtitle"    => object.options[:subtitle]
+      }.reject{|k,v| v.nil?}
 
-          // 2. Add callbacks (non-JSON compliant)
-                                #{capture(&block) if block_given?}
-          // 3. Build the chart
-          var chart = new Highcharts.Chart(options);
-      });
-      </script>
-                                EOJS
-                                if defined?(raw) && Rails.version.to_i >= 3
-                                  return raw(graph) 
-                                else
-                                  return graph unless block_given?
-                                  concat graph
-                                end
+      graph =<<-EOJS
+      <script type="text/javascript">
+      jQuery(function() {
+            var options = { #{format_options} };
+      #{capture(&block) if block_given?}
+            var chart = new Highcharts.Chart(options);
+        });
+        </script>
+      EOJS
+
+      return raw(graph) 
+
     end
+
+    def format_options
+      options = []
+      @options.each do |k,v|
+        options << "#{k}: #{v.to_json}"
+      end
+      options << "tooltip:{}"
+      options.join(', ')
+    end
+
   end
 end
-

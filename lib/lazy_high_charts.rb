@@ -4,5 +4,13 @@ require 'lazy_high_charts/layout_helper.rb'
 require File.join(File.dirname(__FILE__), *%w[lazy_high_charts railtie]) if defined?(::Rails::Railtie)
 
 module LazyHighCharts
-  # Your code goes here...
+
+  module Rails
+    class Railtie < ::Rails::Railtie
+      config.before_configuration do
+        config.action_view.javascript_expansions[:defaults] = %w(rails highcharts)
+      end
+    end
+  end
+
 end

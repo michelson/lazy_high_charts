@@ -2,7 +2,6 @@
 
 module LazyHighCharts
   module LayoutHelper
-    # ActiveSupport::JSON.unquote_hash_key_identifiers = false
     def high_chart(placeholder, object  , &block)
       object.html_options.merge!({:id=>placeholder})
       object.options[:chart][:renderTo] = placeholder
@@ -34,11 +33,12 @@ module LazyHighCharts
           var chart = new Highcharts.Chart(options);
       });
       </script>
-    EOJS
-                                if defined?(raw)
+                                EOJS
+                                if defined?(raw) && Rails.version.to_i >= 3
                                   return raw(graph) 
                                 else
-                                  return graph
+                                  return graph unless block_given?
+                                  concat graph
                                 end
     end
   end

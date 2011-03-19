@@ -3,11 +3,11 @@
 #   # Task goes here
 # end
 namespace :lazy_high_charts do
-  desc 'Installs required highcharts js to the public/javascripts directory.'
+  desc 'Installs required swf in public/ and javascript files to the public/javascripts directory.'
   task :install do
     puts "Copying files..."
     dir = "javascripts"
-    ["highcharts.js"].each do |js_file|
+    ["excanvas.compiled.js", "highcharts.js"].each do |js_file|
     	dest_file = File.join(::Rails.root.to_s, "public", dir, js_file)
     	src_file = File.join(::Rails.root.to_s + "/vendor/plugins/lazy_high_charts" , dir, js_file)
     	FileUtils.cp_r(src_file, dest_file)

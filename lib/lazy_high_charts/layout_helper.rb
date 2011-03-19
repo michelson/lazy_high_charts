@@ -28,7 +28,7 @@ module LazyHighCharts
       <script type="text/javascript">
       jQuery(function() {
             var options = { #{format_options} };
-      #{capture(&block) if block_given?}
+            #{capture(&block) if block_given?}
             var chart = new Highcharts.Chart(options);
         });
         </script>

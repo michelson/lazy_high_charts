@@ -1,9 +1,8 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/spec_helper'
-require 'pp'
 
 describe HighChartsHelper do  
-  include HighChartsHelper
+  include LazyHighCharts::LayoutHelper
 
   before(:each) do
     @class       = "stylin"

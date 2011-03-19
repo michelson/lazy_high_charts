@@ -8,7 +8,7 @@ module LazyHighCharts
       high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
     end
 
-
+    private
     def high_graph(placeholder, object, &block)
       graph =<<-EOJS
     <script type="text/javascript">

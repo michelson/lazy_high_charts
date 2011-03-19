@@ -23,11 +23,11 @@ module LazyHighCharts
                         chart: #{object.options[:chart].to_json},
                                 title: #{object.options[:title].to_json},
                                 legend: #{object.options[:legend].to_json},
-                                xAxis: #{object.options[:x_axis].to_json},
-                                yAxis: #{object.options[:y_axis].to_json},
-                        tooltip:  #{object.options[:tooltip].to_json},
+                                xAxis: #{object.options[:xAxis].to_json},
+                                yAxis: #{object.options[:yAxis].to_json},
+                                tooltip:  #{object.options[:tooltip].to_json},
                                 credits: #{object.options[:credits].to_json},
-                                plotOptions: #{object.options[:plot_options].to_json},
+                                plotOptions: #{object.options[:plotOptions].to_json},
                                 series: #{object.data.to_json},
                                 subtitle: #{object.options[:subtitle].to_json}
                         };

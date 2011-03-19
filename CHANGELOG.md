@@ -1,6 +1,6 @@
   Mar 19,2011
 * refactor my gem code,dumped to 1.0.9
-* fix activeview
+* fix activeview load expansion tag
 
   Nov 30,2010
 * dumped to gem 0.0.1

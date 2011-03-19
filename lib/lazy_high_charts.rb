@@ -8,7 +8,7 @@ module LazyHighCharts
   module Rails
     class Railtie < ::Rails::Railtie
       config.before_configuration do
-        config.action_view.javascript_expansions[:defaults] = %w(rails highcharts)
+        config.action_view.javascript_expansions[:high_charts] = %w(highcharts)
       end
     end
   end

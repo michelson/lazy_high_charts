@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'rails' unless defined? ::Rails
+
 module LazyHighCharts
   module LayoutHelper
 
@@ -38,7 +40,7 @@ module LazyHighCharts
       </script>
     EOJS
 
-    if defined?(raw) &&  Rails.version.to_i >= 3
+    if defined?(raw) &&  ::Rails.version >= '3.0'
       return raw(graph) 
     else
       return graph unless block_given?

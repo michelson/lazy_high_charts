@@ -1,6 +1,11 @@
+  Mar 20,2011
+* be compatible to rails 2.3 
+* dump to 1.1.1
+* Rename options[:x_axis] and options[:y_axis] to options[:xAxis] and options[:yAxis], and options[:plot_options] to options[:plotOptions] to make it consistent with highcharts.
+ 
   Mar 19,2011
 * refactor my gem code,dumped to 1.0.9
-* fix activeview
+* fix activeview load expansion tag
 
   Nov 30,2010
 * dumped to gem 0.0.1
@@ -10,7 +15,6 @@
 
   Sep 14,2010
 * update codebase to support rails3.0 and rspec2
-
 
   Oct 8,2010
 * update rake.it works now!

@@ -32,7 +32,7 @@ describe "HighChart" do
        LazyHighCharts::HighChart.new.options.should == {
          :subtitle=>{}, 
          :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
-         :plot_options=>{:areaspline=>{:fillOpacity=>0.5}}, 
+         :plotOptions=>{:areaspline=>{:fillOpacity=>0.5}}, 
          :legend=>{
            :borderWidth=>1, 
            :backgroundColor=>"#FFFFFF", 
@@ -41,11 +41,11 @@ describe "HighChart" do
              :left=>"150px", :position=>"absolute", :bottom=>"auto"}
              }, 
              :tooltip=>{:enabled=>true}, 
-             :x_axis=>{
+             :xAxis=>{
                :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], 
                :plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], 
                :labels=>{:align=>"right", :rotation=>45}}, 
-               :y_axis=>{:title=>{:text=>"Fruit units"}, 
+               :yAxis=>{:title=>{:text=>"Fruit units"}, 
                :labels=>{:align=>"right"}}, 
                :title=>{:text=>"example test title from highcharts gem"}, 
                :credits=>{:enabled=>false}
@@ -76,11 +76,11 @@ describe "HighChart" do
           f.options[:chart][:defaultSeriesType] = "area"
           f.options[:chart][:inverted] = true
           f.options[:legend][:layout] = "horizontal"
-          f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
+          f.options[:xAxis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
       end
       chart.data.should ==  [{:name=>"John", :data=>[3, 20]}, {:name=>"Jane", :data=>[1, 3]}]
       chart.options[:legend][:layout].should == "horizontal"
-      chart.options[:x_axis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]
+      chart.options[:xAxis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]
       chart.options[:chart][:defaultSeriesType].should == "area"
       chart.options[:chart][:inverted].should == true
     end
@@ -91,12 +91,12 @@ describe "HighChart" do
           f.series(:name=>'Jane', :data=>[1, 3] )        
           f.title({ :text=>"example test title from controller"})
           # without overriding 
-          f.x_axis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
+          f.xAxis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
           f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
       end
-      chart.options[:x_axis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]      
-      chart.options[:x_axis][:labels][:rotation].should == -45     
-      chart.options[:x_axis][:labels][:align].should == "right"    
+      chart.options[:xAxis][:categories].should == ["uno" ,"dos" , "tres" , "cuatro"]      
+      chart.options[:xAxis][:labels][:rotation].should == -45     
+      chart.options[:xAxis][:labels][:align].should == "right"    
       chart.options[:chart][:defaultSeriesType].should == "spline"    
       chart.options[:chart][:renderTo].should == "myRenderArea"    
       chart.options[:chart][:inverted].should == true    

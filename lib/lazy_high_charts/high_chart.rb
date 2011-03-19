@@ -9,7 +9,6 @@ module LazyHighCharts
 
       def initialize(canvas = nil, html_opts = {})
 
-        @collection_filter = nil
         self.tap do |high_chart|
           high_chart.data       ||= []
           high_chart.options    ||= {}
@@ -26,17 +25,17 @@ module LazyHighCharts
       self.title({ :text=>"example test title from highcharts gem"})
       self.legend({:layout=>"vertical", :style=>{:position=>'absolute', :bottom=>'auto', :left=>'150px', :top=>'150px'} , :borderWidth=> 1,
                   :backgroundColor=>'#FFFFFF'}) 
-      self.x_axis(
+      self.xAxis(
         {:categories=> ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
           :plotBands=> [{ 
         :from=> 6.0,:to=> 6.5,:color=> 'rgba(68, 170, 213, .2)'
       }],
       :labels=>{ :align=>'right',:rotation=>45 }
       })
-      self.y_axis({:title=> {:text=> 'Fruit units'}, :labels=>{:align=>'right'} })
+      self.yAxis({:title=> {:text=> 'Fruit units'}, :labels=>{:align=>'right'} })
       self.tooltip({ :enabled=>true })
       self.credits({:enabled => false})
-      self.plot_options({
+      self.plotOptions({
         :areaspline => {
         :fillOpacity => 0.5
       }

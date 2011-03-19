@@ -1,15 +1,12 @@
 # encoding: utf-8
 
-require 'lazy_high_charts'
-require 'lazy_high_charts/high_charts_helper.rb'
-
-require 'rails'
-
 module LazyHighCharts
+  # @private
   class Railtie < Rails::Railtie
-    initializer 'lazy_high_charts.initialize', :after => :after_initialize do
-      ActionView::Base.send :include, LazyHighCharts::LayoutHelper
-      ActionView::Base.send(:include, LazyHighCharts::LayoutHelper)
+    initializer 'lazy_high_charts.initialize' do
+      ActiveSupport.on_load(:action_view) do
+        include LazyHighCharts::LayoutHelper
+      end
     end
   end
 end

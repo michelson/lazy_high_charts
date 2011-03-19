@@ -10,7 +10,7 @@ require 'action_controller'
 #require 'action_mailer'
 
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts'))
-require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/high_charts_helper'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/layout_helper'))
 
 require 'webrat'
 require 'rspec'

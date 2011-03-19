@@ -1,9 +1,8 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/spec_helper'
-require 'pp'
 
-describe HighChartsHelper do  
-  include HighChartsHelper
+describe LazyHighCharts::LayoutHelper do  
+  include LazyHighCharts::LayoutHelper
 
   before(:each) do
     @class       = "stylin"
@@ -13,7 +12,7 @@ describe HighChartsHelper do
     @options     = "options"
   end
   
-  describe "high_chart_helper" do
+  describe "layout_helper" do
     it "should return a div with an id of high_chart object" do
       hc = LazyHighCharts::HighChart.new("placeholder", :class => 'stylin')
       high_chart(hc.placeholder, hc).should have_selector('div', :id => hc.placeholder, :class => 'stylin')

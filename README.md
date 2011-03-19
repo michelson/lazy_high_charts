@@ -1,17 +1,9 @@
 LazyHighCharts
 =======
- update(Dec 4,2010)
-
-- Test Environment
-  ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
-  rspec 2.0
-  rails 3.0.1
-- Result(autotest)
-Finished in 0.01502 seconds
-9 examples, 0 failures
+LazyHighCharts is Rails 3.x Gem for displaying Highcharts graphs. 
   
-Attention:
-this gem Only support Rails 3.x
+Compatibility:
+lazy_high_charts 1.x is only compatible with Rails 3.x
 
 Usage
 =======
@@ -77,6 +69,5 @@ Contributors
 =======
 	LazyHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
   git shortlog -n -s --no-merges
-
 
 Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

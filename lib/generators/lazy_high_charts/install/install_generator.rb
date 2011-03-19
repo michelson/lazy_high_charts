@@ -1,7 +1,6 @@
 module LazyHighCharts
     class InstallGenerator < Rails::Generators::Base
       desc "This generator install highcharts javascripts"
-      @@version = "2.1.1"
       
       def install_highcharts
         say_status("installing", "Highcharts javascript (github HEAD)", :green)

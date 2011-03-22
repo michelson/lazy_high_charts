@@ -1,3 +1,6 @@
+  Mar 23,2011
+  * fix README.md words correct.
+
   Mar 20,2011
 * be compatible to rails 2.3 
 * dump to 1.1.1

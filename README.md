@@ -37,7 +37,7 @@ Usage
           f.options[:chart][:defaultSeriesType] = "area"
           f.options[:chart][:inverted] = true
           f.options[:legend][:layout] = "horizontal"
-          f.options[:x_axis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
+          f.options[:xAxis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
      ......
 
   Overriding entire option: 

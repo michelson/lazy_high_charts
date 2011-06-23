@@ -65,7 +65,9 @@ Usage
 
      http://www.highcharts.com/ref/
 
+  HighCharts License:
 
+     http://www.highcharts.com/license
 
     
 ### Contributors

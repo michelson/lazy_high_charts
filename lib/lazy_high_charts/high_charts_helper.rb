@@ -8,6 +8,12 @@ module LazyHighCharts
       object.options[:chart][:renderTo] = placeholder
       high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
     end
+    
+    def high_stock(placeholder, object  , &block)
+      object.html_options.merge!({:id=>placeholder})
+      object.options[:chart][:renderTo] = placeholder
+      high_graph_stock(placeholder,object , &block).concat(content_tag("div","", object.html_options))
+    end
 
 
     def high_graph(placeholder, object, &block)
@@ -45,7 +51,7 @@ module LazyHighCharts
     end
   
 
-    def high_stock(placeholder, object, &block)
+    def high_graph_stock(placeholder, object, &block)
       graph =<<-EOJS
       <script type="text/javascript">
       jQuery(function() {

@@ -43,6 +43,44 @@ module LazyHighCharts
       end
       
     end
+  
+
+    def high_stock(placeholder, object, &block)
+      graph =<<-EOJS
+      <script type="text/javascript">
+      jQuery(function() {
+            // 1. Define JSON options
+            var options = {
+                          chart: #{object.options[:chart].to_json},
+                                  title: #{object.options[:title].to_json},
+                                  legend: #{object.options[:legend].to_json},
+                                  xAxis: #{object.options[:x_axis].to_json},
+                                  yAxis: #{object.options[:y_axis].to_json},
+                                  tooltip:  #{object.options[:tooltip].to_json},
+                                  credits: #{object.options[:credits].to_json},
+                                  plotOptions: #{object.options[:plot_options].to_json},
+                                  series: #{object.data.to_json},
+                                  subtitle: #{object.options[:subtitle].to_json}
+                          };
+
+            // 2. Add callbacks (non-JSON compliant)
+                                  #{capture(&block) if block_given?}
+            // 3. Build the chart
+            var chart = new Highcharts.StockChart(options);
+        });
+        </script>
+      EOJS
+      
+      if defined?(raw)
+        return raw(graph) 
+      else
+        return graph
+      end
+      
+    end
+
+  
+  
   end
 end
 

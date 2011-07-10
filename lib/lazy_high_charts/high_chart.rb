@@ -39,9 +39,7 @@ module LazyHighCharts
       self.credits({:enabled => false})
       self.plot_options({
         :areaspline => {
-        :fillOpacity => 0.5
-      }
-      })
+        :fillOpacity => 0.5 } })
       self.chart({:defaultSeriesType=>"areaspline" , :renderTo => nil})
       self.subtitle({})
     end
@@ -70,7 +68,8 @@ module LazyHighCharts
       end
     end
 
-    private
+private
+
     def series_options
       @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
     end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'lazy_high_charts'
-require 'lazy_high_charts/high_charts_helper.rb'
+require 'lazy_high_charts/layout_helper.rb'
 
 require 'rails'
 

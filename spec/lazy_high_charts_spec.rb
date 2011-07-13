@@ -44,8 +44,12 @@ describe HighChartsHelper do
       it "should set chart renderTo" do  
         high_chart(@placeholder, @chart).should match(/\"renderTo\":\"placeholder\"/)
       end
-
+      
+      it "should set Chart Stock" do
+        high_stock(@placeholder, @chart).should match(/var\s+chart\s+=\s+new\s+Highcharts.StockChart/)
+      end
     end
+
   end
   
 

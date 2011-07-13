@@ -15,7 +15,6 @@ module LazyHighCharts
       high_graph_stock(placeholder,object , &block).concat(content_tag("div","", object.html_options))
     end
 
-
     def high_graph(placeholder, object, &block)
       graph =<<-EOJS
       <script type="text/javascript">
@@ -49,7 +48,6 @@ module LazyHighCharts
       end
       
     end
-  
 
     def high_graph_stock(placeholder, object, &block)
       graph =<<-EOJS
@@ -85,8 +83,6 @@ module LazyHighCharts
       
     end
 
-  
-  
   end
 end
 

@@ -10,8 +10,14 @@ LazyHighCharts
 Finished in 0.01502 seconds
 9 examples, 0 failures
   
+<<<<<<< HEAD
 Attention:
 this gem Only support Rails 3.x
+=======
+### plugin support for rails 2.3.5 and rails 3
+
+### gem support in branch gem_support , only for rails 3
+>>>>>>> 8142beace9d52fdafb7493deb1b5a69d5f4f09f3
 
 Usage
 =======
@@ -70,7 +76,9 @@ Usage
 
      http://www.highcharts.com/ref/
 
+  HighCharts License:
 
+     http://www.highcharts.com/license
 
     
 Contributors

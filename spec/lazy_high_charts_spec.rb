@@ -1,11 +1,7 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/spec_helper'
 
-<<<<<<< HEAD
-describe LazyHighCharts::LayoutHelper do  
-=======
 describe HighChartsHelper do  
->>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
   include LazyHighCharts::LayoutHelper
 
   before(:each) do

@@ -1,10 +1,6 @@
 require 'lazy_high_charts'
-<<<<<<< HEAD
-require 'lazy_high_charts/layout_helper'
-=======
 require 'lazy_high_charts/layout_helper.rb'
 
->>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
 require 'rails'
 
 module LazyHighCharts

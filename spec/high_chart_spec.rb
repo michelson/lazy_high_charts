@@ -30,30 +30,6 @@ describe "HighChart" do
      
     it "should set options by default" do
        LazyHighCharts::HighChart.new.options.should == {
-<<<<<<< HEAD
-         :subtitle=>{}, 
-         :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
-         :plotOptions=>{:areaspline=>{:fillOpacity=>0.5}}, 
-         :legend=>{
-           :borderWidth=>1, 
-           :backgroundColor=>"#FFFFFF", 
-           :layout=>"vertical", 
-           :style=>{:top=>"150px", 
-             :left=>"150px", :position=>"absolute", :bottom=>"auto"}
-             }, 
-             :tooltip=>{:enabled=>true}, 
-             :xAxis=>{
-               :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], 
-               :plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], 
-               :labels=>{:align=>"right", :rotation=>45}}, 
-               :yAxis=>{:title=>{:text=>"Fruit units"}, 
-               :labels=>{:align=>"right"}}, 
-               :title=>{:text=>"example test title from highcharts gem"}, 
-               :credits=>{:enabled=>false}
-               }          
-           
-     end
-=======
          :plot_options=>{:areaspline=>{}},
          :x_axis=>{},
          :chart=>{:defaultSeriesType=>nil, :renderTo=>nil},
@@ -65,7 +41,6 @@ describe "HighChart" do
          :legend=>{:layout=>"vertical", :style=>{}},
          :tooltip=>{:enabled=>true}}
     end
->>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
      
     it "should set data empty by default" do
       LazyHighCharts::HighChart.new.data.should == []

@@ -1,9 +1,13 @@
-  Nov 30,2010
-* dumped to gem 0.0.1
+* Jul 13, 2011
+  HighStock support
+  remove some defaults
 
   Jan 31, 2011
 * backwards compatibility for rails 2.3.x in rendering callbacks options
-  
+
+  Nov 30,2010
+* dumped to gem 0.0.1
+
   Sep 13,2010 
 * truely support rails 3.0(returning is deprecate function,use tap) deshi(xiaods@gmail.com) 
 

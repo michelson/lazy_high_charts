@@ -10,14 +10,19 @@ LazyHighCharts
 Finished in 0.01502 seconds
 9 examples, 0 failures
   
-<<<<<<< HEAD
+
 Attention:
 this gem Only support Rails 3.x
 =======
 ### plugin support for rails 2.3.5 and rails 3
+  
+    script/plugin install git://github.com/michelson/lazy_high_charts.git ##(for rails 2)
+  
+    rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
 
-### gem support in branch gem_support , only for rails 3
->>>>>>> 8142beace9d52fdafb7493deb1b5a69d5f4f09f3
+#HighStocks
+  LazyHighCharts now compatible with beta HighStock, http://www.highcharts.com/stock/demo/
+
 
 Usage
 =======
@@ -72,12 +77,20 @@ Usage
       
 
 
+
+   HighStock Support:
+
+     ##just call HighChart Helper this way:
+
+       <%= high_stock("my_id", @h) %>
+
+
   Option reference:
 
      http://www.highcharts.com/ref/
 
   HighCharts License:
-
+  
      http://www.highcharts.com/license
 
     

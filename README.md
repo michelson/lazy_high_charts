@@ -12,9 +12,16 @@ Finished in 0.01502 seconds
   
 
 Attention:
-this gem Only support Rails 3.x
+This gem only supports Rails 3.x
 =======
-### plugin support for rails 2.3.5 and rails 3
+### Installation instructions for Rails 3
+Add this line to your Gemfile:
+    gem 'lazy_high_charts', :git => 'git://github.com/michelson/lazy_high_charts.git'
+
+And then run this to install the javascript files:
+    rails g lazy_high_charts:install
+
+### Installing it as a plugin for rails 2.3.5 and rails 3
   
     script/plugin install git://github.com/michelson/lazy_high_charts.git ##(for rails 2)
   
@@ -26,9 +33,6 @@ this gem Only support Rails 3.x
 
 Usage
 =======
- In your Gemfile, add this line:
-	gem 'lazy_high_charts'
-
  Usage in Controller:
   
      @h = LazyHighCharts::HighChart.new('graph') do |f|

@@ -22,14 +22,15 @@ describe "HighChart" do
     it "should take an optional 'placeholder' argument" do
        LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
        LazyHighCharts::HighChart.new.placeholder.should == nil
-     end
+    end
      
     it "should take an optional html_options argument (defaulting to 300px height)" do
        LazyHighCharts::HighChart.new(@html_options).placeholder.should == @html_options
-     end
+    end
      
     it "should set options by default" do
        LazyHighCharts::HighChart.new.options.should == {
+<<<<<<< HEAD
          :subtitle=>{}, 
          :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
          :plotOptions=>{:areaspline=>{:fillOpacity=>0.5}}, 
@@ -52,6 +53,19 @@ describe "HighChart" do
                }          
            
      end
+=======
+         :plot_options=>{:areaspline=>{}},
+         :x_axis=>{},
+         :chart=>{:defaultSeriesType=>nil, :renderTo=>nil},
+         :y_axis=>{:title=>{:text=>nil},
+         :labels=>{}},
+         :title=>{:text=>"example test title from highcharts gem"},
+         :subtitle=>{},
+         :credits=>{:enabled=>false},
+         :legend=>{:layout=>"vertical", :style=>{}},
+         :tooltip=>{:enabled=>true}}
+    end
+>>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
      
     it "should set data empty by default" do
       LazyHighCharts::HighChart.new.data.should == []

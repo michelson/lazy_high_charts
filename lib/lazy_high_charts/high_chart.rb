@@ -6,7 +6,9 @@ module LazyHighCharts
     alias  :canvas :placeholder
     alias  :canvas= :placeholder=
 
+    def initialize(canvas = nil, html_opts = {})
 
+<<<<<<< HEAD
       def initialize(canvas = nil, html_opts = {})
 
         self.tap do |high_chart|
@@ -17,12 +19,24 @@ module LazyHighCharts
           high_chart.canvas       = canvas if canvas
           yield high_chart if block_given?
         end
+=======
+      @collection_filter = nil
+      self.tap do |high_chart|
+        high_chart.data       ||= []
+        high_chart.options    ||= {}
+        high_chart.defaults_options
+        high_chart.html_options = html_opts.reverse_merge(CANVAS_DEFAULT_HTML_OPTIONS)
+        high_chart.canvas       = canvas if canvas
+        yield high_chart if block_given?
+>>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
       end
+    end
 
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
 
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
+<<<<<<< HEAD
       self.legend({:layout=>"vertical", :style=>{:position=>'absolute', :bottom=>'auto', :left=>'150px', :top=>'150px'} , :borderWidth=> 1,
                   :backgroundColor=>'#FFFFFF'}) 
       self.xAxis(
@@ -41,6 +55,15 @@ module LazyHighCharts
       }
       })
       self.chart({:defaultSeriesType=>"areaspline" , :renderTo => nil})
+=======
+      self.legend({ :layout=>"vertical", :style=>{} }) 
+      self.x_axis({})
+      self.y_axis({ :title=> {:text=> nil}, :labels=>{} })
+      self.tooltip({ :enabled=>true })
+      self.credits({ :enabled => false})
+      self.plot_options({ :areaspline => { } })
+      self.chart({ :defaultSeriesType=>nil , :renderTo => nil})
+>>>>>>> 954abaf04d09af7f5b59dd308f177a83d3c928a5
       self.subtitle({})
     end
 
@@ -68,7 +91,8 @@ module LazyHighCharts
       end
     end
 
-    private
+private
+
     def series_options
       @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
     end

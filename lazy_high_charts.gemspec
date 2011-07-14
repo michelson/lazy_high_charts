@@ -3,7 +3,6 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'lazy_high_charts/version'
 
-
 Gem::Specification.new do |s|
   s.name        = "lazy_high_charts"
   s.version     = LazyHighCharts::VERSION

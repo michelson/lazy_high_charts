@@ -1,7 +1,7 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe LazyHighCharts::LayoutHelper do  
+describe HighChartsHelper do  
   include LazyHighCharts::LayoutHelper
 
   before(:each) do
@@ -43,8 +43,12 @@ describe LazyHighCharts::LayoutHelper do
       it "should set chart renderTo" do  
         high_chart(@placeholder, @chart).should match(/\"renderTo\":\"placeholder\"/)
       end
-
+      
+      it "should set Chart Stock" do
+        high_stock(@placeholder, @chart).should match(/var\s+chart\s+=\s+new\s+Highcharts.StockChart/)
+      end
     end
+
   end
   
 

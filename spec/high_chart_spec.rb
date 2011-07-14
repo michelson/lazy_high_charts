@@ -22,36 +22,25 @@ describe "HighChart" do
     it "should take an optional 'placeholder' argument" do
        LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
        LazyHighCharts::HighChart.new.placeholder.should == nil
-     end
+    end
      
     it "should take an optional html_options argument (defaulting to 300px height)" do
        LazyHighCharts::HighChart.new(@html_options).placeholder.should == @html_options
-     end
+    end
      
     it "should set options by default" do
        LazyHighCharts::HighChart.new.options.should == {
-         :subtitle=>{}, 
-         :chart=>{:renderTo=>nil, :defaultSeriesType=>"areaspline"}, 
-         :plotOptions=>{:areaspline=>{:fillOpacity=>0.5}}, 
-         :legend=>{
-           :borderWidth=>1, 
-           :backgroundColor=>"#FFFFFF", 
-           :layout=>"vertical", 
-           :style=>{:top=>"150px", 
-             :left=>"150px", :position=>"absolute", :bottom=>"auto"}
-             }, 
-             :tooltip=>{:enabled=>true}, 
-             :xAxis=>{
-               :categories=>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], 
-               :plotBands=>[{:to=>6.5, :from=>6.0, :color=>"rgba(68, 170, 213, .2)"}], 
-               :labels=>{:align=>"right", :rotation=>45}}, 
-               :yAxis=>{:title=>{:text=>"Fruit units"}, 
-               :labels=>{:align=>"right"}}, 
-               :title=>{:text=>"example test title from highcharts gem"}, 
-               :credits=>{:enabled=>false}
-               }          
-           
-     end
+         :plot_options=>{:areaspline=>{}},
+         :x_axis=>{},
+         :chart=>{:defaultSeriesType=>nil, :renderTo=>nil},
+         :y_axis=>{:title=>{:text=>nil},
+         :labels=>{}},
+         :title=>{:text=>"example test title from highcharts gem"},
+         :subtitle=>{},
+         :credits=>{:enabled=>false},
+         :legend=>{:layout=>"vertical", :style=>{}},
+         :tooltip=>{:enabled=>true}}
+    end
      
     it "should set data empty by default" do
       LazyHighCharts::HighChart.new.data.should == []

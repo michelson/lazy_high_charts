@@ -6,41 +6,30 @@ module LazyHighCharts
     alias  :canvas :placeholder
     alias  :canvas= :placeholder=
 
+    def initialize(canvas = nil, html_opts = {})
 
-      def initialize(canvas = nil, html_opts = {})
-
-        self.tap do |high_chart|
-          high_chart.data       ||= []
-          high_chart.options    ||= {}
-          high_chart.defaults_options
-          high_chart.html_options = html_opts
-          high_chart.canvas       = canvas if canvas
-          yield high_chart if block_given?
-        end
+      @collection_filter = nil
+      self.tap do |high_chart|
+        high_chart.data       ||= []
+        high_chart.options    ||= {}
+        high_chart.defaults_options
+        high_chart.html_options = html_opts.reverse_merge(CANVAS_DEFAULT_HTML_OPTIONS)
+        high_chart.canvas       = canvas if canvas
+        yield high_chart if block_given?
       end
+    end
 
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
 
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
-      self.legend({:layout=>"vertical", :style=>{:position=>'absolute', :bottom=>'auto', :left=>'150px', :top=>'150px'} , :borderWidth=> 1,
-                  :backgroundColor=>'#FFFFFF'}) 
-      self.xAxis(
-        {:categories=> ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          :plotBands=> [{ 
-        :from=> 6.0,:to=> 6.5,:color=> 'rgba(68, 170, 213, .2)'
-      }],
-      :labels=>{ :align=>'right',:rotation=>45 }
-      })
-      self.yAxis({:title=> {:text=> 'Fruit units'}, :labels=>{:align=>'right'} })
+      self.legend({ :layout=>"vertical", :style=>{} }) 
+      self.x_axis({})
+      self.y_axis({ :title=> {:text=> nil}, :labels=>{} })
       self.tooltip({ :enabled=>true })
-      self.credits({:enabled => false})
-      self.plotOptions({
-        :areaspline => {
-        :fillOpacity => 0.5
-      }
-      })
-      self.chart({:defaultSeriesType=>"areaspline" , :renderTo => nil})
+      self.credits({ :enabled => false})
+      self.plot_options({ :areaspline => { } })
+      self.chart({ :defaultSeriesType=>nil , :renderTo => nil})
       self.subtitle({})
     end
 
@@ -68,7 +57,8 @@ module LazyHighCharts
       end
     end
 
-    private
+private
+
     def series_options
       @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
     end

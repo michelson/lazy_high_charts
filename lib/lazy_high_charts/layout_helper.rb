@@ -41,6 +41,10 @@ module LazyHighCharts
         </script>
       EOJS
       
+      # Remove quotes from any formatter functions
+      # Regex Reference: http://rubular.com/r/TOVnjFkkZO
+      graph.gsub!(/"formatter\":\"function(.*)}"/,'formatter: function\1}')
+
       if defined?(raw)
         return raw(graph) 
       else

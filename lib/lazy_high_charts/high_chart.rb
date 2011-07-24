@@ -25,11 +25,11 @@ module LazyHighCharts
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
       self.legend({ :layout=>"vertical", :style=>{} }) 
-      self.x_axis({})
-      self.y_axis({ :title=> {:text=> nil}, :labels=>{} })
+      self.xAxis({})
+      self.yAxis({ :title=> {:text=> nil}, :labels=>{} })
       self.tooltip({ :enabled=>true })
       self.credits({ :enabled => false})
-      self.plot_options({ :areaspline => { } })
+      self.plotOptions({ :areaspline => { } })
       self.chart({ :defaultSeriesType=>nil , :renderTo => nil})
       self.subtitle({})
     end

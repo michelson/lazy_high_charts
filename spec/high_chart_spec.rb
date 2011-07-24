@@ -27,16 +27,15 @@ describe "HighChart" do
      
     it "should set options by default" do
        LazyHighCharts::HighChart.new.options.should == {
-         :plot_options=>{:areaspline=>{}},
-         :x_axis=>{},
-         :chart=>{:defaultSeriesType=>nil, :renderTo=>nil},
-         :y_axis=>{:title=>{:text=>nil},
-         :labels=>{}},
-         :title=>{:text=>"example test title from highcharts gem"},
-         :subtitle=>{},
-         :credits=>{:enabled=>false},
-         :legend=>{:layout=>"vertical", :style=>{}},
-         :tooltip=>{:enabled=>true}}
+         :title=>{:text=>"example test title from highcharts gem"}, 
+         :legend=>{:layout=>"vertical", :style=>{}}, 
+         :xAxis=>{}, 
+         :yAxis=>{:title=>{:text=>nil}, :labels=>{}}, 
+         :tooltip=>{:enabled=>true}, 
+         :credits=>{:enabled=>false}, 
+         :plotOptions=>{:areaspline=>{}}, 
+         :chart=>{:defaultSeriesType=>nil, :renderTo=>nil}, 
+         :subtitle=>{}}
     end
      
     it "should set data empty by default" do

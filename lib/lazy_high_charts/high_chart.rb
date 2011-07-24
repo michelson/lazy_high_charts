@@ -30,7 +30,7 @@ module LazyHighCharts
       self.tooltip({ :enabled=>true })
       self.credits({ :enabled => false})
       self.plotOptions({ :areaspline => { } })
-      self.chart({ :defaultSeriesType=>nil , :renderTo => nil})
+      self.chart({ :defaultSeriesType=>"areaspline" , :renderTo => nil})
       self.subtitle({})
     end
 

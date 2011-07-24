@@ -2,6 +2,7 @@ LazyHighCharts
 =======
 LazyHighCharts is Rails 2.x/3.x Gem for displaying Highcharts graphs. 
   
+*** Support Rails 3.1-rc4 stable branch ! since v1.1.4
 =======
 ### plugin support for rails 2.3.5 and rails 3
   

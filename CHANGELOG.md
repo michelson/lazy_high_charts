@@ -1,3 +1,6 @@
+* Jul 14, 2011
+  add support rails 3.1 rc4 now
+
 * Jul 13, 2011
   HighStock support
   remove some defaults

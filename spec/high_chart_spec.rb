@@ -34,7 +34,7 @@ describe "HighChart" do
          :tooltip=>{:enabled=>true}, 
          :credits=>{:enabled=>false}, 
          :plotOptions=>{:areaspline=>{}}, 
-         :chart=>{:defaultSeriesType=>nil, :renderTo=>nil}, 
+         :chart=>{:defaultSeriesType=>"areaspline", :renderTo=>nil}, 
          :subtitle=>{}}
     end
      

@@ -2,9 +2,6 @@ LazyHighCharts
 =======
 LazyHighCharts is Rails 2.x/3.x Gem for displaying Highcharts graphs. 
   
-Compatibility:
-lazy_high_charts 1.x is compatible with Rails 2.x/3.x
-
 =======
 ### plugin support for rails 2.3.5 and rails 3
   
@@ -12,13 +9,13 @@ lazy_high_charts 1.x is compatible with Rails 2.x/3.x
   
     rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
 
-#HighStocks
-  LazyHighCharts now compatible with beta HighStock, http://www.highcharts.com/stock/demo/
+### HighStocks
+    LazyHighCharts now compatible with beta HighStock, http://www.highcharts.com/stock/demo/
 
 Usage
 =======
  About javascript Assets notes:
- for Rails 2.x
+ for Rails 2.x/3.x
  1.you need manually put jquery/highcharts js to public/javascript
  2.modify your layout html
  Sample Code:
@@ -54,7 +51,7 @@ Usage
 
      @h = LazyHighCharts::HighChart.new('graph') do |f|
        .....
-          f.x_axis(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
+          f.xAxis(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
           f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
        .....
 
@@ -74,16 +71,12 @@ Usage
          	<%= "options.xAxis.labels.formatter = function() { return 'ho';}" %>
          	<%= "options.yAxis.labels.formatter = function() { return 'hey';}" %>
        <%end %> 
-      
-
-
 
    HighStock Support:
 
      ##just call HighChart Helper this way:
 
        <%= high_stock("my_id", @h) %>
-
 
   Option reference:
 
@@ -97,6 +90,6 @@ Usage
 Contributors
 =======
 	LazyHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
-  git shortlog -n -s --no-merges
+  Run @git shortlog -n -s --no-merges@  to see the awesome.
 
 Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

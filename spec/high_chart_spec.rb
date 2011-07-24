@@ -2,7 +2,6 @@ require File.dirname(__FILE__) + '/spec_helper'
 
 Record = Struct.new(:frequency, :amplitude)
 
-
 describe "HighChart" do
   before(:each) do
     @collection   = [Record.new(1,15), Record.new(2,30), Record.new(4,40)]
@@ -14,8 +13,6 @@ describe "HighChart" do
 
     @flot         = LazyHighCharts::HighChart.new(@placeholder, @html_options) {|chart| chart.options = @options }
   end
-  
-  
   
   # this is almost all flotomatic stuff
   describe "initialization" do

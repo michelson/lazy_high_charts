@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Miguel Michelson Martinez','Deshi Xiao']
   s.email       = ['miguelmichelson@gmail.com','xiaods@gmail.com']
   s.homepage    = "https://github.com/xiaods/lazy_high_charts"
-  s.summary     = "lazy higcharts plugin for rails"
-  s.description = "use highcharts js libary to visualization your data plugin for rails"
+  s.summary     = "lazy higcharts gem for rails"
+  s.description = "use highcharts js libary to visualization your data by rubygem/rails"
 
   s.extra_rdoc_files  = [ "README.md", "CHANGELOG.md" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]

@@ -33,9 +33,9 @@ module LazyHighCharts
                           };
 
             // 2. Add callbacks (non-JSON compliant)
-                                  #{capture(&block) if block_given?}
+              #{capture(&block) if block_given?}
             // 3. Build the chart
-            var chart = new Highcharts.Chart(options);
+              var chart = new Highcharts.Chart(options);
         });
         </script>
       EOJS
@@ -67,9 +67,9 @@ module LazyHighCharts
                           };
 
             // 2. Add callbacks (non-JSON compliant)
-                                  #{capture(&block) if block_given?}
+              #{capture(&block) if block_given?}
             // 3. Build the chart
-            var chart = new Highcharts.StockChart(options);
+              var chart = new Highcharts.StockChart(options);
         });
         </script>
       EOJS

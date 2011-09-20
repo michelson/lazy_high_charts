@@ -53,4 +53,19 @@ describe HighChartsHelper do
   end
   
 
+    it "should take a block setting attributes" do
+      chart = LazyHighCharts::HighChart.new {|f|  f.options[:rangeSelector] = {}; f.options[:rangeSelector][:selected] = 1}
+      chart.options[:rangeSelector][:selected].should == 1
+      high_chart(@placeholder, chart).should match(/rangeSelector/)
+      high_chart(@placeholder, chart).should match(/xAxis/)
+      high_chart(@placeholder, chart).should match(/yAxis/)
+      
+      
+    end
+    
+    
+
+    
+
+
 end

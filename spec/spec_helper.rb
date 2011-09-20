@@ -8,6 +8,8 @@ require 'action_pack'
 require 'action_view'
 require 'action_controller'
 #require 'action_mailer'
+require "active_support/core_ext"
+
 
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/layout_helper'))

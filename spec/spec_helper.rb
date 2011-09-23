@@ -16,7 +16,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_cha
 
 require 'webrat'
 require 'rspec'
-Rspec.configure do |config|
+RSpec.configure do |config|
   config.include ActionView::Helpers  
   config.include Webrat::Matchers
 end

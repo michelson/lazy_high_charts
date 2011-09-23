@@ -29,6 +29,7 @@ module LazyHighCharts
         k = key.to_s.camelize.gsub!(/\b\w/) { $&.downcase }
         options_collection << "#{k}: #{object.options[key].to_json}"
       end
+      options_collection << "series: #{object.data.to_json}"
     
       graph =<<-EOJS
       <script type="text/javascript">

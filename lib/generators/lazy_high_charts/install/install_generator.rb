@@ -1,12 +1,15 @@
 module LazyHighCharts
     class InstallGenerator < Rails::Generators::Base
       desc "This generator install highcharts javascripts"
-      @@version = "2.1.1"
       
       def install_highcharts(opts = nil)
         say_status("installing", "Highcharts javascript (github STOCK branch)", :green)
-        get "https://raw.github.com/highslide-software/highcharts.com/stock/js/highcharts.src.js","public/javascripts/highcharts.js"
-      rescue OpenURI::HTTPError
+        if ::Rails::VERSION::MAJOR == 3 && ::Rails::VERSION::MINOR >= 1
+          get "http://highcharts.com/js/highstock.js","app/assets/javascripts/highcharts.js"
+        else
+          get "https://raw.github.com/highslide-software/highcharts.com/stock/js/highcharts.src.js","public/javascripts/highcharts.js"
+        end
+              rescue OpenURI::HTTPError
         say_status("warning", "could not find Highcharts javascript file", :yellow)
       end
       

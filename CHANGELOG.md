@@ -1,3 +1,6 @@
+* Jul 14, 2011
+  add support rails 3.1 rc4 now
+
 * Jul 13, 2011
   HighStock support
   remove some defaults
@@ -13,7 +16,6 @@
 
   Sep 14,2010
 * update codebase to support rails3.0 and rspec2
-
 
   Oct 8,2010
 * update rake.it works now!

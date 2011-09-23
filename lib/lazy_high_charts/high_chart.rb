@@ -1,6 +1,6 @@
 module LazyHighCharts
   class HighChart
-    CANVAS_DEFAULT_HTML_OPTIONS = {:style => "height: 300px, width:615px" }
+    CANVAS_DEFAULT_HTML_OPTIONS = { :style => "height: 300px, width:615px" }
     SERIES_OPTIONS = %w(lines points bars shadowSize colors)
 
     attr_accessor :data, :options, :placeholder, :html_options
@@ -25,12 +25,12 @@ module LazyHighCharts
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
       self.legend({ :layout=>"vertical", :style=>{} }) 
-      self.x_axis({})
-      self.y_axis({ :title=> {:text=> nil}, :labels=>{} })
+      self.xAxis({})
+      self.yAxis({ :title=> {:text=> nil}, :labels=>{} })
       self.tooltip({ :enabled=>true })
       self.credits({ :enabled => false})
-      self.plot_options({ :areaspline => { } })
-      self.chart({ :defaultSeriesType=>nil , :renderTo => nil})
+      self.plotOptions({ :areaspline => { } })
+      self.chart({ :defaultSeriesType=>"areaspline" , :renderTo => nil})
       self.subtitle({})
     end
 

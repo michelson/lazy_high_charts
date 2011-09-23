@@ -1,5 +1,4 @@
 # coding: utf-8
-
 module LazyHighCharts
   module LayoutHelper
     
@@ -53,4 +52,3 @@ module LazyHighCharts
     end
   end
 end
-

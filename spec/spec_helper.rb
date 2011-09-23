@@ -7,6 +7,7 @@ require 'active_support'
 require 'action_pack'
 require 'action_view'
 require 'action_controller'
+require 'rails'
 #require 'action_mailer'
 require "active_support/core_ext"
 
@@ -16,7 +17,25 @@ require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_cha
 
 require 'webrat'
 require 'rspec'
-RSpec.configure do |config|
+
+# RSpec 1.x and 2.x compatibility
+if defined?(RSpec)
+  RSPEC_NAMESPACE = RSPEC_CONFIGURER = RSpec
+elsif defined?(Spec)
+  RSPEC_NAMESPACE = Spec
+  RSPEC_CONFIGURER = Spec::Runner
+else
+  begin
+    require 'rspec'
+    RSPEC_NAMESPACE = RSPEC_CONFIGURER = Rspec
+  rescue LoadError
+    require 'spec'
+    RSPEC_NAMESPACE = Spec
+    RSPEC_CONFIGURER = Spec::Runner
+  end
+end
+
+RSPEC_CONFIGURER.configure do |config|
   config.include ActionView::Helpers  
   config.include Webrat::Matchers
 end

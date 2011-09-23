@@ -52,6 +52,11 @@ describe "HighChart" do
       chart = LazyHighCharts::HighChart.new {|f|  f.options[:legend][:layout] = "horizontal" }
       chart.options[:legend][:layout].should == "horizontal"
     end
+    
+    it "should take a block setting attributes" do
+      chart = LazyHighCharts::HighChart.new {|f|  f.options[:range_selector] = {}; f.options[:range_selector][:selected] = 1}
+      chart.options[:range_selector][:selected].should == 1
+    end
       
     it "should change a block data without overriding options" do
       chart = LazyHighCharts::HighChart.new('graph') do |f|

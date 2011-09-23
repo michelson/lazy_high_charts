@@ -15,61 +15,30 @@ module LazyHighCharts
     end
 
     def high_graph(placeholder, object, &block)
-      graph =<<-EOJS
-      <script type="text/javascript">
-      jQuery(function() {
-            // 1. Define JSON options
-            var options = {
-                          chart: #{object.options[:chart].to_json},
-                                  title: #{object.options[:title].to_json},
-                                  legend: #{object.options[:legend].to_json},
-                                  xAxis: #{object.options[:xAxis].to_json},
-                                  yAxis: #{object.options[:yAxis].to_json},
-                                  tooltip:  #{object.options[:tooltip].to_json},
-                                  credits: #{object.options[:credits].to_json},
-                                  plotOptions: #{object.options[:plotOptions].to_json},
-                                  series: #{object.data.to_json},
-                                  subtitle: #{object.options[:subtitle].to_json}
-                          };
-
-            // 2. Add callbacks (non-JSON compliant)
-              #{capture(&block) if block_given?}
-            // 3. Build the chart
-              var chart = new Highcharts.Chart(options);
-        });
-        </script>
-      EOJS
-      
-      if defined?(raw)
-        return raw(graph) 
-      else
-        return graph
-      end
-      
+      build_html_output("Chart", placeholder, object, &block)
     end
 
     def high_graph_stock(placeholder, object, &block)
+      build_html_output("StockChart", placeholder, object, &block)
+    end
+
+    def build_html_output(type, placeholder, object, &block)
+      options_collection = []
+      object.options.keys.each do |key|
+        k = key.to_s.camelize.gsub!(/\b\w/) { $&.downcase }
+        options_collection << "#{k}: #{object.options[key].to_json}"
+      end
+      options_collection << "series: #{object.data.to_json}"
+    
       graph =<<-EOJS
       <script type="text/javascript">
       jQuery(function() {
             // 1. Define JSON options
-            var options = {
-                          chart: #{object.options[:chart].to_json},
-                                  title: #{object.options[:title].to_json},
-                                  legend: #{object.options[:legend].to_json},
-                                  xAxis: #{object.options[:xAxis].to_json},
-                                  yAxis: #{object.options[:yAxis].to_json},
-                                  tooltip:  #{object.options[:tooltip].to_json},
-                                  credits: #{object.options[:credits].to_json},
-                                  plotOptions: #{object.options[:plotOptions].to_json},
-                                  series: #{object.data.to_json},
-                                  subtitle: #{object.options[:subtitle].to_json}
-                          };
-
+              var options = { #{options_collection.join(",")} };
             // 2. Add callbacks (non-JSON compliant)
               #{capture(&block) if block_given?}
             // 3. Build the chart
-              var chart = new Highcharts.StockChart(options);
+            var chart = new Highcharts.#{type}(options);
         });
         </script>
       EOJS
@@ -81,6 +50,5 @@ module LazyHighCharts
       end
       
     end
-
   end
 end

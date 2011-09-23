@@ -9,12 +9,15 @@ require 'action_view'
 require 'action_controller'
 require 'rails'
 #require 'action_mailer'
+require "active_support/core_ext"
+
 
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/layout_helper'))
 
 require 'webrat'
 require 'rspec'
+
 # RSpec 1.x and 2.x compatibility
 if defined?(RSpec)
   RSPEC_NAMESPACE = RSPEC_CONFIGURER = RSpec

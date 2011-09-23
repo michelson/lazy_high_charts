@@ -55,8 +55,7 @@ describe HighChartsHelper do
 
     it "should take a block setting attributes" do
       chart = LazyHighCharts::HighChart.new {|f|  
-        f.options[:rangeSelector] = {}; 
-        f.options[:rangeSelector][:selected] = 1
+        f.options[:rangeSelector] = {:selected=>1}; 
         f.series(:type         =>"spline",
                 :name          =>"Historias",
                 :pointInterval =>  (1.day.to_i * 1000) ,
@@ -70,6 +69,14 @@ describe HighChartsHelper do
       high_chart(@placeholder, chart).should match(/yAxis/)
       high_chart(@placeholder, chart).should match(/series/)
       
+    end
+    
+    
+    it "should take a block setting attributes" do
+      chart = LazyHighCharts::HighChart.new {|f|  
+        f.others(:foo =>"bar")
+      }
+      high_chart(@placeholder, chart).should match(/foo/)
     end
 
 end

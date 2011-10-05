@@ -1,5 +1,8 @@
 LazyHighCharts
 =======
+
+[![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
+
 LazyHighCharts is Rails 2.x/3.x Gem for displaying Highcharts graphs. 
   
 

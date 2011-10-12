@@ -1,24 +1,23 @@
-LazyHighCharts
-=======
+# LazyHighCharts
 
+Easily displaying Highcharts graphs with gem style.
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
-LazyHighCharts is Rails 2.x/3.x Gem for displaying Highcharts graphs. 
-  
+## Now Support Rails 2.x/3.x,Happy useful
 
-  Now Support Rails 3.1 rc4 stable branch,Happy useful
-=======
 ### Installation instructions for Rails 3
-Add this line to your Gemfile:
-    gem 'lazy_high_charts', :git => 'git://github.com/michelson/lazy_high_charts.git'
+
+### Installing it by rubygems
+To install it, you just need to add it to your Gemfile:
+    gem 'lazy_high_charts'
 
 And then run this to install the javascript files:
     rails g lazy_high_charts:install
 
 ### Installing it as a plugin for rails 2.3.5 and rails 3
-  
+
     script/plugin install git://github.com/michelson/lazy_high_charts.git ##(for rails 2)
-  
+
     rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
 
 ### HighStocks
@@ -37,10 +36,6 @@ Usage
 	config.gem "lazy_high_charts"
  4.done!
 
- For Rails 3.x
- In your Gemfile, add this line:
-	gem 'lazy_high_charts'
-
  For Rails 3.1
 In your Gemfile, add this line:
 	gem 'lazy_high_charts', '~> 1.1.5'
@@ -48,16 +43,16 @@ then execuate command:
   Rails g lazy_high_charts:install
 
  Usage in Controller:
-  
+
      @h = LazyHighCharts::HighChart.new('graph') do |f|
         f.options[:chart][:defaultSeriesType] = "area"
         f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
         f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
       end
- 
 
-  Without overriding entire option , (only change a specific option index):  
- 
+
+  Without overriding entire option , (only change a specific option index):
+
      @h = LazyHighCharts::HighChart.new('graph') do |f|
       .....
           f.options[:chart][:defaultSeriesType] = "area"
@@ -66,7 +61,7 @@ then execuate command:
           f.options[:xAxis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
      ......
 
-  Overriding entire option: 
+  Overriding entire option:
 
      @h = LazyHighCharts::HighChart.new('graph') do |f|
        .....
@@ -76,20 +71,20 @@ then execuate command:
 
 
   Usage in layout:
-      
+
   <%= javascript_include_tag :high_charts %>
-      
+
   Usage in view:
-  
+
     <%= high_chart("my_id", @h) %>
-    
+
   Passing formatting options in the view to the helper block , because all the helper options declared in the controller are converted in strict/valid json (quoted key);  so we need to extend the json object with some js.
-  
+
       <%= high_chart("my_id", @h) do |c| %>
          	<%= "options.tooltip.formatter = function() { return '<b>HEY!!!'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}" %>
          	<%= "options.xAxis.labels.formatter = function() { return 'ho';}" %>
          	<%= "options.yAxis.labels.formatter = function() { return 'hey';}" %>
-       <%end %> 
+       <%end %>
 
    HighStock Support:
 
@@ -102,13 +97,22 @@ then execuate command:
      http://www.highcharts.com/ref/
 
   HighCharts License:
-  
+
      http://www.highcharts.com/license
 
-    
-Contributors
-=======
-	LazyHighCharts gem is maintained by "Deshi Xiao":https://github.com/xiaods
-  Run @git shortlog -n -s --no-merges@  to see the awesome.
+## Contributing
 
+We're open to any contribution. It has to be tested properly though.
+
+* [Fork](http://help.github.com/forking/) the project
+* Do your changes and commit them to your repository
+* Test your changes. We won't accept any untested contributions (except if they're not testable).
+* Create an [issue](https://github.com/michelson/lazy_high_charts/issues) with a link to your commits.
+
+## Maintainers
+* Miguel Michelson Martinez ([github/michelson]https://github.com/michelson)
+* Deshi Xiao ([github/xiaods]https://github.com/xiaods)
+
+## License
+MIT License. Copyright 2011 Miguel Michelson Martinez.Deshi Xiao
 Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

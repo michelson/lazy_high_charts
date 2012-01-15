@@ -1,13 +1,13 @@
 # coding: utf-8
 module LazyHighCharts
   module LayoutHelper
-    
+
     def high_chart(placeholder, object  , &block)
       object.html_options.merge!({:id=>placeholder})
       object.options[:chart][:renderTo] = placeholder
       high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
     end
-    
+
     def high_stock(placeholder, object  , &block)
       object.html_options.merge!({:id=>placeholder})
       object.options[:chart][:renderTo] = placeholder
@@ -29,26 +29,26 @@ module LazyHighCharts
         options_collection << "#{k}: #{object.options[key].to_json}"
       end
       options_collection << "series: #{object.data.to_json}"
-    
+
       graph =<<-EOJS
       <script type="text/javascript">
-      jQuery(function() {
-            // 1. Define JSON options
-              var options = { #{options_collection.join(",")} };
-            // 2. Add callbacks (non-JSON compliant)
-              #{capture(&block) if block_given?}
-            // 3. Build the chart
-            var chart = new Highcharts.#{type}(options);
+      window.onload = function(){
+        jQuery(function() {
+          var options, chart;
+          options = { #{options_collection.join(",")} };
+          #{capture(&block) if block_given?}
+          chart = new Highcharts.#{type}(options);
         });
-        </script>
+      };
+      </script>
       EOJS
-      
+
       if defined?(raw)
         return raw(graph) 
       else
         return graph
       end
-      
+
     end
   end
 end

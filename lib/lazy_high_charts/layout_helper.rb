@@ -32,7 +32,7 @@ module LazyHighCharts
 
       graph =<<-EOJS
       <script type="text/javascript">
-      function() {
+      (function() {
         var onload = window.onload;
         window.onload = function(){
           if (typeof onload == "function") onload();
@@ -41,7 +41,7 @@ module LazyHighCharts
           #{capture(&block) if block_given?}
           chart = new Highcharts.#{type}(options);
         };
-      }()
+      })()
       </script>
       EOJS
 

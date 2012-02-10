@@ -28,14 +28,15 @@ describe HighChartsHelper do
     describe "ready function" do
       it "should be a javascript script" do
         high_chart(@placeholder, @chart).should have_selector('script', :type => 'text/javascript')
-        high_chart(@placeholder, @chart).should match(/\}\s*\)\s*;/)
+        high_chart(@placeholder, @chart).should match(/}\(\)/)
       end
 
       it "should assign to the onload event" do
         high_chart(@placeholder, @chart).should include('window.onload = function(){')
       end
-      it "should generate generate ready function (no conflict with prototype)" do
-        high_chart(@placeholder, @chart).should match(/jQuery\(function\(\)\s*\{/)
+      it "should call any existing onload function" do
+        high_chart(@placeholder, @chart).should match(/onload = window.onload;/)
+        high_chart(@placeholder, @chart).should match(/if \(typeof onload == "function"\)\s*onload\(\)/)
       end
     end
     describe "initialize HighChart" do

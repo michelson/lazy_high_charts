@@ -28,7 +28,7 @@ describe HighChartsHelper do
     describe "ready function" do
       it "should be a javascript script" do
         high_chart(@placeholder, @chart).should have_selector('script', :type => 'text/javascript')
-        high_chart(@placeholder, @chart).should match(/}\(\)/)
+        high_chart(@placeholder, @chart).should match(/}\)\(\)/)
       end
 
       it "should assign to the onload event" do

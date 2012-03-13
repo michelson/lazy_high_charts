@@ -26,7 +26,7 @@ And then run this to install the javascript files:
 Usage
 
  About javascript Assets notes:
- for Rails 2.x/3.x
+ for Rails 2.x/3.0.x
  1.you need manually put jquery/highcharts js to public/javascript
  2.modify your layout html
  Sample Code:

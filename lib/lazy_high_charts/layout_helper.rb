@@ -26,7 +26,7 @@ module LazyHighCharts
     def build_html_output(type, placeholder, object, &block)
       options_collection =  [ generate_json_from_hash(object.options) ]
       
-      options_collection << "series: #{object.data.to_json}"
+      options_collection << %|"series": #{object.data.to_json}|
       
       graph =<<-EOJS
       <script type="text/javascript">

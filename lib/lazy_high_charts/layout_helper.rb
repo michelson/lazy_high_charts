@@ -1,4 +1,5 @@
 # coding: utf-8
+
 module LazyHighCharts
   module LayoutHelper
 
@@ -23,13 +24,10 @@ module LazyHighCharts
     end
 
     def build_html_output(type, placeholder, object, &block)
-      options_collection = []
-      object.options.keys.each do |key|
-        k = key.to_s.camelize.gsub!(/\b\w/) { $&.downcase }
-        options_collection << "#{k}: #{object.options[key].to_json}"
-      end
+      options_collection =  [ generate_json_from_hash(object.options) ]
+      
       options_collection << "series: #{object.data.to_json}"
-
+      
       graph =<<-EOJS
       <script type="text/javascript">
       (function() {
@@ -37,7 +35,7 @@ module LazyHighCharts
         window.onload = function(){
           if (typeof onload == "function") onload();
           var options, chart;
-          options = { #{options_collection.join(",")} };
+          options = { #{options_collection.join(',')} };
           #{capture(&block) if block_given?}
           chart = new Highcharts.#{type}(options);
         };
@@ -52,5 +50,23 @@ module LazyHighCharts
       end
 
     end
+    
+    private
+    
+    def generate_json_from_hash hash  
+      hash.each_pair.map do |key, value|
+        k = key.to_s.camelize.gsub!(/\b\w/) { $&.downcase }
+        if value.is_a? Hash
+          %|"#{k}": { #{generate_json_from_hash(value)} }|
+        else
+          if value.respond_to?(:js_code) && value.js_code?
+            %|"#{k}": #{value}|
+          else
+            %|"#{k}": #{value.to_json}|
+          end
+        end
+      end.flatten.join(',')
+    end
+    
   end
 end

@@ -77,14 +77,19 @@ then execuate command:
   Usage in view:
 
     <%= high_chart("my_id", @h) %>
-
-  Passing formatting options in the view to the helper block , because all the helper options declared in the controller are converted in strict/valid json (quoted key);  so we need to extend the json object with some js.
+    
+  You can pass in additional javascript into to the view with a block, this will be executed before the high chart is called
 
       <%= high_chart("my_id", @h) do |c| %>
-         	<%= "options.tooltip.formatter = function() { return '<b>HEY!!!'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}" %>
-         	<%= "options.xAxis.labels.formatter = function() { return 'ho';}" %>
-         	<%= "options.yAxis.labels.formatter = function() { return 'hey';}" %>
-       <%end %>
+        alert('hello')
+      <%end %>
+      
+  To include javascript function calls or callbacks you can use the js_code method on your string`"function".js_code`:
+  
+      f.options[:plotOptions] = { 
+        :column => { :events => { :click => %|function() { window.location = "http://www.highcharts.com" }|.js_code } }
+      }
+      
 
    HighStock Support:
 
@@ -99,6 +104,7 @@ then execuate command:
   HighCharts License:
 
      http://www.highcharts.com/license
+     
 
 ## Contributing
 

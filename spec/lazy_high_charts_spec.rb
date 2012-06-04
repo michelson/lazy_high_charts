@@ -47,8 +47,8 @@ describe HighChartsHelper do
         high_chart(@placeholder, @chart).should match(/chart\s+=\s+new\s+Highcharts.Chart/)
       end
 
-      it "should set chart renderTo" do  
-        high_chart(@placeholder, @chart).should match(/\"renderTo\":\"placeholder\"/)
+      it "should set chart renderTo" do
+        high_chart(@placeholder, @chart).should match(/"renderTo": "placeholder"/)
       end
 
       it "should set Chart Stock" do
@@ -83,6 +83,23 @@ describe HighChartsHelper do
       f.others(:foo =>"bar")
     }
     high_chart(@placeholder, chart).should match(/foo/)
+  end
+  
+  it "should allow js code as attribute" do
+    chart = LazyHighCharts::HighChart.new {|f|  
+      f.options[:foo] = "function () { alert('hello') }".js_code
+    }
+  
+    high_chart(@placeholder, chart).should match(/"foo": function \(\) { alert\('hello'\) }/)    
+  end
+  
+  it "should convert keys to proper format" do
+    chart = LazyHighCharts::HighChart.new {|f|  
+      f.options[:foo_bar] = { :bar_foo => "someattrib"}
+    }
+  
+    high_chart(@placeholder, chart).should match(/fooBar/)
+    high_chart(@placeholder, chart).should match(/barFoo/) 
   end
 
 end

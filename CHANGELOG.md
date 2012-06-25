@@ -1,3 +1,6 @@
+* Jun 25, 2012
+  support inline javascript in click event on ruby runtime.
+  https://github.com/michelson/lazy_high_charts/issues/57
 * Jul 14, 2011
   add support rails 3.1 rc4 now
 

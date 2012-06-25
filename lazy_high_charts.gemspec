@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-#require File.expand_path("../lib/lazy_high_charts/version", __FILE__)
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'lazy_high_charts/version'
 
@@ -20,16 +19,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency "bundler", "~> 1.0"
 
-  s.add_development_dependency "webrat","~> 0.7"
-  s.add_development_dependency "rspec", "~> 2.0"
-  s.add_development_dependency "rails", "~> 3.0"
-
   s.description = <<-DESC
     lazy_high_charts is a Rails 3.x gem for displaying Highcharts graphs.
   DESC
 
   s.files = `git ls-files`.split("\n")
   s.executables = `git ls-files`.split("\n").select{|f| f =~ /^bin/}
-  s.require_path = 'lib'  
+  s.require_path = 'lib'
 
 end

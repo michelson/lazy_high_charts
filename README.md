@@ -141,5 +141,5 @@ We're open to any contribution. It has to be tested properly though.
 * Deshi Xiao ([github/xiaods]https://github.com/xiaods)
 
 ## License
-MIT License. Copyright 2011 Miguel Michelson Martinez.Deshi Xiao
-Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license
+* Copyright 2011 Deshi Xiao,MIT License
+* Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

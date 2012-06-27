@@ -5,7 +5,7 @@ module LazyHighCharts
       def install_highcharts(opts = nil)
         say_status("installing", "Highcharts javascript (github STOCK branch)", :green)
         if ::Rails::VERSION::MAJOR == 3 && ::Rails::VERSION::MINOR >= 1
-          get "http://highcharts.com/js/highstock.js","app/assets/javascripts/highcharts.js"
+         get 'http://highcharts.com/js/highstock.js', 'vendor/assets/javascripts/highcharts.js'
         else
           get "https://raw.github.com/highslide-software/highcharts.com/stock/js/highcharts.src.js","public/javascripts/highcharts.js"
         end

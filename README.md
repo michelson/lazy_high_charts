@@ -3,7 +3,9 @@
 Easily displaying Highcharts graphs with gem style.
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
-## Now Support Rails 2.x/3.x,Happy useful
+## Notice
+
+lasted version: 1.1.7
 
 ### Installation instructions for Rails 3
 

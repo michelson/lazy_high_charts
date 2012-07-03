@@ -89,7 +89,7 @@ Overriding entire option:
 
 Usage in layout:
 ````
-<%= javascript_include_tag :high_charts %>
+<%= javascript_include_tag :highcharts %>
 ````
 
 Usage in view:

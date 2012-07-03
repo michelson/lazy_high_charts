@@ -1,6 +1,6 @@
 module LazyHighCharts
   class HighChart
-    CANVAS_DEFAULT_HTML_OPTIONS = { :style => "height: 300px, width:615px" }
+    CANVAS_DEFAULT_HTML_OPTIONS = { :style => "height: 300px; width:615px" }
     SERIES_OPTIONS = %w(lines points bars shadowSize colors)
 
     attr_accessor :data, :options, :placeholder, :html_options

@@ -36,7 +36,7 @@ About javascript Assets notes:
    Sample Code:
   ````
    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  %>
-   <%= javascript_include_tag :high_charts  %>
+   <%= javascript_include_tag :highcharts  %>
   ````
 
 3. add gem name in your config/environment.rb

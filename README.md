@@ -45,17 +45,7 @@ config.gem "lazy_high_charts"
 ````
 4. Done!
 
-### For Rails 3.1
-In your Gemfile, add this line:
-````
-gem 'lazy_high_charts', '~> 1.1.5'
-````
-then execuate command:
-````
-Rails g lazy_high_charts:install
-````
-
-### Usage in Controller:
+### Demo Usage in Controller:
 ````
 @h = LazyHighCharts::HighChart.new('graph') do |f|
   f.options[:chart][:defaultSeriesType] = "area"

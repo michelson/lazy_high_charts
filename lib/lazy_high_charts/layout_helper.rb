@@ -35,7 +35,7 @@ module LazyHighCharts
         chart = new Highcharts.#{type}(options);
       EOJS
 
-      if defined?(request) && request.xhr?
+      if defined?(request) && request.respond_to?(:xhr?) && request.xhr?
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {

@@ -27,21 +27,36 @@ module LazyHighCharts
       options_collection =  [ generate_json_from_hash(object.options) ]
       
       options_collection << %|"series": #{object.data.to_json}|
-      
-      graph =<<-EOJS
-      <script type="text/javascript">
-      (function() {
-        var onload = window.onload;
-        window.onload = function(){
-          if (typeof onload == "function") onload();
-          var options, chart;
-          options = { #{options_collection.join(',')} };
-          #{capture(&block) if block_given?}
-          chart = new Highcharts.#{type}(options);
-        };
-      })()
-      </script>
+
+      core_js =<<-EOJS
+        var options, chart;
+        options = { #{options_collection.join(',')} };
+        #{capture(&block) if block_given?}
+        chart = new Highcharts.#{type}(options);
       EOJS
+
+      if defined?(request) && request.respond_to?(:xhr?) && request.xhr?
+        graph =<<-EOJS
+        <script type="text/javascript">
+        (function() {
+          #{core_js}
+        })()
+        </script>
+        EOJS
+      else
+        graph =<<-EOJS
+        <script type="text/javascript">
+        (function() {
+          var onload = window.onload;
+          window.onload = function(){
+            if (typeof onload == "function") onload();
+            #{core_js}
+          };
+        })()
+        </script>
+        EOJS
+      end
+
 
       if defined?(raw)
         return raw(graph) 

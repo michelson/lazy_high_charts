@@ -67,20 +67,28 @@ module LazyHighCharts
     end
     
     private
-    
-    def generate_json_from_hash hash  
+
+    def generate_json_from_hash hash
       hash.each_pair.map do |key, value|
         k = key.to_s.camelize.gsub!(/\b\w/) { $&.downcase }
-        if value.is_a? Hash
-          %|"#{k}": { #{generate_json_from_hash(value)} }|
-        else
-          if value.respond_to?(:js_code) && value.js_code?
-            %|"#{k}": #{value}|
-          else
-            %|"#{k}": #{value.to_json}|
-          end
-        end
+        %|"#{k}": #{generate_json_from_value value}|
       end.flatten.join(',')
+    end
+
+    def generate_json_from_value value
+      if value.is_a? Hash
+        %|{ #{generate_json_from_hash value} }|
+      elsif value.is_a? Array
+        %|[ #{generate_json_from_array value} ]|
+      elsif value.respond_to?(:js_code) && value.js_code?
+        value
+      else
+        value.to_json
+      end
+    end
+
+    def generate_json_from_array array
+      array.map{|value| generate_json_from_value(value)}.join(",")
     end
     
   end

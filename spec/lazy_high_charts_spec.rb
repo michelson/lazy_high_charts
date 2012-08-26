@@ -102,4 +102,17 @@ describe HighChartsHelper do
     high_chart(@placeholder, chart).should match(/barFoo/) 
   end
 
+  # issue #62 .js_code setting ignored
+  # https://github.com/michelson/lazy_high_charts/issues/62
+  it "should allow js code in array && nest attributs" do
+    chart = LazyHighCharts::HighChart.new {|f|
+      f.yAxis([{
+        :labels => {
+                  :formatter => %|function() {return this.value + ' W';}|.js_code
+              }
+      }])
+    }
+    high_chart(@placeholder,chart).should match(/"formatter": function\(\) {return this.value \+ ' W';}/)
+  end
+
 end

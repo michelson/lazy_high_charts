@@ -1,8 +1,16 @@
+* Aug 26, 2012
+  1. Troy Anderson (laptop) <troy@tlainvestments.com>
+    Added ability to supply an array of axes or other objects and still use .js_code within the array of hashes.
+  2. David Biehl <lazylodr@gmail.com>
+    removing the window.onload function for AJAX requests
+
 * Jun 27, 2012
-  update assets path for rails 3.x
+    update assets path for rails 3.x
+
 * Jun 25, 2012
-  support inline javascript in click event on ruby runtime.
-  https://github.com/michelson/lazy_high_charts/issues/57
+    support inline javascript in click event on ruby runtime.
+    https://github.com/michelson/lazy_high_charts/issues/57
+
 * Jul 14, 2011
   add support rails 3.1 rc4 now
 

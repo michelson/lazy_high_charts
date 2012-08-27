@@ -5,7 +5,7 @@ Easily displaying Highcharts graphs with gem style.
 
 ## Notice
 
-lasted version: 1.2.0
+latest version: 1.2.0
 Thanks for Troy & David
 
 ### Installation instructions for Rails 3

@@ -1,7 +1,6 @@
 module LazyHighCharts
   class HighChart
-    CANVAS_DEFAULT_HTML_OPTIONS = { :style => "height: 300px; width:615px" }
-    SERIES_OPTIONS = %w(lines points bars shadowSize colors)
+    SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
 
     attr_accessor :data, :options, :placeholder, :html_options
     alias  :canvas :placeholder
@@ -14,14 +13,13 @@ module LazyHighCharts
         high_chart.data       ||= []
         high_chart.options    ||= {}
         high_chart.defaults_options
-        high_chart.html_options = html_opts.reverse_merge(CANVAS_DEFAULT_HTML_OPTIONS)
+        high_chart.html_options ||={}
         high_chart.canvas       = canvas if canvas
         yield high_chart if block_given?
       end
     end
 
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
-
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
       self.legend({ :layout=>"vertical", :style=>{} }) 
@@ -30,7 +28,7 @@ module LazyHighCharts
       self.tooltip({ :enabled=>true })
       self.credits({ :enabled => false})
       self.plotOptions({ :areaspline => { } })
-      self.chart({ :defaultSeriesType=>"areaspline" , :renderTo => nil})
+      self.chart({ :defaultSeriesType=>"line" , :renderTo => nil})
       self.subtitle({})
     end
 
@@ -38,7 +36,6 @@ module LazyHighCharts
     # Pass other methods through to the javascript high_chart object.
     #
     # For instance: <tt>high_chart.grid(:color => "#699")</tt>
-    #
     def method_missing(meth, opts = {})
       merge_options meth, opts
     end
@@ -48,12 +45,9 @@ module LazyHighCharts
     #   data = [[0,5], [1,5], [2,5]]
     #   @high_chart.series :name=>'Updated', :data=>data
     #   @high_chart.series :name=>'Updated', :data=>[5, 1, 6, 1, 5, 4, 9]
-    #
     def series(opts = {})
       @data ||= []
-      if opts.blank?
-        @data << series_options.merge(:name => label, :data => d)
-      else
+      if not opts.empty?
         @data << opts.merge(:name => opts[:name], :data => opts[:data])
       end
     end

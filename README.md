@@ -4,9 +4,8 @@ Easily displaying Highcharts graphs with gem style.
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
 ## Notice
-
-latest version: 1.2.0
-Thanks for Troy & David
+latest version: 1.2.2
+[ChangeLog](https://github.com/xiaods/lazy_high_charts/blob/master/CHANGELOG.md)
 
 ### Installation instructions for Rails 3
 
@@ -17,7 +16,7 @@ To install it, you just need to add it to your Gemfile:
 And then run this to install the javascript files:
     rails g lazy_high_charts:install
 
-### Installing it as a plugin for rails 2.3.5 and rails 3
+### Installing it as a plugin for rails 2.3.x
 
     script/plugin install git://github.com/michelson/lazy_high_charts.git ##(for rails 2)
 
@@ -29,6 +28,12 @@ And then run this to install the javascript files:
 ## Usage
 
 About javascript Assets notes:
+
+### For Rails 3.2.x
+1. add your highcart js to app/assets/javascripts/application.js
+````
+//= require highcharts
+````
 
 ### For Rails 2.x/3.0.x
  
@@ -129,10 +134,15 @@ We're open to any contribution. It has to be tested properly though.
 * Test your changes. We won't accept any untested contributions (except if they're not testable).
 * Create an [issue](https://github.com/michelson/lazy_high_charts/issues) with a link to your commits.
 
+Contributer List:
+* [Troy Anderson](https://github.com/troya2)
+* [David Biehl](https://github.com/lazylodr)
+
+Thanks for Troy & David
 ## Maintainers
-* Miguel Michelson Martinez ([github/michelson]https://github.com/michelson)
-* Deshi Xiao ([github/xiaods]https://github.com/xiaods)
+* Miguel Michelson Martinez [github/michelson](https://github.com/michelson)
+* Deshi Xiao [github/xiaods](https://github.com/xiaods)
 
 ## License
-* Copyright 2011 Deshi Xiao,MIT License
+* Copyright (c) 2011,2012 Deshi Xiao,released under the MIT license
 * Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

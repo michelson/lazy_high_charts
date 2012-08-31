@@ -1,3 +1,6 @@
+* Aug 31, 2012
+  1. Bugfix for
+     issue#74(https://github.com/michelson/lazy_high_charts/issues/74)
 * Aug 26, 2012
   1. Troy Anderson (laptop) <troy@tlainvestments.com>
     Added ability to supply an array of axes or other objects and still use .js_code within the array of hashes.

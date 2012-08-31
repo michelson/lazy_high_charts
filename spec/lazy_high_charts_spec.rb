@@ -12,10 +12,9 @@ describe HighChartsHelper do
     @options     = "options"
   end
 
-  describe "layout_helper" do
+  context "layout_helper" do
     it "should return a div with an id of high_chart object" do
-      hc = LazyHighCharts::HighChart.new("placeholder", :class => 'stylin')
-      high_chart(hc.placeholder, hc).should have_selector('div', :id => hc.placeholder, :class => 'stylin')
+      high_chart(@placeholder, @chart).should have_selector('div', :id => @placeholder)
     end
 
     it "should return a script" do
@@ -24,7 +23,7 @@ describe HighChartsHelper do
     end
   end
 
-  describe "high_chart_graph" do
+  context "high_chart_graph" do
     describe "ready function" do
       it "should be a javascript script" do
         high_chart(@placeholder, @chart).should have_selector('script', :type => 'text/javascript')
@@ -113,6 +112,23 @@ describe HighChartsHelper do
       }])
     }
     high_chart(@placeholder,chart).should match(/"formatter": function\(\) {return this.value \+ ' W';}/)
+  end
+
+  it "should support js_code in Individual data label for each point" do
+    chart = LazyHighCharts::HighChart.new {|f|
+       f.series(
+         :data => [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, {
+         :dataLabels => {:enabled => true,
+                         :align => 'left',
+                         :x => 10,
+                         :y => 4, 
+                         :style => {:fontWeight => 'bold'},
+                         :formatter => "function() { return this.x; }".js_code
+                        },
+        :y => 54.4}
+        ])
+    }
+    high_chart(@placeholder,chart).should match(/"formatter": function\(\) {\ return this.x;\ }/)
   end
 
 end

@@ -14,6 +14,7 @@ require "active_support/core_ext"
 
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/layout_helper'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../lib/lazy_high_charts/options_key_filter'))
 
 require 'webrat'
 require 'rspec'

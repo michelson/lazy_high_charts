@@ -22,7 +22,7 @@ module LazyHighCharts
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
     def defaults_options
       self.title({ :text=>"example test title from highcharts gem"})
-      self.legend({ :layout=>"vertical", :style=>{} }) 
+      self.legend({ :layout=>"vertical", :style=>{} })
       self.xAxis({})
       self.yAxis({ :title=> {:text=> nil}, :labels=>{} })
       self.tooltip({ :enabled=>true })
@@ -48,7 +48,7 @@ module LazyHighCharts
     def series(opts = {})
       @data ||= []
       if not opts.empty?
-        @data << opts.merge(:name => opts[:name], :data => opts[:data])
+        @data << OptionsKeyFilter.filter(opts.merge(:name => opts[:name], :data => opts[:data]))
       end
     end
 

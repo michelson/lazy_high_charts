@@ -82,6 +82,19 @@ Overriding entire option:
   #.....
 ````
 
+Using the datetime axis type:
+
+````
+@h = LazyHighCharts::HighChart.new('graph', style: '') do |f|
+  f.options[:chart][:defaultSeriesType] = "area"
+  f.options[:plotOptions] = {area: {pointInterval: 1.day, pointStart: 10.days.ago}}
+  f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
+  f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9])
+  f.xAxis(type: :datetime)
+end
+````
+A datetime axis [example](http://jsfiddle.net/gh/get/jquery/1.7.2/highslide-software/highcharts.com/tree/master/samples/highcharts/xaxis/type-datetime/)
+
 
 Usage in layout:
 ````

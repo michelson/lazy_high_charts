@@ -104,6 +104,24 @@ describe "HighChart" do
         end
        chart.options[:subtitle][:text].should == "Bar"
     end
+
+    it 'should override entire option by default when resetting it again' do
+      chart = LazyHighCharts::HighChart.new('graph') do |f|
+        f.xAxis(categories: [3, 5, 7])
+        f.xAxis(title: {text: 'x title'})
+      end
+      chart.options[:xAxis][:categories].should == nil
+      chart.options[:xAxis][:title][:text].should == 'x title'
+    end
+
+    it 'should allow to build options step by step without overriding previously set values' do
+      chart = LazyHighCharts::HighChart.new('graph') do |f|
+        f.xAxis!(categories: [3, 5, 7])
+        f.xAxis!(title: {text: 'x title'})
+      end
+      chart.options[:xAxis][:categories].should == [3, 5, 7]
+      chart.options[:xAxis][:title][:text].should == 'x title'
+    end
      
   end
 

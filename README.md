@@ -82,6 +82,16 @@ Overriding entire option:
   #.....
 ````
 
+If you want to use this syntax and still be able to build option step-by-step without overriding:
+
+````
+@h = LazyHighCharts::HighChart.new('graph') do |f|
+ #.....
+ f.xAxis!(:categories => @days.reverse! , :labels=>{:rotation=>-45 , :align => 'right'})
+ f.chart!({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
+ #.....
+````
+
 Using the datetime axis type:
 
 ````

@@ -36,7 +36,7 @@ About javascript Assets notes:
 ````
 
 ### For Rails 2.x/3.0.x
- 
+
 1. you need manually put jquery/highcharts js to public/javascript
 2. modify your layout html
    Sample Code:
@@ -97,7 +97,7 @@ Using the datetime axis type:
 ````
 @h = LazyHighCharts::HighChart.new('graph', style: '') do |f|
   f.options[:chart][:defaultSeriesType] = "area"
-  f.options[:plotOptions] = {area: {pointInterval: 1.day, pointStart: 10.days.ago}}
+  f.options[:plotOptions] = {areaspline: {pointInterval: 1.day, pointStart: 10.days.ago}}
   f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
   f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9])
   f.xAxis(type: :datetime)
@@ -126,11 +126,11 @@ You can pass in additional javascript into to the view with a block, this will b
 To include javascript function calls or callbacks you can use the js_code method on your string`"function".js_code`:
 
 ````
-f.options[:plotOptions] = { 
+f.options[:plotOptions] = {
   :column => { :events => { :click => %|function() { window.location = "http://www.highcharts.com" }|.js_code } }
 }
 ````
-      
+
 
 ## HighStock Support:
 
@@ -146,7 +146,7 @@ http://www.highcharts.com/ref/
 ## HighCharts License:
 
 http://www.highcharts.com/license
-     
+
 
 ## Contributing
 

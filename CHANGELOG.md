@@ -1,3 +1,11 @@
+# VERSION 1.3.0.beta
+  * Oct 27,2012
+  1.merged hash deep merge patch
+  [#77](https://github.com/michelson/lazy_high_charts/issues/77)
+  2.enhance example case in README.md
+  [#78](https://github.com/michelson/lazy_high_charts/issues/78)
+
+# VERSION 1.2.2
 * Aug 31, 2012
   1. Correct highchart js location
     [issue#74](https://github.com/michelson/lazy_high_charts/issues/74)

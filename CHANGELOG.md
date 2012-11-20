@@ -1,8 +1,11 @@
-# VERSION 1.3.0.beta
-  * Oct 27,2012
-  1.merged hash deep merge patch
+# VERSION 1.3.0
+  * Nov 20, 2012
+  1. html_opt is not set
+  [#88](https://github.com/michelson/lazy_high_charts/issues/83)
+  * Oct 27, 2012
+  1. merged hash deep merge patch
   [#77](https://github.com/michelson/lazy_high_charts/issues/77)
-  2.enhance example case in README.md
+  2. enhance example case in README.md
   [#78](https://github.com/michelson/lazy_high_charts/issues/78)
 
 # VERSION 1.2.2

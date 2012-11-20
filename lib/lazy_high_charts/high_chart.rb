@@ -13,7 +13,7 @@ module LazyHighCharts
         high_chart.data       ||= []
         high_chart.options    ||= {}
         high_chart.defaults_options
-        high_chart.html_options ||={}
+        high_chart.html_options ||= html_opts
         high_chart.canvas       = canvas if canvas
         yield high_chart if block_given?
       end

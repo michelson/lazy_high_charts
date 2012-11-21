@@ -1,18 +1,9 @@
-require 'lazy_high_charts'
-require 'lazy_high_charts/layout_helper.rb'
-
-require 'rails'
-
+# encoding: UTF-8
 module LazyHighCharts
-
     class Railtie < ::Rails::Railtie
       config.before_configuration do
-        config.action_view.javascript_expansions[:high_charts] = %w(highcharts)
-      end
-
-      initializer 'lazy_high_charts.initialize' do
-        ActiveSupport.on_load(:action_view) do
-          include LazyHighCharts::LayoutHelper
+        if config.action_view.javascript_expansions
+          config.action_view.javascript_expansions[:high_charts] |= %w(highcharts exporting)
         end
       end
     end

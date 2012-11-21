@@ -1,7 +1,10 @@
-# VERSION 1.3.0
+# VERSION 1.3.1
+  * Nov 21, 2012
+  1. Fix invalid js encoding from wget highcharts cdn source url.
+  [#85](https://github.com/michelson/lazy_high_charts/issues/85)
   * Nov 20, 2012
   1. html_opt is not set
-  [#88](https://github.com/michelson/lazy_high_charts/issues/83)
+  [#83](https://github.com/michelson/lazy_high_charts/issues/83)
   * Oct 27, 2012
   1. merged hash deep merge patch
   [#77](https://github.com/michelson/lazy_high_charts/issues/77)

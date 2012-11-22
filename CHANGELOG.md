@@ -1,4 +1,7 @@
-# VERSION 1.3.1
+# VERSION 1.3.2
+  * Nov 22, 2012
+  1. ActiveView method is not found.
+  [#87](https://github.com/michelson/lazy_high_charts/issues/87)
   * Nov 21, 2012
   1. Fix invalid js encoding from wget highcharts cdn source url.
   [#85](https://github.com/michelson/lazy_high_charts/issues/85)

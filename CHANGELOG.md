@@ -4,6 +4,8 @@
   [#95](https://github.com/michelson/lazy_high_charts/isues/95)
   2. Can be used without rails, such as sinatra web framework.
   [#94](https://github.com/michelson/lazy_high_charts/isues/96)
+  3. You shouldn't be forced to override the default chart text
+  [#93](https://github.com/michelson/lazy_high_charts/issues/93)
 
 # VERSION 1.3.2
   * Nov 22, 2012

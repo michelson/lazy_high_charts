@@ -27,7 +27,7 @@ describe "HighChart" do
 
     it "should set options by default" do
       LazyHighCharts::HighChart.new.options.should == {
-        :title=>{:text=>"example test title from highcharts gem"}, 
+        :title=>{:text=>nil}, 
         :legend=>{:layout=>"vertical", :style=>{}}, 
         :xAxis=>{}, 
         :yAxis=>{:title=>{:text=>nil}, :labels=>{}}, 
@@ -61,7 +61,7 @@ describe "HighChart" do
     it "should change a block data without overriding options" do
       chart = LazyHighCharts::HighChart.new('graph') do |f|
         f.series(:name=>'John', :data=>[3, 20])
-        f.series(:name=>'Jane',:data=> [1, 3] )        
+        f.series(:name=>'Jane',:data=> [1, 3] )
         # without overriding 
         f.options[:chart][:defaultSeriesType] = "area"
         f.options[:chart][:inverted] = true
@@ -79,7 +79,7 @@ describe "HighChart" do
       chart = LazyHighCharts::HighChart.new('graph') do |f|
         f.series(:name=>'John', :data=>[3, 20])
         f.series(:name=>'Jane', :data=>[1, 3] )        
-        f.title({ :text=>"example test title from controller"})
+        f.title({ :text=> nil })
         # without overriding 
         f.xAxis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
         f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})
@@ -96,7 +96,7 @@ describe "HighChart" do
       chart = LazyHighCharts::HighChart.new('graph') do |f|
         f.series(:name=>'John',:data=> [3, 20])
         f.series(:name=>'Jane', :data=>[1, 3] )        
-        f.title({ :text=>"example test title from controller"})
+        f.title({ :text=>nil})
         # without overriding 
         f.x_axis(:categories => ["uno" ,"dos" , "tres" , "cuatro"] , :labels=>{:rotation=>-45 , :align => 'right'})
         f.chart({:defaultSeriesType=>"spline" , :renderTo => "myRenderArea" , :inverted => true})

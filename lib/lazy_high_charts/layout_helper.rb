@@ -56,9 +56,11 @@ module LazyHighCharts
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
-          $(document).ready(function() {
+          var onload = window.onload;
+          window.onload = function(){
+            if (typeof onload == "function") onload();
             #{core_js}
-          });
+          };
         })()
         </script>
         EOJS

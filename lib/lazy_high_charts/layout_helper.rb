@@ -42,20 +42,23 @@ module LazyHighCharts
         })()
         </script>
         EOJS
+      elsif defined?(Turbolinks) && request.headers["X-XHR-Referer"]
+        graph =<<-EOJS
+        <script type="text/javascript">
+        (function() {
+          $(window).bind('page:load', function() {
+            #{core_js}
+          });
+        })()
+        </script>
+        EOJS
       else
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
-          if (typeof Turbolinks != 'undefined') {
-            $(window).bind('page:load', function() {
-              #{core_js}
-            });
-          }
-          else{
-            $(document).ready(function() {
-              #{core_js}
-            });
-          }
+          $(document).ready(function() {
+            #{core_js}
+          });
         })()
         </script>
         EOJS

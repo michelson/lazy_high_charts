@@ -1,7 +1,16 @@
+# VERSION 1.3.3
+  * Dec 17, 2012
+  1. rails 4 feature turbolinks supported.
+  [#95](https://github.com/michelson/lazy_high_charts/isues/95)
+  2. Can be used without rails, such as sinatra web framework.
+  [#94](https://github.com/michelson/lazy_high_charts/isues/96)
+
 # VERSION 1.3.2
   * Nov 22, 2012
   1. ActiveView method is not found.
   [#87](https://github.com/michelson/lazy_high_charts/issues/87)
+
+# VERSION 1.3.1
   * Nov 21, 2012
   1. Fix invalid js encoding from wget highcharts cdn source url.
   [#85](https://github.com/michelson/lazy_high_charts/issues/85)

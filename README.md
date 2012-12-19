@@ -8,13 +8,13 @@ Current
 [VERSION](https://github.com/xiaods/lazy_high_charts/blob/master/GEM_VERSION)
 [ChangeLog](https://github.com/xiaods/lazy_high_charts/blob/master/CHANGELOG.md)
 
-### Installation instructions for Rails 3
+## Installation
 
 ### Installing it by rubygems
 To install it, you just need to add it to your Gemfile:
     gem 'lazy_high_charts'
 
-And then run this to install the javascript files:
+You do not need to run this unless you are using the older rails versions 3.0 or 3.1:
     rails g lazy_high_charts:install
 
 ### Installing it as a plugin for rails 2.3.x

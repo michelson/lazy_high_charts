@@ -40,10 +40,11 @@ describe HighChartsHelper do
     end
     describe "initialize HighChart" do
       it "should set variables `chart` `options`" do
-        high_chart(@placeholder, @chart).should include('var options, chart;')
+        high_chart(@placeholder, @chart).should match(/var\s+options\s+=/)
+        high_chart(@placeholder, @chart).should match(/window.chart_placeholder\s=/)
       end
       it "should set Chart data" do
-        high_chart(@placeholder, @chart).should match(/chart\s+=\s+new\s+Highcharts.Chart/)
+        high_chart(@placeholder, @chart).should match(/window\.chart_placeholder\s=\snew\sHighcharts.Chart/)
       end
 
       it "should set chart renderTo" do
@@ -51,7 +52,7 @@ describe HighChartsHelper do
       end
 
       it "should set Chart Stock" do
-        high_stock(@placeholder, @chart).should match(/chart\s+=\s+new\s+Highcharts.StockChart/)
+        high_stock(@placeholder, @chart).should match(/window\.chart_placeholder\s+=\s+new\s+Highcharts.StockChart/)
       end
     end
 

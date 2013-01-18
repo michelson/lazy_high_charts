@@ -21,7 +21,7 @@ module LazyHighCharts
 
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
     def defaults_options
-      self.title({ :text=>"example test title from highcharts gem"})
+      self.title({ :text=> nil })
       self.legend({ :layout=>"vertical", :style=>{} })
       self.xAxis({})
       self.yAxis({ :title=> {:text=> nil}, :labels=>{} })

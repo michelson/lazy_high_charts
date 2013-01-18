@@ -1,11 +1,13 @@
 # VERSION 1.3.3
-  * Dec 17, 2012
+  * Fri Jan 18, 2013
   1. rails 4 feature turbolinks supported.
   [#95](https://github.com/michelson/lazy_high_charts/isues/95)
   2. Can be used without rails, such as sinatra web framework.
   [#94](https://github.com/michelson/lazy_high_charts/isues/96)
   3. You shouldn't be forced to override the default chart text
   [#93](https://github.com/michelson/lazy_high_charts/issues/93)
+  4. Add chart to window scope for dynamic series addition
+  [#99](https://github.com/michelson/lazy_high_charts/pull/99)
 
 # VERSION 1.3.2
   * Nov 22, 2012

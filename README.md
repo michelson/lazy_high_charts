@@ -164,9 +164,8 @@ Contributer List:
 
 Thanks for Troy & David
 ## Maintainers
-* Miguel Michelson Martinez [github/michelson](https://github.com/michelson)
 * Deshi Xiao [github/xiaods](https://github.com/xiaods)
 
 ## License
-* Copyright (c) 2011,2012 Deshi Xiao,released under the MIT license
+* Copyright (c) 2011 - 2013 Deshi Xiao,released under the MIT license
 * Copyright (c) 2010 Miguel Michelson Martinez, released under the MIT license

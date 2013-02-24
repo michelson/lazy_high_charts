@@ -1,3 +1,7 @@
+# VERSION 1.4.0.beta
+  * Sun Feb 24, 2013
+	1. replace autotest with guard-spec. 
+
 # VERSION 1.3.3
   * Fri Jan 18, 2013
   1. rails 4 feature turbolinks supported.

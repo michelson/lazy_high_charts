@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files  = [ "README.md", "CHANGELOG.md" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]
 
-  s.required_rubygems_version = "~> 1.3"
+  s.required_rubygems_version = ">= 1.3"
 
   s.add_dependency "bundler", "~> 1.0"
   s.add_dependency "hash-deep-merge"

@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "lazy_high_charts"
   s.version     = version
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Miguel Michelson Martinez','Deshi Xiao']
-  s.email       = ['miguelmichelson@gmail.com','xiaods@gmail.com']
+  s.authors     = ['Deshi Xiao']
+  s.email       = ['xiaods@gmail.com']
   s.homepage    = "https://github.com/xiaods/lazy_high_charts"
   s.summary     = "rubyist way to render variant chart by highcharts without write javascript right now, rails gem library."
   s.description = "lazy_high_charts is leading edge rubyist render charts gem for displaying Highcharts graphs."

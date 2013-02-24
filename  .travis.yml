@@ -1,0 +1,10 @@
+language: ruby
+
+bundler_args: --without production development
+
+script: bundle exec rake
+
+rvm:
+  - 1.9.3
+  - ruby-head
+	

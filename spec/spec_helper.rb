@@ -6,7 +6,6 @@ require 'active_support'
 require 'action_pack'
 require 'action_view'
 require 'action_controller'
-require 'rails'
 require "active_support/core_ext"
 
 

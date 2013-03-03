@@ -24,35 +24,8 @@ then run 'bundle install' to install it.
 
   rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
 
-## Usage
 
-About javascript Assets notes:
-
-### For Rails 3.2.x or 4.0.x
-1. add your highcart js to app/assets/javascripts/application.js
-````
-//= require highcharts
-````
-
-### For Rails 2.x/3.0.x
-
-Deprecated: version should be less than 1.3.3
-
-1. you need manually put jquery/highcharts js to public/javascript
-2. modify your layout html
-   Sample Code:
-  ````
-   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  %>
-   <%= javascript_include_tag :highcharts  %>
-  ````
-
-3. add gem name in your config/environment.rb
-````
-config.gem "lazy_high_charts"
-````
-4. Done!
-
-###  [Gem User Guide](https://github.com/xiaods/lazy_high_charts/wiki/lazy_high_charts-user-guide)
+##  [Lazy_high_charts User Guide](https://github.com/xiaods/lazy_high_charts/wiki/lazy_high_charts-user-guide)
 
 
 ## Contributing

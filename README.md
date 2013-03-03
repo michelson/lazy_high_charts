@@ -13,8 +13,18 @@ Current
 ### Installing it by rubygems
 
 To install it, you just need to add it to your Gemfile:
+
+```ruby
     gem 'lazy_high_charts'
-then run 'bundle install' to install it.
+```
+
+then run 
+
+```bash
+bundle install
+```
+
+to install it.
 
 ### Installing it as a plugin for rails 2.3.x or 3.0.x or 3.1.x
 

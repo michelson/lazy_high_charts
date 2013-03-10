@@ -45,19 +45,11 @@ module LazyHighCharts
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
-          $(window).bind('page:load', function() {
+          var f = function(){
+            document.removeEventListener('page:load', f, true);
             #{core_js}
-          });
-        })()
-        </script>
-        EOJS
-      elsif defined?(Turbolinks) && request.headers["X-XHR-Referer"]
-        graph =<<-EOJS
-        <script type="text/javascript">
-        (function() {
-          $(window).bind('page:load', function() {
-            #{core_js}
-          });
+          };
+          document.addEventListener('page:load', f, true);
         })()
         </script>
         EOJS
@@ -76,13 +68,13 @@ module LazyHighCharts
       end
 
       if defined?(raw)
-        return raw(graph) 
+        return raw(graph)
       else
         return graph
       end
 
     end
-    
+
     private
 
     def generate_json_from_hash hash
@@ -107,7 +99,7 @@ module LazyHighCharts
     def generate_json_from_array array
       array.map{|value| generate_json_from_value(value)}.join(",")
     end
-    
+
   end
 end
 

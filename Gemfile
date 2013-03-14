@@ -6,6 +6,6 @@ gemspec
 group :test, :development do # This causes the plugins to NOT load
   gem 'webrat','~> 0.7'
   gem 'rspec', '~> 2.0'
-  gem 'rails'
+  gem 'rails', "~> 3.0"
   gem 'autotest'
 end

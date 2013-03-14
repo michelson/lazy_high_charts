@@ -1,4 +1,4 @@
-source "http://ruby.taobao.org"
+source "https://rubygems.org"
 
 # Specify your gem's dependencies in lazy_high_charts.gemspec
 gemspec

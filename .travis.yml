@@ -1,0 +1,8 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+
+before_install:
+  - gem update --system
+  - gem --version

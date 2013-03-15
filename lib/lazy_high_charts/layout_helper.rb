@@ -68,13 +68,13 @@ module LazyHighCharts
       end
 
       if defined?(raw)
-        return raw(graph) 
+        return raw(graph)
       else
         return graph
       end
 
     end
-    
+
     private
 
     def generate_json_from_hash hash
@@ -99,7 +99,7 @@ module LazyHighCharts
     def generate_json_from_array array
       array.map{|value| generate_json_from_value(value)}.join(",")
     end
-    
+
   end
 end
 

@@ -1,12 +1,12 @@
 # LazyHighCharts
 
 Easily displaying Highcharts graphs with gem style.
-[![Build Status](https://secure.travis-ci.org/xiaods/lazy_high_charts.png)](http://travis-ci.org/xiaods/lazy_high_charts)
+[![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
 ## Notice
 Current
-[VERSION](https://github.com/xiaods/lazy_high_charts/blob/master/GEM_VERSION)
-[ChangeLog](https://github.com/xiaods/lazy_high_charts/blob/master/CHANGELOG.md)
+[VERSION](https://github.com/michelson/lazy_high_charts/blob/master/GEM_VERSION)
+[ChangeLog](https://github.com/michelson/lazy_high_charts/blob/master/CHANGELOG.md)
 
 ## Installation
 
@@ -18,7 +18,7 @@ To install it, you just need to add it to your Gemfile:
     gem 'lazy_high_charts'
 ```
 
-then run 
+then run
 
 ```bash
 bundle install
@@ -54,6 +54,7 @@ Contributer List:
 Thanks for Troy & David
 ## Maintainers
 * Deshi Xiao [github/xiaods](https://github.com/xiaods)
+* Miguel Michelson [github/michelson](https://github.com/michelson)
 
 ## License
-* Copyright (c) 2011 - 2013 Deshi Xiao,released under the MIT license
+* Copyright (c) 2013 Deshi Xiao - Miguel Michelson Martinez, released under the MIT license

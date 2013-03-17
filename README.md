@@ -1,4 +1,4 @@
-# LazyHighCharts
+# LazyHighCharts - Official gem repository
 
 Easily displaying Highcharts graphs with gem style.
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
@@ -26,17 +26,11 @@ bundle install
 
 to install it.
 
-### Installing it as a plugin for rails 2.3.x or 3.0.x or 3.1.x
+### legacy notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please keep version should be less than 1.3.3.
 
-  Deprecated: version should be less than 1.3.3
+##  Lazy_high_charts User Guide
 
-  script/plugin install git://github.com/michelson/lazy_high_charts.git ##(for rails 2)
-
-  rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
-
-
-##  [Lazy_high_charts User Guide](https://github.com/xiaods/lazy_high_charts/wiki/lazy_high_charts-user-guide)
-
+Todo...Hold on
 
 ## Contributing
 
@@ -47,14 +41,11 @@ We're open to any contribution. It has to be tested properly though.
 * Test your changes. We won't accept any untested contributions (except if they're not testable).
 * Create an [issue](https://github.com/michelson/lazy_high_charts/issues) with a link to your commits.
 
-Contributer List:
-* [Troy Anderson](https://github.com/troya2)
-* [David Biehl](https://github.com/lazylodr)
+Thanks for all [contributers](https://github.com/michelson/lazy_high_charts/contributors)
 
-Thanks for Troy & David
 ## Maintainers
 * Deshi Xiao [github/xiaods](https://github.com/xiaods)
 * Miguel Michelson [github/michelson](https://github.com/michelson)
 
 ## License
-* Copyright (c) 2013 Deshi Xiao - Miguel Michelson Martinez, released under the MIT license
+* Copyright (c) 2013 [Deshi Xiao](http://xiaods.mit-license.org) - Miguel Michelson Martinez, released under the MIT license

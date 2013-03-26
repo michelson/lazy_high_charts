@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), *%w[lazy_high_charts high_chart])
 require File.join(File.dirname(__FILE__), *%w[lazy_high_charts layout_helper])
 if defined?(::Rails::Railtie)
   require File.join(File.dirname(__FILE__), *%w[lazy_high_charts railtie])
-  require File.join(File.dirname(__FILE__), *%w[lazy_high_charts engine]) if ::Rails.version >= '3.1'
+  require File.join(File.dirname(__FILE__), *%w[lazy_high_charts engine]) if ::Rails.version.to_s >= '3.1'
 end
 
 module LazyHighCharts

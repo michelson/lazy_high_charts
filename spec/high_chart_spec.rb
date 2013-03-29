@@ -18,7 +18,16 @@ describe "HighChart" do
   describe "initialization" do
     it "should take an optional 'placeholder' argument" do
       LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
-      LazyHighCharts::HighChart.new.placeholder.should == nil
+      LazyHighCharts::HighChart.new.placeholder.should_not == @placeholder
+    end
+
+    it "shouldn't generate a nil placeholder" do
+      LazyHighCharts::HighChart.new.placeholder.should_not be_nil
+    end
+
+    it "should generate different placeholders for different charts" do
+      a_different_placeholder = LazyHighCharts::HighChart.new.placeholder
+      LazyHighCharts::HighChart.new.placeholder.should_not == a_different_placeholder
     end
 
     it "should take an optional html_options argument (defaulting to 300px height)" do

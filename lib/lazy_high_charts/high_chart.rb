@@ -14,7 +14,7 @@ module LazyHighCharts
         high_chart.options    ||= {}
         high_chart.defaults_options
         high_chart.html_options ||= html_opts
-        high_chart.canvas       = canvas if canvas
+        high_chart.canvas = (canvas ? canvas : random_canvas_id)
         yield high_chart if block_given?
       end
     end
@@ -57,6 +57,12 @@ module LazyHighCharts
     end
 
 private
+
+    def random_canvas_id
+      canvas_id_length = 11
+# Don't use SecureRandom.urlsafe_base64; it gives invalid characters.
+      ('a'..'z').to_a.shuffle.take(canvas_id_length).join
+    end
 
     def series_options
       @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}

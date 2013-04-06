@@ -14,6 +14,11 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files  = [ "README.md", "CHANGELOG.md" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]
+  key = File.expand_path("~/.ssh/gem-private_key.pem")
+  if File.exist?(key)
+    s.signing_key = key
+    s.cert_chain = ["gem-public_cert.pem"]
+  end
 
   s.required_rubygems_version = ">= 1.3"
 

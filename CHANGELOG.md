@@ -1,3 +1,8 @@
+# VERSION 1.4.1
+  * Sat Apr 6, 2013
+    1. support HighCharts 3.0
+    2. support signing gem
+       model.http://blog.meldium.com/home/2013/3/3/signed-rubygems-part
 # VERSION 1.4.0
   * Sun Feb 24, 2013
   1. replace autotest with guard-spec

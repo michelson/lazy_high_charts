@@ -1,6 +1,6 @@
 # LazyHighCharts - Official gem repository
 
-Easily displaying Highcharts graphs with gem style.
+Easily include HighCharts in your project with this gem
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
 ## Notice
@@ -10,7 +10,7 @@ Current
 
 ## Installation
 
-### Installing it by rubygems
+### Installation with rubygems
 
 To install it, you just need to add it to your Gemfile:
 
@@ -26,7 +26,7 @@ bundle install
 
 to install it.
 
-### legacy notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please keep version should be less than 1.3.3.
+### legacy notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
 
 ##  Lazy_high_charts User Guide
 

@@ -27,10 +27,26 @@ module LazyHighCharts
       options_collection =  [ generate_json_from_hash(OptionsKeyFilter.filter(object.options)) ]
       options_collection << %|"series": [#{generate_json_from_array(object.data)}]|
 
-      core_js =<<-EOJS
+     core_js  = <<-EOJS
+        var seriesCounter = 0;
+        var remoteSeriesCounter = 0;
         var options = { #{options_collection.join(',')} };
         #{capture(&block) if block_given?}
-        window.chart_#{placeholder} = new Highcharts.#{type}(options);
+       $.each(options.series, function(i, serie) { if (serie.data.remote!=null) { remoteSeriesCounter++;} });
+       $.each(options.series, function(i, serie) { 
+           if (serie.data.remote!=null){
+             $.get(serie.data.remote,  function(data){
+                 seriesCounter++;
+                 serie.data=data
+                 if (seriesCounter == remoteSeriesCounter) {
+  			    window.chart_#{placeholder} = new Highcharts.#{type}(options);
+			     }
+               })
+             }
+            });
+            if (remoteSeriesCounter==0){
+               window.chart_#{placeholder} = new Highcharts.#{type}(options);
+             }
       EOJS
 
       if defined?(request) && request.respond_to?(:xhr?) && request.xhr?

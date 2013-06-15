@@ -7,11 +7,12 @@ module LazyHighCharts
     # Supply generator for Rails 3.0.x or if asset pipeline is not enabled
     if ::Rails.version < "3.1" || !::Rails.application.config.assets.enabled
       source_root File.expand_path('../../../../../vendor/assets/javascripts', __FILE__)
+
       def copy_highcharts
         say_status("copying", "HighCharts (2.3.3)", :green)
         copy_file "highcharts.js", "public/javascripts/highcharts.js"
         copy_file "exporting.js", "public/javascripts/exporting.js"
-        copy_file "highstock.js","public/javascripts/highstock.js"
+        copy_file "highstock.js", "public/javascripts/highstock.js"
       end
     else
 

@@ -1,15 +1,15 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe HighChartsHelper do  
+describe HighChartsHelper do
   include LazyHighCharts::LayoutHelper
 
   before(:each) do
-    @class       = "stylin"
+    @class = "stylin"
     @placeholder = "placeholder"
-    @chart        = LazyHighCharts::HighChart.new(@placeholder)
-    @data        = "data"
-    @options     = "options"
+    @chart = LazyHighCharts::HighChart.new(@placeholder)
+    @data = "data"
+    @options = "options"
   end
 
   context "layout_helper" do
@@ -60,14 +60,14 @@ describe HighChartsHelper do
 
 
   it "should take a block setting attributes" do
-    chart = LazyHighCharts::HighChart.new {|f|  
-      f.options[:rangeSelector] = {:selected=>1}; 
-      f.series(:type         =>"spline",
-               :name          =>"Historias",
-               :pointInterval =>  (1.day.to_i * 1000) ,
-               :pointStart    =>  (Time.now.to_i * 1000),
-               :data          =>  [0,1,2,3,5,6,0,7]
-              )
+    chart = LazyHighCharts::HighChart.new { |f|
+      f.options[:rangeSelector] = {:selected => 1};
+      f.series(:type => "spline",
+               :name => "Historias",
+               :pointInterval => (1.day.to_i * 1000),
+               :pointStart => (Time.now.to_i * 1000),
+               :data => [0, 1, 2, 3, 5, 6, 0, 7]
+      )
     }
     chart.options[:rangeSelector][:selected].should == 1
     high_chart(@placeholder, chart).should match(/rangeSelector/)
@@ -79,57 +79,57 @@ describe HighChartsHelper do
 
 
   it "should take a block setting attributes" do
-    chart = LazyHighCharts::HighChart.new {|f|  
-      f.others(:foo =>"bar")
+    chart = LazyHighCharts::HighChart.new { |f|
+      f.others(:foo => "bar")
     }
     high_chart(@placeholder, chart).should match(/foo/)
   end
-  
+
   it "should allow js code as attribute" do
-    chart = LazyHighCharts::HighChart.new {|f|  
+    chart = LazyHighCharts::HighChart.new { |f|
       f.options[:foo] = "function () { alert('hello') }".js_code
     }
-  
-    high_chart(@placeholder, chart).should match(/"foo": function \(\) { alert\('hello'\) }/)    
+
+    high_chart(@placeholder, chart).should match(/"foo": function \(\) { alert\('hello'\) }/)
   end
-  
+
   it "should convert keys to proper format" do
-    chart = LazyHighCharts::HighChart.new {|f|  
-      f.options[:foo_bar] = { :bar_foo => "someattrib"}
+    chart = LazyHighCharts::HighChart.new { |f|
+      f.options[:foo_bar] = {:bar_foo => "someattrib"}
     }
-  
+
     high_chart(@placeholder, chart).should match(/fooBar/)
-    high_chart(@placeholder, chart).should match(/barFoo/) 
+    high_chart(@placeholder, chart).should match(/barFoo/)
   end
 
   # issue #62 .js_code setting ignored
   # https://github.com/michelson/lazy_high_charts/issues/62
   it "should allow js code in array && nest attributs" do
-    chart = LazyHighCharts::HighChart.new {|f|
+    chart = LazyHighCharts::HighChart.new { |f|
       f.yAxis([{
-        :labels => {
-                  :formatter => %|function() {return this.value + ' W';}|.js_code
-              }
-      }])
+                   :labels => {
+                       :formatter => %|function() {return this.value + ' W';}|.js_code
+                   }
+               }])
     }
-    high_chart(@placeholder,chart).should match(/"formatter": function\(\) {return this.value \+ ' W';}/)
+    high_chart(@placeholder, chart).should match(/"formatter": function\(\) {return this.value \+ ' W';}/)
   end
 
   it "should support js_code in Individual data label for each point" do
-    chart = LazyHighCharts::HighChart.new {|f|
-       f.series(
-         :data => [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, {
-         :dataLabels => {:enabled => true,
-                         :align => 'left',
-                         :x => 10,
-                         :y => 4, 
-                         :style => {:fontWeight => 'bold'},
-                         :formatter => "function() { return this.x; }".js_code
-                        },
-        :y => 54.4}
-        ])
+    chart = LazyHighCharts::HighChart.new { |f|
+      f.series(
+          :data => [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, {
+              :dataLabels => {:enabled => true,
+                              :align => 'left',
+                              :x => 10,
+                              :y => 4,
+                              :style => {:fontWeight => 'bold'},
+                              :formatter => "function() { return this.x; }".js_code
+              },
+              :y => 54.4}
+          ])
     }
-    high_chart(@placeholder,chart).should match(/"formatter": function\(\) {\ return this.x;\ }/)
+    high_chart(@placeholder, chart).should match(/"formatter": function\(\) {\ return this.x;\ }/)
   end
 
 end

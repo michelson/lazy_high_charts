@@ -17,7 +17,7 @@ require 'webrat'
 require 'rspec'
 
 RSpec.configure do |config|
-  config.include ActionView::Helpers  
+  config.include ActionView::Helpers
   config.include Webrat::Matchers
 end
 

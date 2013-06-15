@@ -3,15 +3,15 @@ module LazyHighCharts
     SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
 
     attr_accessor :data, :options, :placeholder, :html_options
-    alias  :canvas :placeholder
-    alias  :canvas= :placeholder=
+    alias :canvas :placeholder
+    alias :canvas= :placeholder=
 
     def initialize(canvas = nil, html_opts = {})
 
       @collection_filter = nil
       self.tap do |high_chart|
-        high_chart.data       ||= []
-        high_chart.options    ||= {}
+        high_chart.data ||= []
+        high_chart.options ||= {}
         high_chart.defaults_options
         high_chart.html_options ||= html_opts
         high_chart.canvas = (canvas ? canvas : random_canvas_id)
@@ -21,14 +21,14 @@ module LazyHighCharts
 
     #	title:		legend: 		xAxis: 		yAxis: 		tooltip: 	credits:  :plotOptions
     def defaults_options
-      self.title({ :text=> nil })
-      self.legend({ :layout=>"vertical", :style=>{} })
+      self.title({:text => nil})
+      self.legend({:layout => "vertical", :style => {}})
       self.xAxis({})
-      self.yAxis({ :title=> {:text=> nil}, :labels=>{} })
-      self.tooltip({ :enabled=>true })
-      self.credits({ :enabled => false})
-      self.plotOptions({ :areaspline => { } })
-      self.chart({ :defaultSeriesType=>"line" , :renderTo => nil})
+      self.yAxis({:title => {:text => nil}, :labels => {}})
+      self.tooltip({:enabled => true})
+      self.credits({:enabled => false})
+      self.plotOptions({:areaspline => {}})
+      self.chart({:defaultSeriesType => "line", :renderTo => nil})
       self.subtitle({})
     end
 
@@ -56,7 +56,7 @@ module LazyHighCharts
       end
     end
 
-private
+    private
 
     def random_canvas_id
       canvas_id_length = 11
@@ -65,19 +65,19 @@ private
     end
 
     def series_options
-      @options.reject {|k,v| SERIES_OPTIONS.include?(k.to_s) == false}
+      @options.reject { |k, v| SERIES_OPTIONS.include?(k.to_s) == false }
     end
 
     def merge_options(name, opts)
-      @options.merge!  name => opts
+      @options.merge! name => opts
     end
 
     def deep_merge_options(name, opts)
-      @options.deep_merge!  name => opts
+      @options.deep_merge! name => opts
     end
 
     def arguments_to_options(args)
-      if args.blank? 
+      if args.blank?
         {:show => true}
       elsif args.is_a? Array
         args.first

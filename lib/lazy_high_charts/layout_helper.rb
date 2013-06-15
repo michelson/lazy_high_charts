@@ -3,16 +3,16 @@
 module LazyHighCharts
   module LayoutHelper
 
-    def high_chart(placeholder, object  , &block)
-      object.html_options.merge!({:id=>placeholder})
+    def high_chart(placeholder, object, &block)
+      object.html_options.merge!({:id => placeholder})
       object.options[:chart][:renderTo] = placeholder
-      high_graph(placeholder,object , &block).concat(content_tag("div","", object.html_options))
+      high_graph(placeholder, object, &block).concat(content_tag("div", "", object.html_options))
     end
 
-    def high_stock(placeholder, object  , &block)
-      object.html_options.merge!({:id=>placeholder})
+    def high_stock(placeholder, object, &block)
+      object.html_options.merge!({:id => placeholder})
       object.options[:chart][:renderTo] = placeholder
-      high_graph_stock(placeholder,object , &block).concat(content_tag("div","", object.html_options))
+      high_graph_stock(placeholder, object, &block).concat(content_tag("div", "", object.html_options))
     end
 
     def high_graph(placeholder, object, &block)
@@ -24,7 +24,7 @@ module LazyHighCharts
     end
 
     def build_html_output(type, placeholder, object, &block)
-      options_collection =  [ generate_json_from_hash(OptionsKeyFilter.filter(object.options)) ]
+      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
       options_collection << %|"series": [#{generate_json_from_array(object.data)}]|
 
       core_js =<<-EOJS
@@ -97,7 +97,7 @@ module LazyHighCharts
     end
 
     def generate_json_from_array array
-      array.map{|value| generate_json_from_value(value)}.join(",")
+      array.map { |value| generate_json_from_value(value) }.join(",")
     end
 
   end

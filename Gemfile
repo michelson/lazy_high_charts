@@ -9,4 +9,5 @@ group :test, :development do # This causes the plugins to NOT load
   gem 'rails', '>= 3.2'
   gem 'guard-rspec'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'debugger'
 end

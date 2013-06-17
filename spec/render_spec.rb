@@ -13,7 +13,7 @@ describe 'Render' do
   end
 
   it 'renders a temp file given an high chart object' do
-    image_path = LazyHighCharts::Render.render(chart)
+    image_path = LazyHighCharts::Render.render(chart, width: 500)
     File.exists?(image_path).should be_true
     File.size(image_path).should be > 0
   end

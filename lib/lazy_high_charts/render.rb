@@ -7,11 +7,11 @@ module LazyHighCharts
 
       # Uses phantomjs to render the chart on the server and deliver the image in the form of a tempfile.
       # @param [HighChart] high_chart
+      # @param [Hash] options
       # @return [String] path to the chart object
       #
       def render(high_chart, options = {})
         options = options.select {|key, value| RENDER_OPTIONS.include?(key.to_s) }
-        options[:constr] ||= 'Chart'
         begin
           infile = Tempfile.new('options')
           infile.write(high_chart.full_options.to_json)

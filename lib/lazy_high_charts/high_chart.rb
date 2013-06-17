@@ -56,11 +56,16 @@ module LazyHighCharts
       end
     end
 
+    # Returns the full set of options relevant to the chart.
+    def full_options
+      self.options.merge({series: self.data})
+    end
+
     private
 
     def random_canvas_id
       canvas_id_length = 11
-# Don't use SecureRandom.urlsafe_base64; it gives invalid characters.
+      # Don't use SecureRandom.urlsafe_base64; it gives invalid characters.
       ('a'..'z').to_a.shuffle.take(canvas_id_length).join
     end
 

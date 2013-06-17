@@ -13,7 +13,6 @@ module LazyHighCharts
           options.write(high_chart.full_options.to_json)
           options.rewind
           chart = Tempfile.new(%w(chart .png))
-          chart.binmode
           silence_stream(STDOUT) do
             system "phantomjs vendor/assets/javascripts/highcharts-convert.js -infile #{options.path} -outfile #{chart.path} -constr Chart"
           end

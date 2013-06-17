@@ -14,7 +14,9 @@ module LazyHighCharts
           options.rewind
           chart = Tempfile.new(%w(chart .png))
           silence_stream(STDOUT) do
-            system "phantomjs vendor/assets/javascripts/highcharts-convert.js -infile #{options.path} -outfile #{chart.path} -constr Chart"
+            current_path = Dir.pwd
+            system "cd #{LazyHighCharts.root}; phantomjs vendor/assets/javascripts/highcharts-convert.js -infile #{options.path} -outfile #{chart.path} -constr Chart"
+            system "cd #{current_path}"
           end
           chart.path
         ensure

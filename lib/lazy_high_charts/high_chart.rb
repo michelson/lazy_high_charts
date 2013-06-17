@@ -57,6 +57,7 @@ module LazyHighCharts
     end
 
     # Returns the full set of options relevant to the chart.
+    # @return [Hash] options
     def full_options
       self.options.merge({series: self.data})
     end

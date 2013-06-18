@@ -1,5 +1,10 @@
+
+require 'lazy_high_charts/layout_helper'
+
 module LazyHighCharts
   class HighChart
+    include LayoutHelper
+
     SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
 
     attr_accessor :data, :options, :placeholder, :html_options
@@ -56,10 +61,16 @@ module LazyHighCharts
       end
     end
 
-    # Returns the full set of options relevant to the chart.
-    # @return [Hash] options
+    # Pre-processes and returns full set of options relevant to the chart. Identical to what happens in the high_charts
+    # view helper.
+    #
+    # @return [Hash] options JSON options hash
     def full_options
-      self.options.merge({series: self.data})
+      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(self.options))]
+      options_collection << %|"series": [#{generate_json_from_array(self.data)}]|
+      <<-EOJS
+      { #{options_collection.join(', ')} }
+      EOJS
     end
 
     private

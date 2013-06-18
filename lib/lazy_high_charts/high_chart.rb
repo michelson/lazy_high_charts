@@ -1,6 +1,4 @@
 
-require 'lazy_high_charts/layout_helper'
-
 module LazyHighCharts
   class HighChart
     include LayoutHelper

@@ -7,16 +7,17 @@ module LazyHighCharts
 
       # Uses phantomjs to render the chart on the server and deliver the image in the form of a tempfile.
       # @param [HighChart] high_chart
+      # @param [String] chart_format Resultant chart's image format
       # @param [Hash] options
       # @return [String] path to the chart object
       #
-      def render(high_chart, options = {})
+      def render(high_chart, chart_format = '.png', options = {})
         options = options.select {|key, value| RENDER_OPTIONS.include?(key.to_s) }
         begin
           infile = Tempfile.new('options')
           infile.write(high_chart.full_options)
           infile.rewind
-          outfile = Tempfile.new(%w(chart .png))
+          outfile = Tempfile.new(%W(chart #{chart_format}))
           system_call = "phantomjs #{LazyHighCharts.root}/vendor/assets/javascripts/highcharts-convert.js -infile #{infile.path} -outfile #{outfile.path}"
           RENDER_OPTIONS.each do |key|
             system_call += " -#{key} #{options[key.to_sym]}" unless options[key.to_sym].blank?
@@ -24,7 +25,7 @@ module LazyHighCharts
           silence_stream(STDOUT) do
             system system_call
           end
-          outfile.path
+          outfile
         ensure
           infile.close
           infile.unlink

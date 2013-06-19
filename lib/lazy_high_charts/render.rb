@@ -14,7 +14,7 @@ module LazyHighCharts
         options = options.select {|key, value| RENDER_OPTIONS.include?(key.to_s) }
         begin
           infile = Tempfile.new('options')
-          infile.write(high_chart.full_options.to_json)
+          infile.write(high_chart.full_options)
           infile.rewind
           outfile = Tempfile.new(%w(chart .png))
           system_call = "phantomjs #{LazyHighCharts.root}/vendor/assets/javascripts/highcharts-convert.js -infile #{infile.path} -outfile #{outfile.path}"

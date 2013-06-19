@@ -1,3 +1,10 @@
+# VERSION 1.4.3.beta1
+  * June 20,2013
+    1. Formatting all files
+
+# VERSION 1.4.2
+  * April 17, 2013
+    1. bump new version to release
 # VERSION 1.4.1
   * Sat Apr 6, 2013
     1. support HighCharts 3.0

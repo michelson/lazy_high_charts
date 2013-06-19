@@ -12,10 +12,16 @@ describe 'Render' do
     end
   end
 
-  it 'renders a temp file given an high chart object' do
-    image_path = LazyHighCharts::Render.render(chart, width: 500)
-    File.exists?(image_path).should be_true
-    File.size(image_path).should be > 0
+  it 'renders and returns a Tempfile object given a Highcharts object' do
+    image = LazyHighCharts::Render.render(chart, 'png', width: 500)
+    File.exists?(image).should be_true
+    File.size(image).should be > 0
   end
-
+  
+  it 'renders chart types other than .png' do
+    svg_image = LazyHighCharts::Render.render(chart, 'svg')
+    File.exists?(svg_image).should be_true
+    File.size(svg_image).should be > 0
+    svg_image.path.should match /.svg/
+  end
 end

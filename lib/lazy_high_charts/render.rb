@@ -6,7 +6,7 @@ module LazyHighCharts
 
     class << self
 
-      # Uses PhantomJS to render the chart on the server and deliver the image in the form of a tempfile.
+      # Uses PhantomJS to render the chart on the server and return it in a Tempfile.
       #
       # @param [HighChart] high_chart HighCharts object
       # @param [String] chart_format Resultant chart's image format

@@ -138,9 +138,13 @@ describe "HighChart" do
         f.series(name: 'Jane', data: [140.02, 41.63, 66.72, 113.21, 107.98, 105.71, 28.59, 114.23, 5.56, 93.71, 137.35, 93.16])
         f.title({text: 'Example Data'})
         f.xAxis(categories: %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec), labels: {rotation: -45, align: 'right'})
+        f.options[:tooltip][:formatter] = "function(){ return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %'; }"
       end
-      chart.full_options[:series].should be_present
-      chart.full_options[:title].should be_present
+
+      json = chart.full_options
+      json.should match /\"series\"/
+      json.should match /\"title\"/
+      json.should match /\"tooltip\": { \"enabled\": true,\"formatter\"/
     end
 
   end

@@ -1,5 +1,5 @@
 /**
- * @license Highcharts JS v3.0.1 (2013-04-09)
+ * @license Highcharts JS v3.0.2 (2013-06-05)
  * Exporting module
  *
  * (c) 2010-2013 Torstein Hønsi
@@ -243,8 +243,7 @@ extend(Chart.prototype, {
 			height: sourceHeight
 		});
 		options.exporting.enabled = false; // hide buttons in print
-		options.chart.plotBackgroundImage = null; // the converter doesn't handle images
-
+		
 		// prepare for replicating the chart
 		options.series = [];
 		each(chart.series, function (serie) {
@@ -310,7 +309,7 @@ extend(Chart.prototype, {
 			.replace(/width=([^" ]+)/g, 'width="$1"')
 			.replace(/hc-svg-href="([^"]+)">/g, 'xlink:href="$1"/>')
 			.replace(/id=([^" >]+)/g, 'id="$1"')
-			.replace(/class=([^" ]+)/g, 'class="$1"')
+			.replace(/class=([^" >]+)/g, 'class="$1"')
 			.replace(/ transform /g, ' ')
 			.replace(/:(path|rect)/g, '$1')
 			.replace(/style="([^"]+)"/g, function (s) {
@@ -339,11 +338,11 @@ extend(Chart.prototype, {
 			chartExportingOptions = chart.options.exporting,
 			svg = chart.getSVG(merge(
 				{ chart: { borderRadius: 0 } },
-				chartExportingOptions,
+				chartExportingOptions.chartOptions,
 				chartOptions, 
 				{
 					exporting: {
-						sourceWidth: options.sourceWidth || chartExportingOptions.sourceWidth, // docs: option and parameter in exportChart()
+						sourceWidth: options.sourceWidth || chartExportingOptions.sourceWidth, // docs: option and parameter in exportChart()
 						sourceHeight: options.sourceHeight || chartExportingOptions.sourceHeight // docs
 					}
 				}
@@ -465,6 +464,7 @@ extend(Chart.prototype, {
 				if (button) {
 					button.setState(0);
 				}
+				chart.openMenu = false;
 			};
 
 			// Hide the menu some time after mouse leave (#1357)
@@ -526,6 +526,7 @@ extend(Chart.prototype, {
 		}
 
 		css(menu, menuStyle);
+		chart.openMenu = true;
 	},
 
 	/**
@@ -645,9 +646,12 @@ extend(Chart.prototype, {
 		// Destroy the extra buttons added
 		for (i = 0; i < chart.exportSVGElements.length; i++) {
 			elem = chart.exportSVGElements[i];
+			
 			// Destroy and null the svg/vml elements
-			elem.onclick = elem.ontouchstart = null;
-			chart.exportSVGElements[i] = elem.destroy();
+			if (elem) { // #1822
+				elem.onclick = elem.ontouchstart = null;
+				chart.exportSVGElements[i] = elem.destroy();
+			}
 		}
 
 		// Destroy the divs for the menu

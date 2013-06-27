@@ -89,7 +89,7 @@ describe "HighChart" do
         f.series(:name => 'John', :data => [3, 20])
         f.series(:name => 'Jane', :data => [1, 3])
         f.title({:text => nil})
-        # without overriding 
+        # without overriding
         f.xAxis(:categories => ["uno", "dos", "tres", "cuatro"], :labels => {:rotation => -45, :align => 'right'})
         f.chart({:defaultSeriesType => "spline", :renderTo => "myRenderArea", :inverted => true})
       end
@@ -130,6 +130,21 @@ describe "HighChart" do
       end
       chart.options[:xAxis][:categories].should == [3, 5, 7]
       chart.options[:xAxis][:title][:text].should == 'x title'
+    end
+
+    it 'should merge options and data into a full options hash' do
+      chart = LazyHighCharts::HighChart.new('graph') do |f|
+        f.series(name: 'John', data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+        f.series(name: 'Jane', data: [140.02, 41.63, 66.72, 113.21, 107.98, 105.71, 28.59, 114.23, 5.56, 93.71, 137.35, 93.16])
+        f.title({text: 'Example Data'})
+        f.xAxis(categories: %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec), labels: {rotation: -45, align: 'right'})
+        f.options[:tooltip][:formatter] = "function(){ return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %'; }"
+      end
+
+      json = chart.full_options
+      json.should match /\"series\"/
+      json.should match /\"title\"/
+      json.should match /\"tooltip\": { \"enabled\": true,\"formatter\"/
     end
 
   end

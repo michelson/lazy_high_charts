@@ -1,5 +1,8 @@
+
 module LazyHighCharts
   class HighChart
+    include LayoutHelper
+
     SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
 
     attr_accessor :data, :options, :placeholder, :html_options
@@ -56,11 +59,23 @@ module LazyHighCharts
       end
     end
 
+    # Pre-processes and returns full set of options relevant to the chart. Identical to what happens in the high_charts
+    # view helper.
+    #
+    # @return [Hash] options JSON options hash
+    def full_options
+      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(self.options))]
+      options_collection << %|"series": [#{generate_json_from_array(self.data)}]|
+      <<-EOJS
+      { #{options_collection.join(', ')} }
+      EOJS
+    end
+
     private
 
     def random_canvas_id
       canvas_id_length = 11
-# Don't use SecureRandom.urlsafe_base64; it gives invalid characters.
+      # Don't use SecureRandom.urlsafe_base64; it gives invalid characters.
       ('a'..'z').to_a.shuffle.take(canvas_id_length).join
     end
 

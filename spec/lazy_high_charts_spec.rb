@@ -60,7 +60,7 @@ describe HighChartsHelper do
       it "should underscore chart_ variable" do
         high_chart("place-holder", @chart).should match(/window.chart_place_holder\s=/)
         high_chart("PlaceHolder",  @chart).should match(/window.chart_place_holder\s=/)
-      ends
+      end
     end
   end
 

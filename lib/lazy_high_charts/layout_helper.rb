@@ -30,7 +30,7 @@ module LazyHighCharts
       core_js =<<-EOJS
         var options = { #{options_collection.join(',')} };
         #{capture(&block) if block_given?}
-        window.chart_#{placeholder} = new Highcharts.#{type}(options);
+        window.chart_#{placeholder.gsub('-','_')} = new Highcharts.#{type}(options);
       EOJS
 
       if defined?(request) && request.respond_to?(:xhr?) && request.xhr?

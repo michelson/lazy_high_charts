@@ -26,11 +26,11 @@ bundle install
 
 to install it.
 
-### legacy notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
+### Deprecation notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
 
 ##  Lazy_high_charts User Guide
 
-Todo...Hold on
+See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 
 ## Contributing
 

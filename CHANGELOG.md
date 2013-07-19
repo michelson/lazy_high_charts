@@ -1,6 +1,8 @@
-# VERSION 1.4.3.beta1
-  * June 20,2013
+# VERSION 1.4.3
+  * Sat Jul 20, 2013
     1. Formatting all files
+    2. change js update methods to rake, use rake highcharts:update to fetch
+       upstream js files.
 
 # VERSION 1.4.2
   * April 17, 2013

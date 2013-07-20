@@ -4,6 +4,8 @@ Easily include HighCharts in your project with this gem
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
 ## Notice
+[![Gem
+Version](https://badge.fury.io/rb/lazy_high_charts.png)](http://badge.fury.io/rb/lazy_high_charts)
 Current
 [VERSION](https://github.com/michelson/lazy_high_charts/blob/master/GEM_VERSION)
 [ChangeLog](https://github.com/michelson/lazy_high_charts/blob/master/CHANGELOG.md)

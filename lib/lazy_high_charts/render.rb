@@ -20,7 +20,7 @@ module LazyHighCharts
           infile.write(high_chart.full_options)
           infile.rewind
           outfile = Tempfile.new(%W(chart .#{chart_format}))
-          system_call = "phantomjs #{LazyHighCharts.root}/vendor/assets/javascripts/highcharts-convert.js -infile #{infile.path} -outfile #{outfile.path}"
+          system_call = "phantomjs #{LazyHighCharts.root}/vendor/assets/javascripts/highcharts/highcharts-convert.js -infile #{infile.path} -outfile #{outfile.path}"
           RENDER_OPTIONS.each do |key|
             system_call += " -#{key} #{options[key.to_sym]}" unless options[key.to_sym].blank?
           end

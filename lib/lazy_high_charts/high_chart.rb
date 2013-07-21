@@ -11,7 +11,6 @@ module LazyHighCharts
 
     def initialize(canvas = nil, html_opts = {})
 
-      @collection_filter = nil
       self.tap do |high_chart|
         high_chart.series_data ||= []
         high_chart.options ||= {}

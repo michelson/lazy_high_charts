@@ -48,12 +48,12 @@ describe "HighChart" do
     end
 
     it "should set data empty by default" do
-      LazyHighCharts::HighChart.new.data.should == []
+      LazyHighCharts::HighChart.new.series_data.should == []
     end
 
     it "should take a block setting attributes" do
-      chart = LazyHighCharts::HighChart.new { |f| f.data = @data; f.options = @options }
-      chart.data.should == @data
+      chart = LazyHighCharts::HighChart.new { |f| f.series_data = @data; f.options = @options }
+      chart.series_data.should == @data
       chart.options.should == @options
     end
 
@@ -77,7 +77,7 @@ describe "HighChart" do
         f.options[:legend][:layout] = "horizontal"
         f.options[:xAxis][:categories] = ["uno", "dos", "tres", "cuatro"]
       end
-      chart.data.should == [{:name => "John", :data => [3, 20]}, {:name => "Jane", :data => [1, 3]}]
+      chart.series_data.should == [{:name => "John", :data => [3, 20]}, {:name => "Jane", :data => [1, 3]}]
       chart.options[:legend][:layout].should == "horizontal"
       chart.options[:xAxis][:categories].should == ["uno", "dos", "tres", "cuatro"]
       chart.options[:chart][:defaultSeriesType].should == "area"

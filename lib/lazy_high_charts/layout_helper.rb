@@ -25,7 +25,7 @@ module LazyHighCharts
 
     def build_html_output(type, placeholder, object, &block)
       options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
-      options_collection << %|"series": [#{generate_json_from_array(object.data)}]|
+      options_collection << %|"series": [#{generate_json_from_array(object.series_data)}]|
 
       core_js =<<-EOJS
         var options = { #{options_collection.join(',')} };

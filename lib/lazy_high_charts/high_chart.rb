@@ -5,7 +5,7 @@ module LazyHighCharts
 
     SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
 
-    attr_accessor :data, :options, :placeholder, :html_options
+    attr_accessor :series_data, :options, :placeholder, :html_options
     alias :canvas :placeholder
     alias :canvas= :placeholder=
 
@@ -13,7 +13,7 @@ module LazyHighCharts
 
       @collection_filter = nil
       self.tap do |high_chart|
-        high_chart.data ||= []
+        high_chart.series_data ||= []
         high_chart.options ||= {}
         high_chart.defaults_options
         high_chart.html_options ||= html_opts
@@ -53,9 +53,8 @@ module LazyHighCharts
     #   @high_chart.series :name=>'Updated', :data=>data
     #   @high_chart.series :name=>'Updated', :data=>[5, 1, 6, 1, 5, 4, 9]
     def series(opts = {})
-      @data ||= []
       if not opts.empty?
-        @data << OptionsKeyFilter.filter(opts.merge(:name => opts[:name], :data => opts[:data]))
+        @series_data << OptionsKeyFilter.filter(opts.merge(:name => opts[:name], :data => opts[:data]))
       end
     end
 

@@ -3,7 +3,7 @@ module LazyHighCharts
   class HighChart
     include LayoutHelper
 
-    SERIES_OPTIONS = %w(data dataParser dataURL index legendIndex name stack type xAxis yAxis)
+    SERIES_OPTIONS = %w(data index legendIndex name stack type xAxis yAxis)
 
     attr_accessor :series_data, :options, :placeholder, :html_options
     alias :canvas :placeholder

@@ -1,3 +1,7 @@
+# VERSION 1.5.0.beta1
+  * Sun Jul 21, 2013
+    1. change chart.data to chart.series_data
+    2. remove Deprecated api options: dataParser, dataURL
 # VERSION 1.4.3
   * Sat Jul 20, 2013
     1. Formatting all files

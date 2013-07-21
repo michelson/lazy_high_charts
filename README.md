@@ -19,6 +19,10 @@ To install it, you just need to add it to your Gemfile:
 ```ruby
     gem 'lazy_high_charts'
 ```
+edage version on trial
+```ruby
+    gem 'lazy_high_charts' --pre
+```
 
 then run
 

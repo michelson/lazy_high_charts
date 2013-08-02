@@ -1,5 +1,5 @@
 /*
- Highstock JS v1.3.2 (2013-06-05)
+ Highstock JS v1.3.4 (2013-08-02)
  Prototype adapter
 
  @author Michael Nelson, Torstein Hønsi.

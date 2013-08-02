@@ -1,5 +1,5 @@
 /*
- Highcharts JS v3.0.2 (2013-06-05)
+ Highcharts JS v3.0.4 (2013-08-02)
  Prototype adapter
 
  @author Michael Nelson, Torstein Hønsi.

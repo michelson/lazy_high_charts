@@ -38,6 +38,8 @@ to install it.
 
 See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 
+[Demo Project](https://github.com/xiaods/highcharts-bootstrap)
+
 ## Contributing
 
 We're open to any contribution. It has to be tested properly though.

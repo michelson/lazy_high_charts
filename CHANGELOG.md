@@ -1,4 +1,4 @@
-# VERSION 1.5.0.beta1
+# VERSION 1.5.0
   * Sun Jul 21, 2013
     1. change chart.data to chart.series_data
     2. remove Deprecated api options: dataParser, dataURL

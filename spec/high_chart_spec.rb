@@ -67,6 +67,13 @@ describe "HighChart" do
       chart.options[:range_selector][:selected].should == 1
     end
 
+    it "should accept a proc as data" do
+      chart = LazyHighCharts::HighChart.new { |f|
+        f.series(:name=>'John', :data=> Proc.new { [3, 20] })
+      }
+      chart.data.should ==  [{:name=>"John", :data=>[3, 20]}]
+    end
+
     it "should change a block data without overriding options" do
       chart = LazyHighCharts::HighChart.new('graph') do |f|
         f.series(:name => 'John', :data => [3, 20])

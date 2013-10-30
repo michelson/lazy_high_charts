@@ -19,6 +19,8 @@ module LazyHighCharts
 
     def self.filter options
       new_options = options.map do |k, v|
+        v = v.call if v.is_a? ::Proc
+
         if v.is_a? ::Hash
           v = filter v
         else

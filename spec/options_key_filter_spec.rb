@@ -6,11 +6,6 @@ describe LazyHighCharts::OptionsKeyFilter do
     hash[:pointInterval].should == 1000
   end
 
-  it "should allow procs for values" do
-    hash = LazyHighCharts::OptionsKeyFilter.filter(something: Proc.new { 1000 })
-    hash[:something].should == 1000
-  end
-
   describe "filters :pointStart from a Date to a JavaScript compatible string" do
     before(:each) do
       hash = LazyHighCharts::OptionsKeyFilter.filter(pointStart: Date.new(2012, 9, 13))

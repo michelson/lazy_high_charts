@@ -39,6 +39,10 @@ module LazyHighCharts
     #
     # For instance: <tt>high_chart.grid(:color => "#699")</tt>
     def method_missing(meth, opts = {})
+      if meth.to_s == 'to_ary'
+        super
+      end
+
       if meth.to_s.end_with? '!'
         deep_merge_options meth[0..-2].to_sym, opts
       else

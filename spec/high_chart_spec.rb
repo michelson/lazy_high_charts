@@ -149,4 +149,11 @@ describe "HighChart" do
 
   end
 
+  describe '#to_ary' do
+    subject { LazyHighCharts::HighChart.new }
+
+    it 'raises NoMethodError' do
+      expect { subject.to_ary }.to raise_error(NoMethodError)
+    end
+  end
 end

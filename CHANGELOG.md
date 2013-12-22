@@ -1,3 +1,7 @@
+# VERSION 1.5.1
+  * Sun Dec 22, 2013
+    1. Share highcharts:update rake task for gem and rails host app 
+
 # VERSION 1.5.0
   * Sun Jul 21, 2013
     1. change chart.data to chart.series_data

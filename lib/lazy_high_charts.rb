@@ -1,6 +1,6 @@
 require 'action_view'
 include ActionView::Helpers::TagHelper
-require 'active_support/core_ext'
+require 'json'
 
 require File.join(File.dirname(__FILE__), *%w[lazy_high_charts core_ext string])
 require File.join(File.dirname(__FILE__), *%w[lazy_high_charts options_key_filter])

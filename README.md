@@ -1,16 +1,24 @@
 # LazyHighCharts
 
-Easily include HighCharts in your project with this gem
+This gem provides a simple and extremely flexible way to use HighCharts from ruby code.
+Tested on Ruby on Rails, Sinatra and Nanoc, but it should work with others too.
 
-Tested on RubyonRails, Sinatra, Nanoc
 
-## Notice
-[![Gem
-Version](https://badge.fury.io/rb/lazy_high_charts.png)](http://badge.fury.io/rb/lazy_high_charts)
-Current
+[![Build Status](https://travis-ci.org/michelson/lazy_high_charts.png?branch=master)](http://travis-ci.org/michelson/lazy_high_charts)
+[![Code Climate](https://codeclimate.com/github/michelson/lazy_high_charts.png)](https://codeclimate.com/github/michelson/lazy_high_charts)
+
 [VERSION](https://github.com/michelson/lazy_high_charts/blob/master/GEM_VERSION)
 [ChangeLog](https://github.com/michelson/lazy_high_charts/blob/master/CHANGELOG.md)
-[![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
+
+## Information
+
+* RDoc documentation [available on RubyDoc.info](http://rubydoc.info/gems/lazy_high_charts/frames)
+* Source code [available on GitHub](http://github.com/michelson/lazy_high_charts)
+* More information, known limitations, and how-tos [available on the wiki](https://github.com/michelson/lazy_high_charts/wiki)
+
+## Getting Help
+
+* Please report bugs on the [issue tracker](http://github.com/michelson/lazy_high_charts/issues) but read the "getting help" section in the wiki first.
 
 ## Installation
 
@@ -36,8 +44,6 @@ to install it.
 
 ## Usage:
 
-Chart declaration DSL:
-
 ### Controller code:
 ```ruby
 @chart2 = LazyHighCharts::HighChart.new('graph') do |f|
@@ -61,17 +67,6 @@ end
 <%= high_chart("my_id4", @chart4) %>
 ```
 
-##  Lazy high charts User Guide:
-
-* [[Link Text|Combination Chart]]
-* [[Link Text|Multiple Axes]]
-* [[Link Text|Pie Chart]]
-* [[Link Text|Stacked Columns]]
-* [[Link Text|Clickable bar chart]]
-* [[Link Text|Using HighStock]]
-
-See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
-
 ###Demo projects:
 
 [Nanoc App](spec/dummy_nanoc/README.md)
@@ -89,7 +84,9 @@ See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 
   And HC will be copied to your vendor/assets directory on your app
 
-### Deprecation notice: if you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
+### Deprecation notice: 
+
+If you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
 
 ## Contributing
 

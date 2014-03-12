@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>A Brand New nanoc Site - Home</title>
+<link rel="stylesheet" href="style.css">
+<!-- you don't need to keep this, but it's cool for stats! --><meta name="generator" content="nanoc 3.6.7">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <div id="main">
+      <h1>A Brand New nanoc Site with a HighChart</h1>
+
+        <script type="text/javascript">
+        (function() {
+          var onload = window.onload;
+          window.onload = function(){
+            if (typeof onload == "function") onload();
+                    var options = { "title": { "text": "Combination chart" },"legend": { "layout": "vertical","style": {  } },"xAxis": { "categories": [ "Apples","Oranges","Pears","Bananas","Plums" ] },"yAxis": { "title": { "text": null },"labels": {  } },"tooltip": { "enabled": true },"credits": { "enabled": false },"plotOptions": { "areaspline": {  } },"chart": { "defaultSeriesType": "line","renderTo": "some_id" },"subtitle": {  },"labels": { "items": [ { "html": "Total fruit consumption","style": { "left": "40px","top": "8px","color": "black" } } ] },"series": [{ "type": "column","name": "Jane","data": [ 3,2,1,3,4 ] },{ "type": "column","name": "John","data": [ 2,3,5,7,6 ] },{ "type": "column","name": "Joe","data": [ 4,3,3,9,0 ] },{ "type": "spline","name": "Average","data": [ 3,2.67,3,6.33,3.33 ] },{ "type": "pie","name": "Total consumption","data": [ { "name": "Jane","y": 13,"color": "red" },{ "name": "John","y": 23,"color": "green" },{ "name": "Joe","y": 19,"color": "blue" } ],"center": [ 100,80 ],"size": 100,"showInLegend": false }] };
+        
+        window.chart_some_id = new Highcharts.Chart(options);
+
+          };
+        })()
+        </script><div id="some_id"></div>
+    </div>
+    <div id="sidebar">
+      <h2>Documentation</h2>
+      <ul>
+<li><a href="http://nanoc.ws/docs/">Documentation</a></li>
+        <li><a href="http://nanoc.ws/docs/tutorial/">Getting Started</a></li>
+      </ul>
+<h2>Community</h2>
+      <ul>
+<li><a href="http://groups.google.com/group/nanoc/">Discussion Group</a></li>
+        <li><a href="irc://chat.freenode.net/#nanoc">IRC Channel</a></li>
+        <li><a href="http://github.com/nanoc/nanoc/wiki/">Wiki</a></li>
+      </ul>
+</div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-Ruby on Rails lazy high charts example
+Sinatra lazy high charts example
 ==============================
 
 
@@ -6,4 +6,4 @@ A very simple proof-of-concept of using [lazy_high_charts](https://github.com/mi
 
 ## USAGE:
 
-    bundle exec rails s
+    bundle exec ruby app.rb

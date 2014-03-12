@@ -72,8 +72,13 @@ end
 
 See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 
-[Demo Project](https://github.com/xiaods/highcharts-bootstrap)
+###Demo projects:
 
+[Nanoc App](spec/dummy_nanoc/README.md)
+
+[Rails App](spec/dummy_rails/README.md)
+
+[Sinatra App](spec/dummy_sinatra/README.md)
 
 
 ### Update to latest js library. Aditional command line

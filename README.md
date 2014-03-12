@@ -63,12 +63,12 @@ end
 
 ##  Lazy high charts User Guide:
 
-* [[Link Combination Chart]]
-* [[Link Multiple Axes]]
-* [[Link Pie Chart]]
-* [[Link Stacked Columns]]
-* [[Link Clickable bar chart]]
-* [[Link Using HighStock]]
+* [[Link Text|Combination Chart]]
+* [[Link Text|Multiple Axes]]
+* [[Link Text|Pie Chart]]
+* [[Link Text|Stacked Columns]]
+* [[Link Text|Clickable bar chart]]
+* [[Link Text|Using HighStock]]
 
 See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 

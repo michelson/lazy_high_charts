@@ -1,7 +1,8 @@
-# LazyHighCharts - Official gem repository
+# LazyHighCharts
 
 Easily include HighCharts in your project with this gem
-[![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
+
+Tested on RubyonRails, Sinatra, Nanoc
 
 ## Notice
 [![Gem
@@ -9,6 +10,7 @@ Version](https://badge.fury.io/rb/lazy_high_charts.png)](http://badge.fury.io/rb
 Current
 [VERSION](https://github.com/michelson/lazy_high_charts/blob/master/GEM_VERSION)
 [ChangeLog](https://github.com/michelson/lazy_high_charts/blob/master/CHANGELOG.md)
+[![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
 ## Installation
 
@@ -17,11 +19,11 @@ Current
 To install it, you just need to add it to your Gemfile:
 
 ```ruby
-    gem 'lazy_high_charts'
+gem 'lazy_high_charts'
 ```
 edge version on trial
 ```ruby
-    gem 'lazy_high_charts' --pre
+gem 'lazy_high_charts' --pre
 ```
 
 then run
@@ -32,11 +34,46 @@ bundle install
 
 to install it.
 
-##  Lazy_high_charts User Guide
+## Usage:
+
+Chart declaration DSL:
+
+### Controller code:
+```ruby
+@chart2 = LazyHighCharts::HighChart.new('graph') do |f|
+  f.title(:text => "Population vs GDP For 5 Big Countries [2009]")
+  f.xAxis(:categories => ["United States", "Japan", "China", "Germany", "France"])
+  f.series(:name => "GDP in Billions", :yAxis => 0, :data => [14119, 5068, 4985, 3339, 2656])
+  f.series(:name => "Population in Millions", :yAxis => 1, :data => [310, 127, 1340, 81, 65])
+
+  f.yAxis [
+    {:title => {:text => "GDP in Billions", :margin => 70} },
+    {:title => {:text => "Population in Millions"}, :opposite => true},
+  ]
+
+  f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+  f.chart({:defaultSeriesType=>"column"})
+end
+```
+
+### View Helpers:
+```ruby
+<%= high_chart("my_id4", @chart4) %>
+```
+
+##  Lazy high charts User Guide:
+
+* [[Combination Chart]]
+* [[Multiple Axes]]
+* [[Pie Chart]]
+* [[Stacked Columns]]
+* [[Clickable bar chart]]
+* [[Using HighStock]]
 
 See [project WIKI page](https://github.com/michelson/lazy_high_charts/wiki)
 
 [Demo Project](https://github.com/xiaods/highcharts-bootstrap)
+
 
 
 ### Update to latest js library. Aditional command line
@@ -65,4 +102,4 @@ Thanks for all [contributers](https://github.com/michelson/lazy_high_charts/cont
 * Miguel Michelson [github/michelson](https://github.com/michelson)
 
 ## License
-* Copyright (c) 2013 [Deshi Xiao](http://xiaods.mit-license.org) - Miguel Michelson Martinez, released under the MIT license
+* Copyright (c) 2008-2014 [MIT LICENSE](MIT-LICENSE)

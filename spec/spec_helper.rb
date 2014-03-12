@@ -20,7 +20,3 @@ RSpec.configure do |config|
   config.include ActionView::Helpers
   config.include Webrat::Matchers
 end
-
-module HighChartsHelper
-  include ActionView::Helpers::TagHelper
-end

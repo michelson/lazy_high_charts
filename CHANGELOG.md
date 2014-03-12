@@ -1,3 +1,7 @@
+# VERSION 1.5.2
+  * Sun Mar 11, 2014
+    1. Merge some requirement tweaks to use gem in NON-Rails contexts
+
 # VERSION 1.5.1
   * Sun Dec 22, 2013
     1. Share highcharts:update rake task for gem and rails host app 

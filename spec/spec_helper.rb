@@ -24,3 +24,4 @@ end
 module HighChartsHelper
   include ActionView::Helpers::TagHelper
 end
+

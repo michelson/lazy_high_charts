@@ -46,7 +46,7 @@ to install it.
 
 ### Controller code:
 ```ruby
-@chart2 = LazyHighCharts::HighChart.new('graph') do |f|
+@chart = LazyHighCharts::HighChart.new('graph') do |f|
   f.title(:text => "Population vs GDP For 5 Big Countries [2009]")
   f.xAxis(:categories => ["United States", "Japan", "China", "Germany", "France"])
   f.series(:name => "GDP in Billions", :yAxis => 0, :data => [14119, 5068, 4985, 3339, 2656])
@@ -64,7 +64,7 @@ end
 
 ### View Helpers:
 ```ruby
-<%= high_chart("my_id4", @chart4) %>
+<%= high_chart("some_id", @chart) %>
 ```
 
 ###Demo projects:

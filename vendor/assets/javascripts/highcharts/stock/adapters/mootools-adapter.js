@@ -1,8 +1,8 @@
 /*
- Highstock JS v1.3.7 (2013-10-24)
+ Highstock JS v1.3.10 (2014-03-10)
  MooTools adapter
 
- (c) 2010-2013 Torstein Hønsi
+ (c) 2010-2014 Torstein Honsi
 
  License: www.highcharts.com/license
 */

@@ -1,3 +1,7 @@
+# VERSION 1.5.3
+  * Fri Apr 18
+    1. update HighChart js lib to latest.
+    
 # VERSION 1.5.2
   * Sun Mar 11, 2014
     1. Merge some requirement tweaks to use gem in NON-Rails contexts

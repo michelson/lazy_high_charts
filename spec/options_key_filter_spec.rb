@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe LazyHighCharts::OptionsKeyFilter do
   it "should filter :pointInterval from seconds to milliseconds" do
     hash = LazyHighCharts::OptionsKeyFilter.filter(pointInterval: 1)
-    hash[:pointInterval].should == 1000
+    expect(hash[:pointInterval]).to eq(1000)
   end
 
   describe "filters :pointStart from a Date to a JavaScript compatible string" do
@@ -13,16 +13,16 @@ describe LazyHighCharts::OptionsKeyFilter do
     end
 
     it "should be the correct string" do
-      @value.should == "Date.UTC(2012, 8, 13)"
+      expect(@value).to eq("Date.UTC(2012, 8, 13)")
     end
 
     it "should be js_code" do
-      @value.js_code.should be_true
+      expect(@value.js_code).to be_true
     end
   end
 
   it "should filter keys recursively" do
     hash = LazyHighCharts::OptionsKeyFilter.filter({something: {another_thing: {pointInterval: 2}}})
-    hash[:something][:another_thing][:pointInterval].should == 2000
+    expect(hash[:something][:another_thing][:pointInterval]).to eq(2000)
   end
 end

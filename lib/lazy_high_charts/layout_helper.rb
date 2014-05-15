@@ -16,6 +16,10 @@ module LazyHighCharts
       high_graph_stock(placeholder, object, &block).concat(content_tag("div", "", object.html_options))
     end
 
+    def high_chart_globals(object)
+      build_globals_html_output(object)
+    end
+
     def high_graph(placeholder, object, &block)
       build_html_output("Chart", placeholder, object, &block)
     end
@@ -24,6 +28,8 @@ module LazyHighCharts
       build_html_output("StockChart", placeholder, object, &block)
     end
 
+    private
+
     def build_html_output(type, placeholder, object, &block)
       core_js =<<-EOJS
         var options = #{options_collection_as_string(object)};
@@ -31,49 +37,18 @@ module LazyHighCharts
         window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
       EOJS
 
-      if request_is_xhr?
-        graph =<<-EOJS
-        <script type="text/javascript">
-        (function() {
-          #{core_js}
-        })()
-        </script>
-        EOJS
-      elsif defined?(Turbolinks) && request_is_referrer?
-        graph =<<-EOJS
-        <script type="text/javascript">
-        (function() {
-          var f = function(){
-            document.removeEventListener('page:load', f, true);
-            #{core_js}
-          };
-          document.addEventListener('page:load', f, true);
-        })()
-        </script>
-        EOJS
-      else
-        graph =<<-EOJS
-        <script type="text/javascript">
-        (function() {
-          var onload = window.onload;
-          window.onload = function(){
-            if (typeof onload == "function") onload();
-            #{core_js}
-          };
-        })()
-        </script>
-        EOJS
-      end
-
-      if defined?(raw)
-        return raw(graph)
-      else
-        return graph
-      end
-
+      encapsulate_js core_js
     end
 
-    private
+    def build_globals_html_output(object)
+      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
+
+      core_js =<<-EOJS
+        Highcharts.setOptions({ #{options_collection.join(',')} });
+      EOJS
+
+      encapsulate_js core_js
+    end
 
     def generate_json_from_hash hash
       hash.each_pair.map do |key, value|
@@ -110,6 +85,52 @@ module LazyHighCharts
       options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
       options_collection << %|"series": [#{generate_json_from_array(object.series_data)}]|
       "{ #{options_collection.join(',')} }"
+    end
+
+    def encapsulate_js(core_js)
+      if request_is_xhr?
+        js_output = "#{js_start} #{core_js} #{js_end}"
+      elsif defined?(Turbolinks) && request_is_referrer?
+        js_output =<<-EOJS
+        #{js_start}
+          var f = function(){
+            document.removeEventListener('page:load', f, true);
+            #{core_js}
+          };
+          document.addEventListener('page:load', f, true);
+        #{js_end}
+        EOJS
+      else
+        js_output =<<-EOJS
+        #{js_start}
+          var onload = window.onload;
+          window.onload = function(){
+            if (typeof onload == "function") onload();
+            #{core_js}
+          };
+        #{js_end}
+        EOJS
+      end
+
+      if defined?(raw)
+        return raw(js_output)
+      else
+        return js_output
+      end
+    end
+
+    def js_start
+      <<-EOJS
+        <script type="text/javascript">
+        (function() {
+      EOJS
+    end
+
+    def js_end
+      <<-EOJS
+        })()
+        </script>
+      EOJS
     end
   end
 end

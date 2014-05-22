@@ -2,6 +2,7 @@
 
 module LazyHighCharts
   module LayoutHelper
+    include ActionView::Helpers::TagHelper
 
     def high_chart(placeholder, object, &block)
       object.html_options.merge!({:id => placeholder})

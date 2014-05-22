@@ -1,3 +1,7 @@
+# VERSION 1.5.4
+  * Fri May 21
+    1. Include ActionView::Helpers::TagHelper to the layout helper to avoid method conflict in object.
+
 # VERSION 1.5.3
   * Fri Apr 18
     1. update HighChart js lib to latest.

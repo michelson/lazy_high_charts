@@ -17,25 +17,25 @@ describe "HighChart" do
   # this is almost all flotomatic stuff
   describe "initialization" do
     it "should take an optional 'placeholder' argument" do
-      LazyHighCharts::HighChart.new(@placeholder).placeholder.should == @placeholder
-      LazyHighCharts::HighChart.new.placeholder.should_not == @placeholder
+      expect(LazyHighCharts::HighChart.new(@placeholder).placeholder).to eq(@placeholder)
+      expect(LazyHighCharts::HighChart.new.placeholder).not_to eq(@placeholder)
     end
 
     it "shouldn't generate a nil placeholder" do
-      LazyHighCharts::HighChart.new.placeholder.should_not be_nil
+      expect(LazyHighCharts::HighChart.new.placeholder).not_to be_nil
     end
 
     it "should generate different placeholders for different charts" do
       a_different_placeholder = LazyHighCharts::HighChart.new.placeholder
-      LazyHighCharts::HighChart.new.placeholder.should_not == a_different_placeholder
+      expect(LazyHighCharts::HighChart.new.placeholder).not_to eq(a_different_placeholder)
     end
 
     it "should take an optional html_options argument (defaulting to 300px height)" do
-      LazyHighCharts::HighChart.new(@placeholder, @html_options).html_options.should == @html_options
+      expect(LazyHighCharts::HighChart.new(@placeholder, @html_options).html_options).to eq(@html_options)
     end
 
     it "should set options by default" do
-      LazyHighCharts::HighChart.new.options.should == {
+      expect(LazyHighCharts::HighChart.new.options).to eq({
           :title => {:text => nil},
           :legend => {:layout => "vertical", :style => {}},
           :xAxis => {},
@@ -44,27 +44,27 @@ describe "HighChart" do
           :credits => {:enabled => false},
           :plotOptions => {:areaspline => {}},
           :chart => {:defaultSeriesType => "line", :renderTo => nil},
-          :subtitle => {}}
+          :subtitle => {}})
     end
 
     it "should set data empty by default" do
-      LazyHighCharts::HighChart.new.series_data.should == []
+      expect(LazyHighCharts::HighChart.new.series_data).to eq([])
     end
 
     it "should take a block setting attributes" do
       chart = LazyHighCharts::HighChart.new { |f| f.series_data = @data; f.options = @options }
-      chart.series_data.should == @data
-      chart.options.should == @options
+      expect(chart.series_data).to eq(@data)
+      expect(chart.options).to eq(@options)
     end
 
     it "should take a block setting attributes" do
       chart = LazyHighCharts::HighChart.new { |f| f.options[:legend][:layout] = "horizontal" }
-      chart.options[:legend][:layout].should == "horizontal"
+      expect(chart.options[:legend][:layout]).to eq("horizontal")
     end
 
     it "should take a block setting attributes" do
       chart = LazyHighCharts::HighChart.new { |f| f.options[:range_selector] = {}; f.options[:range_selector][:selected] = 1 }
-      chart.options[:range_selector][:selected].should == 1
+      expect(chart.options[:range_selector][:selected]).to eq(1)
     end
 
     it "should change a block data without overriding options" do
@@ -77,11 +77,11 @@ describe "HighChart" do
         f.options[:legend][:layout] = "horizontal"
         f.options[:xAxis][:categories] = ["uno", "dos", "tres", "cuatro"]
       end
-      chart.series_data.should == [{:name => "John", :data => [3, 20]}, {:name => "Jane", :data => [1, 3]}]
-      chart.options[:legend][:layout].should == "horizontal"
-      chart.options[:xAxis][:categories].should == ["uno", "dos", "tres", "cuatro"]
-      chart.options[:chart][:defaultSeriesType].should == "area"
-      chart.options[:chart][:inverted].should == true
+      expect(chart.series_data).to eq([{:name => "John", :data => [3, 20]}, {:name => "Jane", :data => [1, 3]}])
+      expect(chart.options[:legend][:layout]).to eq("horizontal")
+      expect(chart.options[:xAxis][:categories]).to eq(["uno", "dos", "tres", "cuatro"])
+      expect(chart.options[:chart][:defaultSeriesType]).to eq("area")
+      expect(chart.options[:chart][:inverted]).to eq(true)
     end
 
     it "should change a block data with overriding entire options" do
@@ -93,12 +93,12 @@ describe "HighChart" do
         f.xAxis(:categories => ["uno", "dos", "tres", "cuatro"], :labels => {:rotation => -45, :align => 'right'})
         f.chart({:defaultSeriesType => "spline", :renderTo => "myRenderArea", :inverted => true})
       end
-      chart.options[:xAxis][:categories].should == ["uno", "dos", "tres", "cuatro"]
-      chart.options[:xAxis][:labels][:rotation].should == -45
-      chart.options[:xAxis][:labels][:align].should == "right"
-      chart.options[:chart][:defaultSeriesType].should == "spline"
-      chart.options[:chart][:renderTo].should == "myRenderArea"
-      chart.options[:chart][:inverted].should == true
+      expect(chart.options[:xAxis][:categories]).to eq(["uno", "dos", "tres", "cuatro"])
+      expect(chart.options[:xAxis][:labels][:rotation]).to eq(-45)
+      expect(chart.options[:xAxis][:labels][:align]).to eq("right")
+      expect(chart.options[:chart][:defaultSeriesType]).to eq("spline")
+      expect(chart.options[:chart][:renderTo]).to eq("myRenderArea")
+      expect(chart.options[:chart][:inverted]).to eq(true)
     end
 
     it "should have subtitles" do
@@ -111,7 +111,7 @@ describe "HighChart" do
         f.chart({:defaultSeriesType => "spline", :renderTo => "myRenderArea", :inverted => true})
         f.subtitle({:text => "Bar"})
       end
-      chart.options[:subtitle][:text].should == "Bar"
+      expect(chart.options[:subtitle][:text]).to eq("Bar")
     end
 
     it 'should override entire option by default when resetting it again' do
@@ -119,8 +119,8 @@ describe "HighChart" do
         f.xAxis(categories: [3, 5, 7])
         f.xAxis(title: {text: 'x title'})
       end
-      chart.options[:xAxis][:categories].should == nil
-      chart.options[:xAxis][:title][:text].should == 'x title'
+      expect(chart.options[:xAxis][:categories]).to eq(nil)
+      expect(chart.options[:xAxis][:title][:text]).to eq('x title')
     end
 
     it 'should allow to build options step by step without overriding previously set values' do
@@ -128,8 +128,8 @@ describe "HighChart" do
         f.xAxis!(categories: [3, 5, 7])
         f.xAxis!(title: {text: 'x title'})
       end
-      chart.options[:xAxis][:categories].should == [3, 5, 7]
-      chart.options[:xAxis][:title][:text].should == 'x title'
+      expect(chart.options[:xAxis][:categories]).to eq([3, 5, 7])
+      expect(chart.options[:xAxis][:title][:text]).to eq('x title')
     end
 
     it 'should merge options and data into a full options hash' do
@@ -142,9 +142,9 @@ describe "HighChart" do
       end
 
       json = chart.full_options
-      json.should match /\"series\"/
-      json.should match /\"title\"/
-      json.should match /\"tooltip\": { \"enabled\": true,\"formatter\"/
+      expect(json).to match /\"series\"/
+      expect(json).to match /\"title\"/
+      expect(json).to match /\"tooltip\": { \"enabled\": true,\"formatter\"/
     end
 
   end

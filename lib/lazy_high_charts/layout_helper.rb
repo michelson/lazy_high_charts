@@ -25,11 +25,8 @@ module LazyHighCharts
     end
 
     def build_html_output(type, placeholder, object, &block)
-      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
-      options_collection << %|"series": [#{generate_json_from_array(object.series_data)}]|
-
       core_js =<<-EOJS
-        var options = { #{options_collection.join(',')} };
+        var options = #{options_collection_as_string(object)};
         #{capture(&block) if block_given?}
         window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
       EOJS
@@ -107,6 +104,12 @@ module LazyHighCharts
 
     def request_is_referrer?
       defined?(request) && request.respond_to?(:headers) && request.headers["X-XHR-Referer"]
+    end
+
+    def options_collection_as_string object
+      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
+      options_collection << %|"series": [#{generate_json_from_array(object.series_data)}]|
+      "{ #{options_collection.join(',')} }"
     end
   end
 end

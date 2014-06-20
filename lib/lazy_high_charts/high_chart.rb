@@ -66,11 +66,7 @@ module LazyHighCharts
     #
     # @return [Hash] options JSON options hash
     def full_options
-      options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(self.options))]
-      options_collection << %|"series": [#{generate_json_from_array(self.series_data)}]|
-      <<-EOJS
-      { #{options_collection.join(', ')} }
-      EOJS
+      options_collection_as_string self
     end
 
     def to_json

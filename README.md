@@ -44,10 +44,10 @@ to install it.
 
 Be sure to add highcharts to application.js before require tree:
 
-'''javascript
+```javascript
 //= require highcharts/highcharts
 //= require_tree .
-'''
+```
 
 ## Usage:
 

@@ -42,13 +42,6 @@ bundle install
 
 to install it.
 
-Be sure to add highcharts to application.js before require tree:
-
-```javascript
-//= require highcharts/highcharts
-//= require_tree .
-```
-
 ## Usage:
 
 ### Controller code:
@@ -85,13 +78,13 @@ end
 
 ### Update to latest js library. Aditional command line
 
-  To update to the current highcharts.js directly from http://code.highcharts.com/",  you can always run
+  To update to the current highcharts.js directly from http://code.highcharts.com/",  you can always run 
 
     rake highcharts:update
 
   And HC will be copied to your vendor/assets directory on your app
 
-### Deprecation notice:
+### Deprecation notice: 
 
 If you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
 

@@ -76,7 +76,7 @@ end
 [Sinatra App](spec/dummy_sinatra/README.md)
 
 
-### Update to latest js library. Aditional command line
+### Update to latest js library. Additional command line
 
   To update to the current highcharts.js directly from http://code.highcharts.com/",  you can always run 
 
@@ -97,7 +97,7 @@ We're open to any contribution. It has to be tested properly though.
 * Test your changes. We won't accept any untested contributions (except if they're not testable).
 * Create an [issue](https://github.com/michelson/lazy_high_charts/issues) with a link to your commits.
 
-Thanks for all [contributers](https://github.com/michelson/lazy_high_charts/contributors)
+Thanks for all [contributors](https://github.com/michelson/lazy_high_charts/contributors)
 
 ## Maintainers
 * Deshi Xiao [github/xiaods](https://github.com/xiaods)

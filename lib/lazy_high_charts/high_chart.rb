@@ -82,7 +82,7 @@ module LazyHighCharts
     end
 
     def series_options
-      @options.reject { |k, v| SERIES_OPTIONS.include?(k.to_s) == false }
+      @options.reject { |k, _| SERIES_OPTIONS.include?(k.to_s) == false }
     end
 
     def merge_options(name, opts)

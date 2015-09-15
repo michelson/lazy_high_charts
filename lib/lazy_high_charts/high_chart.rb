@@ -73,6 +73,12 @@ module LazyHighCharts
       EOJS
     end
 
+    def to_json
+      data = self.options.clone
+      data[:series] = self.series_data.clone
+      data
+    end
+
     private
 
     def random_canvas_id

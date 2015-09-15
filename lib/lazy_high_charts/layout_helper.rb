@@ -34,7 +34,7 @@ module LazyHighCharts
         window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
       EOJS
 
-      if defined?(request) && request.respond_to?(:xhr?) && request.xhr?
+      if request_is_xhr?
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
@@ -42,7 +42,7 @@ module LazyHighCharts
         })()
         </script>
         EOJS
-      elsif defined?(Turbolinks) && request.headers["X-XHR-Referer"]
+      elsif defined?(Turbolinks) && request_is_referrer?
         graph =<<-EOJS
         <script type="text/javascript">
         (function() {
@@ -101,6 +101,13 @@ module LazyHighCharts
       array.map { |value| generate_json_from_value(value) }.join(",")
     end
 
+    def request_is_xhr?
+      defined?(request) && request.respond_to?(:xhr?) && request.xhr?
+    end
+
+    def request_is_referrer?
+      defined?(request) && request.respond_to?(:headers) && request.headers["X-XHR-Referer"]
+    end
   end
 end
 

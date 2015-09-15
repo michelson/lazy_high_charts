@@ -42,6 +42,19 @@ then run
 bundle install
 ```
 
+and add this in the application.js
+
+```js
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
+//= require turbolinks
+
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
+```
+
 to install it.
 
 ## Usage:

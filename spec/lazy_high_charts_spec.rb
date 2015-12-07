@@ -10,6 +10,28 @@ describe HighChartsHelper do
     @chart = LazyHighCharts::HighChart.new(@placeholder)
     @data = "data"
     @options = "options"
+    @chart_globals = LazyHighCharts::HighChartGlobals.new do |chart|
+      chart.global({ useUTC: false })
+      chart.chart({
+        backgroundColor: {
+          linearGradient: [0, 0, 500, 500],
+          stops: [
+            [0, "rgb(255, 255, 255)"],
+            [1, "rgb(240, 240, 255)"]
+          ]
+        },
+        borderWidth: 2,
+        plotBackgroundColor: "rgba(255, 255, 255, .9)",
+        plotShadow: true,
+        plotBorderWidth: 1
+      })
+      chart.lang({
+        thousandsSep: ","
+      })
+      chart.colors([
+        "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354"
+      ])
+    end
   end
 
   context "layout_helper" do
@@ -20,6 +42,18 @@ describe HighChartsHelper do
     it "should return a script" do
       hc = LazyHighCharts::HighChart.new("placeholder")
       expect(high_chart(hc.placeholder, hc)).to have_selector('script')
+    end
+  end
+
+  context "high_chart_globals" do
+    it "should return a script" do
+      high_chart_globals(@chart_globals).should have_selector('script')
+    end
+
+    it "should take a block and set attributes" do
+      high_chart_globals(@chart_globals).should match(/useUTC/)
+      high_chart_globals(@chart_globals).should match(/backgroundColor/)
+      high_chart_globals(@chart_globals).should match(/thousandsSep/)
     end
   end
 

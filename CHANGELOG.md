@@ -1,3 +1,9 @@
+# VERSION 1.5.5
+  * Mon Oct 19, 2015
+    1. Support for HighChart global settings.
+    [#149](https://github.com/michelson/lazy_high_charts/issues/149)
+    2. Minor code refactorings.
+
 # VERSION 1.5.4
   * Fri May 21
     1. Include ActionView::Helpers::TagHelper to the layout helper to avoid method conflict in object.
@@ -5,14 +11,14 @@
 # VERSION 1.5.3
   * Fri Apr 18
     1. update HighChart js lib to latest.
-    
+
 # VERSION 1.5.2
   * Sun Mar 11, 2014
     1. Merge some requirement tweaks to use gem in NON-Rails contexts
 
 # VERSION 1.5.1
   * Sun Dec 22, 2013
-    1. Share highcharts:update rake task for gem and rails host app 
+    1. Share highcharts:update rake task for gem and rails host app
 
 # VERSION 1.5.0
   * Sun Jul 21, 2013

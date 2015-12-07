@@ -34,7 +34,6 @@ module LazyHighCharts
       self.subtitle({})
     end
 
-
     # Pass other methods through to the javascript high_chart object.
     #
     # For instance: <tt>high_chart.grid(:color => "#699")</tt>

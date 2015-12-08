@@ -72,11 +72,13 @@ describe HighChartsHelper do
         expect(high_chart(@placeholder, @chart)).to match(/if \(typeof onload == "function"\)\s*onload\(\)/)
       end
     end
+
     describe "initialize HighChart" do
       it "should set variables `chart` `options`" do
         expect(high_chart(@placeholder, @chart)).to match(/var\s+options\s+=/)
         expect(high_chart(@placeholder, @chart)).to match(/window.chart_placeholder\s=/)
       end
+
       it "should set Chart data" do
         expect(high_chart(@placeholder, @chart)).to match(/window\.chart_placeholder\s=\snew\sHighcharts.Chart/)
       end

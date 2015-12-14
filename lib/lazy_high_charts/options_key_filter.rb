@@ -19,9 +19,7 @@ module LazyHighCharts
               hash[key] = filter(value)
             else
               hash[key] = value
-
               methods = Array(FILTER_MAP[key])
-
               methods.each do |method_name|
                 hash[key] = send(method_name, hash[key])
               end

@@ -17,7 +17,7 @@ describe LazyHighCharts::OptionsKeyFilter do
     end
 
     it "should be js_code" do
-      expect(@value.js_code).to be_truthy
+      expect(@value.js_code).to be_true
     end
   end
 

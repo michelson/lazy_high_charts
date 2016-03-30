@@ -94,7 +94,7 @@ module LazyHighCharts
         js_output =<<-EOJS
         #{js_start}
           var f = function(){
-            document.removeEventListener('page:load', f, true);
+            document.removeEventListener('#{Turbolinks::VERSION.first.to_i < 5 ? 'page:load' : 'turbolinks:load'}', f, true);
             #{core_js}
           };
           document.addEventListener('page:load', f, true);

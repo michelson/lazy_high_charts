@@ -5,4 +5,4 @@ bundler_args: --without production development
 script: bundle exec rake
 
 rvm:
-  - 2.2.3
+  - 2.2.5

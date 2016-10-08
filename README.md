@@ -104,6 +104,27 @@ end
 
 `high_chart_globals` is optional. Use it to set the global options of all charts that are currently displayed on the page. More info [here](http://api.highcharts.com/highcharts#global).
 
+### No Data
+
+When your series has no data and you want to display a message using Highcharts' noData feature ([Highcarts doc](http://api.highcharts.com/highcharts/noData)) you have to include the `no-data-to-display.js` file like so:
+
+````
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/modules/no-data-to-display
+````
+
+You can then set the actual message that is displayed like so:
+
+````
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.options[:lang] = { noData: "My beautiful noData message" }
+      f.title(text: nil)
+      f.series([])
+    end
+````
+
+
 ###Demo projects:
 
 [Nanoc App](spec/dummy_nanoc/README.md)

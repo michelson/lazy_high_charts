@@ -81,8 +81,8 @@ module LazyHighCharts
       defined?(request) && request.respond_to?(:headers) && request.headers["X-XHR-Referer"]
     end
 
-    def request_turbolinks_5_tureferrer?
-      defined?(request) && request.respond_to?(:headers) && request.headers["Turbolinks-Referrer"]
+    def is_turbolinks_5?
+      Gem::Version.new(Turbolinks::VERSION) >= Gem::Version.new('5.0.0')
     end
 
     def options_collection_as_string object
@@ -106,7 +106,7 @@ module LazyHighCharts
         #{js_end}
         EOJS
       # Turbolinks >= 5
-      elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
+      elsif defined?(Turbolinks) && is_turbolinks_5?
         js_output =<<-EOJS
         #{js_start}
           document.addEventListener("turbolinks:load", function(e) {

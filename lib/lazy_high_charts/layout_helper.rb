@@ -109,8 +109,9 @@ module LazyHighCharts
       elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
         js_output =<<-EOJS
         #{js_start}
-          document.addEventListener("turbolinks:load", function() {
+          document.addEventListener("turbolinks:load", function(e) {
             #{core_js}
+          	e.target.removeEventListener(e.type, arguments.callee);
           });
         #{js_end}
         EOJS

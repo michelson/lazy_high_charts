@@ -7,6 +7,7 @@
 module LazyHighCharts
   module OptionsKeyFilter
     FILTER_MAP = {
+      :data => [:format_data],
       :pointInterval => [:milliseconds],
       :pointStart => [:date_to_js_code]
     }
@@ -36,6 +37,20 @@ module LazyHighCharts
 
       def date_to_js_code date
         "Date.UTC(#{date.year}, #{date.month - 1}, #{date.day})".js_code
+      end
+
+      def format_data(data)
+        data.map { |item| format_data_item(item) }
+      end
+
+      def format_data_item(item)
+        if item.is_a?(::Array)
+          format_data item
+        elsif item.is_a?(DateTime)
+          date_to_js_code item
+        else
+          item
+        end
       end
     end
   end

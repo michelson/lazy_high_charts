@@ -64,12 +64,8 @@ describe HighChartsHelper do
         expect(high_chart(@placeholder, @chart)).to match(/}\)\(\)/)
       end
 
-      it "should assign to the onload event" do
-        expect(high_chart(@placeholder, @chart)).to include('window.onload = function(){')
-      end
-      it "should call any existing onload function" do
-        expect(high_chart(@placeholder, @chart)).to match(/onload = window.onload;/)
-        expect(high_chart(@placeholder, @chart)).to match(/if \(typeof onload == "function"\)\s*onload\(\)/)
+      it "should assign to the jquery document ready event" do
+        expect(high_chart(@placeholder, @chart)).to include('$(document).ready(function()')
       end
     end
     describe "initialize HighChart" do

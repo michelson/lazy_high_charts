@@ -77,14 +77,6 @@ module LazyHighCharts
       defined?(request) && request.respond_to?(:xhr?) && request.xhr?
     end
 
-    def request_is_referrer?
-      defined?(request) && request.respond_to?(:headers) && request.headers["X-XHR-Referer"]
-    end
-
-    def request_turbolinks_5_tureferrer?
-      defined?(request) && request.respond_to?(:headers) && request.headers["Turbolinks-Referrer"]
-    end
-
     def options_collection_as_string object
       options_collection = [generate_json_from_hash(OptionsKeyFilter.filter(object.options))]
       options_collection << %|"series": [#{generate_json_from_array(object.series_data)}]|
@@ -94,34 +86,12 @@ module LazyHighCharts
     def encapsulate_js(core_js)
       if request_is_xhr?
         js_output = "#{js_start} #{core_js} #{js_end}"
-      # Turbolinks.version < 5
-      elsif defined?(Turbolinks) && request_is_referrer?
-        js_output =<<-EOJS
-        #{js_start}
-          var f = function(){
-            document.removeEventListener('page:load', f, true);
-            #{core_js}
-          };
-          document.addEventListener('page:load', f, true);
-        #{js_end}
-        EOJS
-      # Turbolinks >= 5
-      elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
-        js_output =<<-EOJS
-        #{js_start}
-          document.addEventListener("turbolinks:load", function() {
-            #{core_js}
-          });
-        #{js_end}
-        EOJS
       else
         js_output =<<-EOJS
         #{js_start}
-          var onload = window.onload;
-          window.onload = function(){
-            if (typeof onload == "function") onload();
+          $(document).ready(function() {
             #{core_js}
-          };
+          });
         #{js_end}
         EOJS
       end

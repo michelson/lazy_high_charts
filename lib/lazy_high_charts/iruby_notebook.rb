@@ -7,12 +7,12 @@ module LazyHighCharts
   }
   @@additional_libraries = {}
 
-  # Load extension library to IRuby notebook after Nyaplotjs is loaded
+  # Load extension library to IRuby notebook after LazyHighCharts js is loaded
   def self.add_dependency(name, url)
     @@dep_libraries[name]=url;
   end
 
-  # Load extension library to IRuby notebook before Nyaplotjs is loaded
+  # Load extension library to IRuby notebook before LazyHighCharts js is loaded
   def self.add_additional_library(name, url)
     @@additional_libraries[name]=url
   end

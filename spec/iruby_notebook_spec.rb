@@ -1,4 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
+require 'iruby'
+require 'iruby'
 
 describe LazyHighCharts do
 
@@ -50,19 +52,19 @@ describe LazyHighCharts do
     end
 
     context 'without parameters' do
-      subject(:load_notebook) { Highcharts.load_notebook }
+      subject(:load_notebook) { LazyHighCharts.load_notebook }
 
       include_examples 'inline script'
     end
 
     context 'given `assets` parameter is `:inline`' do
-      subject(:load_notebook) { Highcharts.load_notebook(:inline) }
+      subject(:load_notebook) { LazyHighCharts.load_notebook(:inline) }
 
       include_examples 'inline script'
     end
 
     context 'given `assets` parameter is `:cdn`' do
-      subject(:load_notebook) { Highcharts.load_notebook(:cdn) }
+      subject(:load_notebook) { LazyHighCharts.load_notebook(:cdn) }
 
       it 'loads javascript sources from cdn' do
         expect(IRuby).to receive(:display) do |rep|
@@ -73,5 +75,5 @@ describe LazyHighCharts do
         expect(load_notebook).to eq(nil)
       end
     end
-
+  end
 end

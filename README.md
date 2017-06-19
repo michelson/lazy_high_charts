@@ -125,13 +125,13 @@ You can then set the actual message that is displayed like so:
 ````
 
 
-###Demo projects:
+### Demo projects:
 
-[Nanoc App](spec/dummy_nanoc/README.md)
+[Nanoc App](spec/dummy_nanoc)
 
-[Rails App](spec/dummy_rails/README.md)
+[Rails App](spec/dummy_rails)
 
-[Sinatra App](spec/dummy_sinatra/README.md)
+[Sinatra App](spec/dummy_sinatra)
 
 
 ### Update to latest js library. Additional command line

@@ -50,9 +50,8 @@ and add this in the application.js
 //= require_tree .
 //= require turbolinks
 
-//= require highcharts/highcharts
-//= require highcharts/highcharts-more
 //= require highcharts/highstock
+//= require highcharts/highcharts-more
 ```
 
 to install it.
@@ -136,13 +135,13 @@ You can then set the actual message that is displayed like so:
 
 ### Update to latest js library. Additional command line
 
-  To update to the current highcharts.js directly from http://code.highcharts.com/",  you can always run 
+  To update to the current highcharts.js directly from http://code.highcharts.com/",  you can always run
 
     rake highcharts:update
 
   And HC will be copied to your vendor/assets directory on your app
 
-### Deprecation notice: 
+### Deprecation notice:
 
 If you use rails 2.3.x or 3.0.x or 3.1.x, please use versions less than 1.3.3.
 

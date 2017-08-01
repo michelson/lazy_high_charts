@@ -27,6 +27,7 @@ namespace :highcharts do
       sh "curl -# http://code.highcharts.com/modules/canvas-tools.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/canvas-tools.js"
       sh "curl -# http://code.highcharts.com/modules/data.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/data.js"
       sh "curl -# http://code.highcharts.com/modules/exporting.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/exporting.js"
+      sh "curl -# http://code.highcharts.com/modules/export-data.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/export-data.js"
       sh "curl -# http://code.highcharts.com/modules/drilldown.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/drilldown.js"
       sh "curl -# http://code.highcharts.com/modules/funnel.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/funnel.js"
       sh "curl -# http://code.highcharts.com/modules/heatmap.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/heatmap.js"

@@ -42,7 +42,7 @@ then run
 bundle install
 ```
 
-and add this in the application.js
+and add this in the application.js (or to the active_admin.js to use in Active Admin)
 
 ```js
 //= require jquery

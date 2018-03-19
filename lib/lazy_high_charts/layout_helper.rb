@@ -108,7 +108,7 @@ module LazyHighCharts
       # Turbolinks >= 5
       elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
         js_output =<<-EOJS
-        #{js_start}
+        #{js_start_for_turbolinks_5}
           document.addEventListener("turbolinks:load", function() {
             #{core_js}
           });
@@ -136,6 +136,13 @@ module LazyHighCharts
     def js_start
       <<-EOJS
         <script type="text/javascript">
+        (function() {
+      EOJS
+    end
+
+    def js_start_for_turbolinks_5
+      <<-EOJS
+        <script type="text/javascript" data-turbolinks-eval="false">
         (function() {
       EOJS
     end

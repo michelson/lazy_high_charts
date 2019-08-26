@@ -17,6 +17,7 @@ namespace :highcharts do
       sh "mkdir -p vendor/assets/javascripts/highcharts/adapters/"
 
       sh "curl -# http://code.highcharts.com/highcharts.js -L --compressed -o vendor/assets/javascripts/highcharts/highcharts.js"
+      sh "curl -# http://code.highcharts.com/highcharts-3d.js -L --compressed -o vendor/assets/javascripts/highcharts/highcharts-3d.js"
       sh "curl -# http://code.highcharts.com/highcharts-more.js -L --compressed -o vendor/assets/javascripts/highcharts/highcharts-more.js"
 
       # Modules

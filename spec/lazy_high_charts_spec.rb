@@ -65,11 +65,7 @@ describe HighChartsHelper do
       end
 
       it "should assign to the onload event" do
-        expect(high_chart(@placeholder, @chart)).to include('window.onload = function(){')
-      end
-      it "should call any existing onload function" do
-        expect(high_chart(@placeholder, @chart)).to match(/onload = window.onload;/)
-        expect(high_chart(@placeholder, @chart)).to match(/if \(typeof onload == "function"\)\s*onload\(\)/)
+        expect(high_chart(@placeholder, @chart)).to include('window.addEventListener(\'load\', function() {')
       end
     end
     describe "initialize HighChart" do

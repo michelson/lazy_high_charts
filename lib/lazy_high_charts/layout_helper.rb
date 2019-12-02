@@ -117,11 +117,9 @@ module LazyHighCharts
       else
         js_output =<<-EOJS
         #{js_start}
-          var onload = window.onload;
-          window.onload = function(){
-            if (typeof onload == "function") onload();
+          window.addEventListener('load', function() {
             #{core_js}
-          };
+          });
         #{js_end}
         EOJS
       end

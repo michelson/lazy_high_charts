@@ -1,6 +1,6 @@
 # LazyHighCharts
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/michelson/lazy_high_charts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/michelson/lazy_high_charts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This gem provides a simple and extremely flexible way to use HighCharts from ruby code.
 Tested on Ruby on Rails, Sinatra and Nanoc, but it should work with others too. Highcharts is not free for commercial use, so make sure you have a valid license to use Highcharts.

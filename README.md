@@ -42,6 +42,11 @@ then run
 bundle install
 ```
 
+and make sure to get the latest version (unless you'd like an older version for some reason)
+```bash
+rake highcharts:update
+```
+
 and add this in the application.js
 
 ```js

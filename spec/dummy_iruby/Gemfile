@@ -1,0 +1,6 @@
+source "http://rubygems.org"
+gem "iruby"
+gem "cztop"
+gem 'rbczmq'
+gem 'actionview', '~> 4.2'
+gemspec  :path => '../../'

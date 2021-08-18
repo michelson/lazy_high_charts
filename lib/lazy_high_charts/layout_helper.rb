@@ -117,9 +117,11 @@ module LazyHighCharts
       elsif defined?(Turbo)
         js_output =<<-EOJS
         #{js_start}
-          document.addEventListener("turbo:load", function() {
+          var f = function(){
+            document.removeEventListener('turbo:load', f, true);
             #{core_js}
-          });
+          };
+          document.addEventListener("turbo:load", f, true);
         #{js_end}
         EOJS
       else

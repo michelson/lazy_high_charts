@@ -92,51 +92,38 @@ module LazyHighCharts
     end
 
     def encapsulate_js(core_js)
-      if request_is_xhr?
-        js_output = "#{js_start} #{core_js} #{js_end}"
-      # Turbolinks.version < 5
-      elsif defined?(Turbolinks) && request_is_referrer?
-        js_output =<<-EOJS
-        #{js_start}
-          var f = function(){
-            document.removeEventListener('page:load', f, true);
-            #{core_js}
-          };
-          document.addEventListener('page:load', f, true);
-        #{js_end}
-        EOJS
-      # Turbolinks >= 5
-      elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
-        js_output =<<-EOJS
-        #{js_start}
-          document.addEventListener("turbolinks:load", function() {
-            #{core_js}
-          });
-        #{js_end}
-        EOJS
-      elsif defined?(Turbo)
-        js_output =<<-EOJS
-        #{js_start}
-          document.addEventListener("turbo:load", function() {
-            #{core_js}
-          });
-        #{js_end}
-        EOJS
-      else
-        js_output =<<-EOJS
-        #{js_start}
-          window.addEventListener('load', function() {
-            #{core_js}
-          });
-        #{js_end}
-        EOJS
-      end
+      js_output = if request_is_xhr?
+                    "#{js_start} #{core_js} #{js_end}"
+                  # Turbolinks.version < 5
+                  elsif defined?(Turbolinks) && request_is_referrer?
+                    js_event_function(core_js, 'page:load')
+                  # Turbolinks >= 5
+                  elsif defined?(Turbolinks) && request_turbolinks_5_tureferrer?
+                    js_event_function(core_js, 'turbolinks:load')
+                  # Hotwire Turbo
+                  elsif defined?(Turbo)
+                    js_event_function(core_js, 'turbo:load')
+                  else
+                    js_event_function(core_js, 'load', 'window')
+                  end
 
       if defined?(raw)
         return raw(js_output)
       else
         return js_output
       end
+    end
+
+    def js_event_function(core_js, event, target='document')
+      <<-EOJS
+        #{js_start}
+          var f = function(){
+            #{target}.removeEventListener('#{event}', f, true);
+            #{core_js}
+          };
+          #{target}.addEventListener('#{event}', f, true);
+        #{js_end}
+      EOJS
     end
 
     def js_start

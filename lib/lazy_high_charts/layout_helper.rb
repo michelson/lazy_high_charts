@@ -93,7 +93,7 @@ module LazyHighCharts
 
     def encapsulate_js(core_js)
       js_output = if request_is_xhr?
-                    "#{js_start} #{core_js} #{js_end}"
+                    core_js
                   # Turbolinks.version < 5
                   elsif defined?(Turbolinks) && request_is_referrer?
                     js_event_function(core_js, 'page:load')
@@ -107,36 +107,22 @@ module LazyHighCharts
                     js_event_function(core_js, 'load', 'window')
                   end
 
-      if defined?(raw)
-        return raw(js_output)
+      js_output = "(function() {\n  #{js_output}\n})()"
+
+      if defined?(javascript_tag)
+        javascript_tag js_output, nonce: true
       else
-        return js_output
+        "<script type='text/javascript'>#{js_output}</script>"
       end
     end
 
     def js_event_function(core_js, event, target='document')
       <<-EOJS
-        #{js_start}
-          var f = function(){
-            #{target}.removeEventListener('#{event}', f, true);
-            #{core_js}
-          };
-          #{target}.addEventListener('#{event}', f, true);
-        #{js_end}
-      EOJS
-    end
-
-    def js_start
-      <<-EOJS
-        <script type="text/javascript">
-        (function() {
-      EOJS
-    end
-
-    def js_end
-      <<-EOJS
-        })()
-        </script>
+        var f = function(){
+          #{target}.removeEventListener('#{event}', f, true);
+          #{core_js}
+        };
+        #{target}.addEventListener('#{event}', f, true);
       EOJS
     end
   end

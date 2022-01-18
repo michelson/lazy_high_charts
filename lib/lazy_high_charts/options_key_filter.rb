@@ -22,7 +22,7 @@ module LazyHighCharts
               hash[key] = value
               methods = Array(FILTER_MAP[key])
               methods.each do |method_name|
-                hash[key] = send(method_name, hash[key])
+                hash[key] = send(method_name, hash[key] || [])
               end
             end
           end
@@ -40,7 +40,7 @@ module LazyHighCharts
       end
 
       def format_data(data)
-        data.map { |item| format_data_item(item) }
+        data.map(&method(:format_data_item))
       end
 
       def format_data_item(item)

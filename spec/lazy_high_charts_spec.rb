@@ -100,8 +100,8 @@ describe HighChartsHelper do
       f.options[:rangeSelector] = {:selected => 1};
       f.series(:type => "spline",
                :name => "Historias",
-               :pointInterval => (1.day.to_i * 1000),
-               :pointStart => (Time.now.to_i * 1000),
+               :pointInterval => 1.day.to_i,
+               :pointStart => Time.now,
                :data => [0, 1, 2, 3, 5, 6, 0, 7]
       )
     }

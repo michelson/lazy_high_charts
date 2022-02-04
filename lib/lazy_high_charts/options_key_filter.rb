@@ -9,7 +9,7 @@ module LazyHighCharts
     FILTER_MAP = {
       :data => [:format_data],
       :pointInterval => [:milliseconds],
-      :pointStart => [:date_to_js_code]
+      :pointStart => [:start_point_to_js_code]
     }
 
     class << self
@@ -35,8 +35,9 @@ module LazyHighCharts
         value * 1_000
       end
 
-      def date_to_js_code date
-        "Date.UTC(#{date.year}, #{date.month - 1}, #{date.day})".js_code
+      def start_point_to_js_code start_point
+        time = start_point.to_time
+        "Date.UTC(#{time.year}, #{time.month - 1}, #{time.day}, #{time.hour}, #{time.min}, #{time.sec})".js_code
       end
 
       def format_data(data)

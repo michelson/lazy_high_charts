@@ -1,0 +1,47 @@
+if(window['jquery'] === undefined ||
+   window['highcharts'] === undefined){
+    var path = <%= dep_libraries.merge(additional_libraries).to_json %>;
+
+<%
+shim = dep_libraries.merge(additional_libraries).inject({}){|hash, (k, v)| hash[k]={exports: k};next hash}
+%>
+
+    var shim = <%= shim.to_json %>;
+
+    require.config({paths: path, shim:shim});
+
+<%
+str=""
+dep_libraries.each do |key, val|
+  str.concat("require(['%s'], function(%s){window['%s']=%s;console.log('finished loading %s');"% Array.new(5, key))
+end
+%>
+<%= str %>
+
+  var script = jquen.select("head")
+      .append("script")
+      .attr("src", "http://code.highcharts.com/highcharts.js")
+      .attr("async", true);
+
+  script[0][0].onload = script[0][0].onreadystatechange = function(){
+<%
+   str=""
+   additional_libraries.each do |key, val|
+   str.concat("require(['%s'], function(%s){window['%s']=%s;console.log('finished loading %s');"% Array.new(5, key))
+   end
+   %>
+<%= str %>
+      var event = document.createEvent("HTMLEvents");
+      event.initEvent("load_highcharts",false,false);
+      window.dispatchEvent(event);
+      console.log('Finished loading highchartsjs');
+<%=
+ str = Array.new(additional_libraries.length, "});").join("")
+%>
+  };
+
+<%
+ str = Array.new(dep_libraries.length, "});").join("")
+%>
+<%= str %>
+}

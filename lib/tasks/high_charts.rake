@@ -36,6 +36,7 @@ namespace :highcharts do
       sh "curl -# http://code.highcharts.com/modules/offline-exporting.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/offline-exporting.js"
       sh "curl -# http://code.highcharts.com/modules/solid-gauge.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/solid-gauge.js"
       sh "curl -# http://code.highcharts.com/modules/treemap.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/treemap.js"
+      sh "curl -# http://code.highcharts.com/modules/wordcloud.js -L --compressed -o vendor/assets/javascripts/highcharts/modules/wordcloud.js"
 
       sh "curl -# http://code.highcharts.com/adapters/mootools-adapter.js -L --compressed -o vendor/assets/javascripts/highcharts/adapters/mootools-adapter.js"
       sh "curl -# http://code.highcharts.com/adapters/prototype-adapter.js -L --compressed -o vendor/assets/javascripts/highcharts/adapters/prototype-adapter.js"
